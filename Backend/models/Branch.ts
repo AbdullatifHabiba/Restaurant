@@ -1,6 +1,6 @@
 import { PrimaryKey } from 'sequelize-typescript';
 
-module.exports = (sequelize: any, Sequelize: any) => {
+module.exports = (sequelize:any, Sequelize:any) => {
   const Branch = sequelize.define("Branch", {
     branch_id: {
       type: Sequelize.INTEGER,
@@ -17,5 +17,7 @@ module.exports = (sequelize: any, Sequelize: any) => {
       allowNull: true,
     },
   });
+  
+  
   return Branch;
 };

@@ -1,8 +1,8 @@
-module.exports = (sequelize: any, Sequelize: any) => {
+module.exports = (sequelize:any, Sequelize:any) => {
   const Item = sequelize.define("Item", {
-    item_id: {
+    item_id:{
       type: Sequelize.INTEGER,
-      PrimaryKey: true,
+      PrimaryKey:true,
       allowNull: false,
     },
     order_id: {
@@ -22,5 +22,7 @@ module.exports = (sequelize: any, Sequelize: any) => {
       allowNull: true,
     },
   });
+  
+  
   return Item;
 };

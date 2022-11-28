@@ -1,5 +1,5 @@
 
-module.exports = (sequelize: any, Sequelize: any) => {
+module.exports = (sequelize:any, Sequelize:any) => {
   const DeliveryOrder = sequelize.define("DeliveryOrder", {
     order_id: {
       type: Sequelize.INTEGER,
@@ -13,6 +13,9 @@ module.exports = (sequelize: any, Sequelize: any) => {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
+    
   });
+  
+  
   return DeliveryOrder;
 };
