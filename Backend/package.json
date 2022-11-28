@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only ./controller/route.ts",
+    "dev": "ts-node-dev --respawn --transpile-only .//test/test.ts",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

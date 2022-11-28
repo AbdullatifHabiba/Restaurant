@@ -1,7 +1,7 @@
 export const config = {
     'username': 'root',
-    'password': '1234567890',
-    'database': 'restaurant',
+    'password': 'a7med3z',
+    'database': 'resturant',
     'host': '127.0.0.1',
     'dialect': 'mysql'
 }
