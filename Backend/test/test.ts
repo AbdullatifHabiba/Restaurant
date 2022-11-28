@@ -1,9 +1,9 @@
-import db  from './../repository/sequalize';
+import { expect } from "chai";
 
 
-(async () => {
 
-    console.log("Initialize database connection...");
-    await db.sequelize.sync({ force: false });
-  
-  })();
+describe("test1", () => {
+  it('starting function',() => {
+     console.log("hi");
+  });
+});
