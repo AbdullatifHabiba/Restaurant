@@ -2,6 +2,10 @@
 .sign-up {
   display: grid;
   grid-template-columns: 60% 40%;
+  margin: auto;
+  align-items: center;
+  justify-items: center;
+  column-gap: 10px;
   min-height: 100vh;
   max-height: fit-content;
   padding: 0 100px;
@@ -12,6 +16,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  width: 100%;
 }
 form {
   display: flex;
@@ -55,4 +60,27 @@ input {
 }
 .btn-submit:hover{
     background-color: #ff8aa3;
+}
+.img-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.img-container img{
+ max-width: 400px;
+ min-width: auto;
+}
+@media (max-width: 1050px) {
+  .img-container img{
+    max-width: 300px;
+    min-width: auto;
+   }
+}
+@media (max-width: 800px) {
+  .sign-up{
+    grid-template-columns: auto;
+  }
+  .img-container{
+    display: none;
+   }
 }
