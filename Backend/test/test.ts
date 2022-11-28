@@ -6,5 +6,4 @@ import db  from './../repository/sequalize';
     console.log("Initialize database connection...");
     await db.sequelize.sync({ force: false });
   
-    
   })();
