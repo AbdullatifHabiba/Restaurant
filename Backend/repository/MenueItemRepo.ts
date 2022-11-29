@@ -1,22 +1,19 @@
-import db  from './sequalize';
+import db from './sequalize';
 
-export class MenueRepo
-{
+export class MenueRepo {
 
-     async GetAll()
-     { 
-          try{ 
-            return await db['MenuItems'].findAll();
-          }catch(err){
-            throw Error("error in connection"); 
-          }
-     }
-     async RemoveItemByID(Id:number)
-     { 
-         await db['MenuItems'].destroy({
-          where: { 
-            id:[Id]
-          }
-        });
-     }
+  async GetAll() {
+    try {
+      return await db['MenuItems'].findAll();
+    } catch (err) {
+      throw Error("error in connection");
+    }
+  }
+  async RemoveItemByID(Id: number) {
+    await db['MenuItems'].destroy({
+      where: {
+        id: [Id]
+      }
+    });
+  }
 }
