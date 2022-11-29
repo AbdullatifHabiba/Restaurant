@@ -2,40 +2,8 @@ import db  from './sequalize';
 
 export class SignUp
 {
-  //  async AddNewAdmin(Email:string )
-  //    {
-  //     let item= await db['Admin'].findAll({
-  //       where: {
-  //         email: [Email]
-  //       }
-  //     });
-  //     // check if string more than '[]'
-  //     if(JSON.stringify(item).length >=3)
-  //     {
-  //       return false ;
-  //     }
-  //     else{
-  //       return true ;
-  //     }
-  //    }
-  //    async checkNewDelivery(Email:string )
-  //    {
-  //     let item= await db['Deliveryman'].findAll({
-  //       where: {
-  //         email: [Email]
-  //       }
-  //     });
-  //    // check if string more than '[]'
-  //     if(JSON.stringify(item).length >=3)
-  //     {
-  //       return false ;
-  //     }
-  //     else{
-  //       return true ;
-  //     }
-  //    }
-
-     async checkNewEmailCustomer(Email:string )
+ 
+     async AddNewEmailCustomer(id:number,phone:String,Name:String,Email:string,password:String  )
      {
       let item= await db['Customer'].findAll({
         where: {
@@ -48,6 +16,7 @@ export class SignUp
         return false ;
       }
       else{
+        await db['Customer'].create({customer_id:id,phone:phone,name:Name,email:Email,HPassword:password});
         return true ;
       }
      }

@@ -11,7 +11,7 @@ import {SignUp} from './../repository/SignupRepo'
   
   })();
 
-const obj =new MenueRepo();
+// const obj =new MenueRepo();
 // obj.AddItem(3,20,"Giza","this meal for you");
 
 // obj.RemoveItemByID(11);
@@ -25,9 +25,9 @@ const obj =new MenueRepo();
 // obj.RemoveItemByID(8);
 // obj.RemoveItemByID(9);
 
-obj.GetAll().then((accepted) => console.log(JSON.stringify(accepted)),
- (rejected) => console.log("Erron"+rejected)
-);
+// obj.GetAll().then((accepted) => console.log(JSON.stringify(accepted)),
+//  (rejected) => console.log("Erron"+rejected)
+// );
 
 
 
@@ -47,19 +47,12 @@ obj.GetAll().then((accepted) => console.log(JSON.stringify(accepted)),
 // (rejected) => console.log("Erron"+rejected));
 
 
-//  const obj3 =new SignUp();
+ const obj3 =new SignUp();
 
-// obj3.checkNewAdmin('mohmed@gmail.com').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
-// (rejected) => console.log("Erron"+rejected));
 
-// obj3.checkNewAdmin('mod@gmail.com').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
-// (rejected) => console.log("Erron"+rejected));
 
-// obj3.checkNewDelivery('kams@gmail.com').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
-// (rejected) => console.log("Erron"+rejected));
-
-// obj3.checkNewEmailCustomer('suza@gmail.com').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
-// (rejected) => console.log("Erron"+rejected));
+obj3.AddNewEmailCustomer(9,'012589','adel','adel@gmail.com','887d8rr').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
+(rejected) => console.log("Erron"+rejected));
 
 
 
