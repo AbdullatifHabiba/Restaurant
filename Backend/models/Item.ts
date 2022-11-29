@@ -1,13 +1,14 @@
-module.exports = (sequelize: any, Sequelize: any) => {
+module.exports = (sequelize:any, Sequelize:any) => {
   const Item = sequelize.define("Item", {
-    item_id: {
+    item_id:{
       type: Sequelize.INTEGER,
-      PrimaryKey: true,
+      primaryKey: true,
       allowNull: false,
     },
     order_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
+      
     },
     name: {
       type: Sequelize.STRING,
@@ -22,5 +23,12 @@ module.exports = (sequelize: any, Sequelize: any) => {
       allowNull: true,
     },
   });
+  const Order = require(`./../models/Order` )(sequelize, Sequelize);
+    Item.belongsTo(Order,{
+      foreignKey:'order_id',
+      onDelete:'CASCADE'
+    })
+  
+
   return Item;
 };

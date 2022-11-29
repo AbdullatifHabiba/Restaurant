@@ -1,8 +1,7 @@
-import { PrimaryKey } from 'sequelize-typescript';
 
-module.exports = (sequelize: any, Sequelize: any) => {
+module.exports = (sequelize:any, Sequelize:any) => {
   const Branch = sequelize.define("Branch", {
-    branch_id: {
+    Branch_id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -16,6 +15,17 @@ module.exports = (sequelize: any, Sequelize: any) => {
       type: Sequelize.STRING,
       allowNull: true,
     },
+    Admin_id: {
+      type: Sequelize.INTEGER
+    }
   });
+  const Admin = require(`./../models/Admin` )(sequelize, Sequelize);
+
+  Branch .belongsTo(Admin,{
+    foreignKey:'Admin_id',
+    onDelete:'CASCADE'
+  })
+  
+  
   return Branch;
 };

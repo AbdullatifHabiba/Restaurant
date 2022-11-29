@@ -19,5 +19,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
       type: DataTypes.STRING,
     }
   });
+  
   return Admin;
 }
