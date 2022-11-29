@@ -2,19 +2,59 @@ import db  from './sequalize';
 
 export class SignIn
 {
-     checkCorrectAdmin()
+    async checkCorrectAdmin(Email:String , PassWord:String)
      {
-      (async () => {
-        await db['MenuItems'].create({ });
+      
+       let item= await db['Admin'].findAll({
+          where: {
+            email: [Email], 
+            HPassword:[PassWord]
+          }
+        });
 
-      })();
+        if(JSON.stringify(item).length >=3)
+        {
+          return true ;
+        }
+        else{
+          return false ;
+        }
+      
      }
-     checkCorrectDelivery():String
+     
+    async checkCorrectDelivery(Email:String , PassWord:String)
      {
-       return "fff";
+      let item= await db['Admin'].findAll({
+        where: {
+          email: [Email], 
+          HPassword:[PassWord]
+        }
+      });
+
+      if(JSON.stringify(item).length >=3)
+      {
+        return true ;
+      }
+      else{
+        return false ;
+      }
      }
-     checkCorrectCustomer(id:number)
+     async checkCorrectCustomer(Email:String , PassWord:String)
      {
+      let item= await db['Admin'].findAll({
+        where: {
+          email: [Email], 
+          HPassword:[PassWord]
+        }
+      });
+
+      if(JSON.stringify(item).length >=3)
+      {
+        return true ;
+      }
+      else{
+        return false ;
+      }
 
      }
     
