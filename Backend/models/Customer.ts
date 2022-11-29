@@ -16,7 +16,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     email: {
       type: DataTypes.STRING,
     },
-    HPassword: {
+    HPassword:{
       type: DataTypes.STRING,
     }
   },
