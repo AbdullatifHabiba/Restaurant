@@ -1,5 +1,5 @@
 
-module.exports = (sequelize: any, DataTypes: any) => {
+module.exports = (sequelize:any, DataTypes:any) => {
   const DeliveryMan = sequelize.define("Deliveryman", {
     deliveryman_id: {
       type: DataTypes.INTEGER,

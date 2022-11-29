@@ -1,7 +1,8 @@
-module.exports = (sequelize: any, Sequelize: any) => {
+module.exports = (sequelize:any, Sequelize:any) => {
   const MenuItems = sequelize.define("MenuItems", {
-    item_id: {
+    item_id:{
       type: Sequelize.INTEGER,
+    
       allowNull: false,
     },
     available_amount: {
@@ -16,13 +17,14 @@ module.exports = (sequelize: any, Sequelize: any) => {
       type: Sequelize.STRING,
       allowNull: true,
     },
+   
   });
+  
   const Item = require(`./../models/Item` )(sequelize, Sequelize);
     MenuItems.hasMany(Item,{
       foreignKey:'item_id',
       onDelete:'CASCADE'
     })
   
-
   return MenuItems;
 };

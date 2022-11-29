@@ -1,5 +1,5 @@
 
-module.exports = (sequelize: any, Sequelize: any) => {
+module.exports = (sequelize:any, Sequelize:any) => {
   const Branch = sequelize.define("Branch", {
     Branch_id: {
       type: Sequelize.INTEGER,

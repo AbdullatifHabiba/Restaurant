@@ -1,4 +1,5 @@
-module.exports = (sequelize: any, Sequelize: any) => {
+
+module.exports = (sequelize:any, Sequelize:any) => {
   const Order = sequelize.define("Order", {
     order_id: {
       type: Sequelize.INTEGER,
@@ -7,17 +8,19 @@ module.exports = (sequelize: any, Sequelize: any) => {
       primaryKey: true,    },
     item_id: {
       type: Sequelize.INTEGER,
+    
       allowNull: false,
     },
-    customer_id: {
+    customer_id:{
       type: Sequelize.INTEGER,
-
+    
       allowNull: false,
     },
     totsl_price: {
       type: Sequelize.INTEGER,
       allowNull: false,
     }
+   
   });
   const customer = require(`./../models/Customer` )(sequelize, Sequelize);
 
