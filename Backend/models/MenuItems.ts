@@ -1,4 +1,3 @@
-
 module.exports = (sequelize:any, Sequelize:any) => {
   const MenuItems = sequelize.define("MenuItems", {
     item_id:{
@@ -21,6 +20,11 @@ module.exports = (sequelize:any, Sequelize:any) => {
    
   });
   
+  const Item = require(`./../models/Item` )(sequelize, Sequelize);
+    MenuItems.hasMany(Item,{
+      foreignKey:'item_id',
+      onDelete:'CASCADE'
+    })
   
   return MenuItems;
 };

@@ -1,6 +1,4 @@
-
-import { DataTypes } from 'sequelize';
-import {Sequelize} from 'sequelize-typescript';
+import { Sequelize} from 'sequelize-typescript';
 import {config} from './config';
 const db:any ={}
 
@@ -12,25 +10,19 @@ const db:any ={}
     'dialect':'mysql',
     'storage':":memory:"
 });
+const fs = require('fs')
 
+const directory = fs.opendirSync('./models')
+let file
+while ((file = directory.readSync()) !== null) {
+  if (file.name.endsWith('.ts')) {
+    const model = require(`./../models` + '/' + file.name)(sequelize, Sequelize)
+    db[model.name] = model
 
- let ad=require("./../models/Admin")(sequelize,Sequelize)
-   db[ad.name]=ad
-   ad=require("./../models/Branch")(sequelize,Sequelize)
-   db[ad.name]=ad
-   ad=require("./../models/Customer")(sequelize,Sequelize)
-   db[ad.name]=ad
-   ad=require("./../models/DeliveryMan")(sequelize,Sequelize)
-   db[ad.name]=ad
-   ad=require("./../models/DeliveryOrder")(sequelize,Sequelize)
-   db[ad.name]=ad
-   ad=require("./../models/Item")(sequelize,Sequelize)
-   db[ad.name]=ad
-   ad=require("./../models/MenuItems")(sequelize,Sequelize)
-   db[ad.name]=ad
-   ad=require("./../models/Order")(sequelize,Sequelize)
-   db[ad.name]=ad
-   
+  }
+}
+directory.closeSync()
+ 
    db.sequelize=sequelize
    db.Sequelize=Sequelize
  

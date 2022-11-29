@@ -9,4 +9,16 @@ export class MenueRepo
 
       })();
      }
+     GetAll():String
+     {
+       return "fff";
+     }
+     RemoveItemByID(id:number)
+     {
+
+     }
+     updatePrice(price:number)
+     {
+
+     }
 }
