@@ -6,16 +6,23 @@ export class MenueRepo
      {
       (async () => {
         await db['MenuItems'].create({ item_id: id ,available_amount: available ,image_location:location ,description:description});
-
       })();
      }
-     GetAll():String
-     {
-       return "fff";
+     async GetAll()
+     { 
+          try{ 
+            return await db['MenuItems'].findAll();
+          }catch(err){
+            throw Error("error in connection"); 
+          }
      }
-     RemoveItemByID(id:number)
-     {
-
+     async RemoveItemByID(Id:number)
+     { 
+         await db['MenuItems'].destroy({
+          where: { 
+            id:[Id]
+          }
+        });
      }
      updatePrice(price:number)
      {
