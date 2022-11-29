@@ -17,5 +17,12 @@ module.exports = (sequelize: any, Sequelize: any) => {
       allowNull: true,
     },
   });
+  const Item = require(`./../models/Item` )(sequelize, Sequelize);
+    MenuItems.hasMany(Item,{
+      foreignKey:'item_id',
+      onDelete:'CASCADE'
+    })
+  
+
   return MenuItems;
 };

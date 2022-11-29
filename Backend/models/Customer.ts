@@ -1,3 +1,4 @@
+
 module.exports = (sequelize: any, DataTypes: any) => {
   const customer = sequelize.define("Customer", {
     customer_id: {
@@ -20,5 +21,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
   },
   );
+  
+  
+  
+  
   return customer;
 }

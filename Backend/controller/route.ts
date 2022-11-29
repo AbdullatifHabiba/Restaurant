@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 })
   
   // POST method route
-app.post('/', (req, res) => {
+app.post(`/customer/{id}`, (req, res) => {
+  
     res.send(req.body.id)
 })
