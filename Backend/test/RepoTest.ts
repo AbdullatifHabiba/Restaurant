@@ -1,28 +1,26 @@
 import { expect } from "chai";
-import {MenueRepo} from './../repository/MenueItemRepo';
+import {OrderItem} from '../repository/OrderItemRepo';
 import {SignIn} from './../repository/SignInRepo'
 import {SignUp} from './../repository/SignupRepo'
-import{ItemRepo} from  './../repository/ItemRepo';
+import{MenueRepo} from  '../repository/ManueRepo';
 
 
 describe("Menu item Repo", () => {
- 
+  const obj =new MenueRepo();
+
     it('shoud return void',() => {
-    const obj =new ItemRepo();
-    expect(obj.AddItem(1,15,'Giza','this meal for me')).to.be.a('promise');
+    expect(obj.AddItem("fish",15,'fish.png','this meal for me',10)).to.be.a('promise');
   });
 
   it('check added item is ok',() => {
-    const obj =new ItemRepo();
     let result:any ;
-    obj.AddItem(20,15,'Giza','this meal for me').then((accepted)=> expect(accepted).to.equals('item added correctly'),
+    obj.AddItem("meat",5,'meat.png','this meal for me',25).then((accepted)=> expect(accepted).to.equals('item added correctly'),
       (rejected) => console.log("Erron"+rejected));
   });
 
   it('check added item is exist not to be added',() => {
-    const obj =new ItemRepo();
     let result:any ;
-    obj.AddItem(20,15,'Giza','this meal for me').then((accepted)=> expect(accepted).to.equals('item added correctly'),
+    obj.AddItem("rice",45,'rice.png','this meal for me',5).then((accepted)=> expect(accepted).to.equals('item added correctly'),
       (rejected) => console.log("Erron"+rejected));
   });
 });

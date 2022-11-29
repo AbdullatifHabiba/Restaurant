@@ -1,6 +1,6 @@
 import db  from './sequalize';
 
-export class MenueRepo
+export class OrderItem
 {
 
      async GetAll()
