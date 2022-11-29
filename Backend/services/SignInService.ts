@@ -1,5 +1,9 @@
+import { SignIn } from "../repository/SignInRepo";
+
 export class signinservice {
-    static sign_in(req) {
+    
+    signin = new SignIn();
+    public sign_in(req) {
         switch (req.user) {
             case "customer":
                 this.customer_sign_in(req.email, req.password);
@@ -16,16 +20,15 @@ export class signinservice {
         }
     }
 
-    static customer_sign_in(email : string, password :string) {
-
+    customer_sign_in(email : string, password :string) {
+        return this.signin.checkCorrectCustomer(email, password);
     }
 
-    static delivery_sign_in(email : string, password :string) {
-
+    delivery_sign_in(email : string, password :string) {
+        return this.signin.checkCorrectDelivery(email, password);
     }
 
-    static admin_sign_in(email : string, password :string) {
-
+    admin_sign_in(email : string, password :string) {
+        return this.signin.checkCorrectAdmin(email, password);
     }
-
 }

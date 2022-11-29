@@ -9,16 +9,29 @@ const app = express()
 app.listen(5000);
 app.use(express.json());
 
+const sign_inservice = new signinservice();
+const sign_upservice = new signupservice();
+const menu_service = new menuserice();
+
 // GET method route
 app.get('/signin', (req, res) => {
-      res.send(signinservice.sign_in)
+      let r = sign_inservice.sign_in(req);
+      if (r == "error") {
+        res.sendStatus(404);
+      } res.send(r)
 })
 
 app.get('/menu', (req, res) => {
-  res.send(menuserice)
+      let r = menu_service.serve(req);
+      if (r == "error") {
+        res.sendStatus(404);
+      } res.send(r)
 })
   
   // POST method route
 app.post('/signup', (req, res) => {
-      res.send(signupservice.sign_up(req));
+      let r = sign_upservice.sign_up(req);
+      if (true) {
+        res.sendStatus(404);
+      } res.send(r)
 })

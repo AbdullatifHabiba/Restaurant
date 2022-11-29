@@ -1,1 +1,1 @@
-export database restaurant
+export database resturant

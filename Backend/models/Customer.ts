@@ -1,4 +1,3 @@
-
 module.exports = (sequelize: any, DataTypes: any) => {
   const customer = sequelize.define("Customer", {
     customer_id: {
@@ -16,14 +15,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
     email: {
       type: DataTypes.STRING,
     },
-    HPassword:{
+    HPassword: {
       type: DataTypes.STRING,
     }
   },
   );
-  
-  
-  
-  
   return customer;
 }
