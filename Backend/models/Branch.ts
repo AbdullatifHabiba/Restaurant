@@ -1,5 +1,4 @@
-
-module.exports = (sequelize:any, Sequelize:any) => {
+module.exports = (sequelize: any, Sequelize: any) => {
   const Branch = sequelize.define("Branch", {
     Branch_id: {
       type: Sequelize.INTEGER,
@@ -19,13 +18,10 @@ module.exports = (sequelize:any, Sequelize:any) => {
       type: Sequelize.INTEGER
     }
   });
-  const Admin = require(`./../models/Admin` )(sequelize, Sequelize);
-
-  Branch .belongsTo(Admin,{
-    foreignKey:'Admin_id',
-    onDelete:'CASCADE'
+  const Admin = require(`./../models/Admin`)(sequelize, Sequelize);
+  Branch.belongsTo(Admin, {
+    foreignKey: 'Admin_id',
+    onDelete: 'CASCADE'
   })
-  
-  
   return Branch;
 };

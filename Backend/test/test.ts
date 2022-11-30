@@ -1,6 +1,4 @@
-import { expect } from "chai";
-
-
+import {expect} from "chai";
 
 describe("test1", () => {
   it('starting function',() => {
