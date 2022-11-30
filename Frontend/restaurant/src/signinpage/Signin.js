@@ -5,35 +5,42 @@ import Admin from './Images/Admin-bro 1.png'
 import Customer from './Images/Eating healthy food-rafiki 1.png'
 import Delivery_Man from './Images/Delivery-bro (1) 1.png'
 import './Signin.css';
+import bcrypt from 'bcryptjs'
+import { Link } from "react-router-dom";
+
 function Signin() {
+  
   const [User, setuser] = React.useState("customer");
   let [info,setInfo] = React.useState({mail:"",password:"",user:""});
-  let handleChange = (e)=>{
+
+  let handleChange =  (e)=>{
     setInfo((prev)=>{
       return {...prev, [e.target.name]: e.target.value}
     })
   }
+
   let handleSubmit = async (e)=>{
+    info.password = bcrypt.hashSync(info.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
     e.preventDefault();
     if(!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(info.mail))){
       window.alert("invalid email address");
       return;
     }
-    info.user=User
-    let result = await fetch('http://localhost:5000/api/users/register', {
-      method: "post",
+
+    let result = await fetch('../signin', {
+      method: "get",
       headers: {
         'Content-type': 'application/json'
       },
       body: JSON.stringify(info)
     });
     let message = result.json();
-    console.log(message.m);
-    if(message.m === "accepted"){
+    console.log(message.status);
+    if(message.status === 200){
       //route to Main page
       console.log("signed in successfully!")
     }else {
-      window.alert(`${message.m}`)
+      window.alert("Email or Password no correct")
     }
   }
   return (
@@ -57,7 +64,7 @@ function Signin() {
                 <input className='btn-submit' type="submit" value="Sign In" name="Sign In" />
                 <div className='signup'>
                 <p>You don't have Acount?</p> 
-                <li><a href='C:/Users/Hardware/Restaurant/Frontend/restaurant/src/Test'>Sign Up</a></li>
+                <Link to="./SignUp"> Sign up </Link>
                 </div>
             </form>  
           
