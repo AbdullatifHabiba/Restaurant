@@ -17,7 +17,7 @@ export class SignIn {
   }
 
   async checkCorrectDelivery(Email: String, PassWord: String) {
-    let item = await db['Admin'].findAll({
+    let item = await db['Deliveryman'].findAll({
       where: {
         email: [Email],
         HPassword: [PassWord]
@@ -32,7 +32,7 @@ export class SignIn {
   }
 
   async checkCorrectCustomer(Email: String, PassWord: String) {
-    let item = await db['Admin'].findAll({
+    let item = await db['Customer'].findAll({
       where: {
         email: [Email],
         HPassword: [PassWord]
