@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+.sign-in {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  min-height: 100vh;
+  max-height: fit-content;
+  padding: 0 100px;
+  background-color:#FFF5EC;
+  ;
+
+}
+.check-boxs{
+  display: flex;
+  width: 100%;
+  font-size: 25px;
+  font-weight: 700;
+  font-family:'Times New Roman', Times, serif;
+}
+.checkbox{
+width: 20px;
+height: 20px;
+margin-left: 70px;
+
+}
+
+.image_2{
+  width: 100%;
+  height: 250px;
+  padding-right: 20px;
+  border-radius: 0px;
+
+}
+form{
+  margin-right: auto;
+}
+.sec-1{
+  margin-right: 100;
+}
+.sec-2{
+  margin-left: 1109px;
+}
+.image_1{
+height: 350px;
+width: 400px;
+align-items:flex-end;
+border-radius: 0px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+input {
+  margin-bottom: 20px;
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent;
+  color: #2B2176;
+  opacity: .9;
+  padding-bottom: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+}
+.sign-in-header {
+  color: #2e266f;
+  line-height: 90px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 55px;
+}
+.btn-submit{
+    border: none;
+    background-color: #FE043C;
+    color: #FFFFFF;
+    border-radius: 15px;
+    font-family: "Poppins";
+    font-size: 30px;
+    opacity: 1;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: .5s;
+    margin-top: 20px;
+}
+.btn-submit:hover{
+    background-color: #ff8aa3;
+}
+.signup{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  align-items: center;
+
+}
+a{
+  color: #FE043C;
+  font-size: large;
+  font-weight: 700;
+  margin-left: 50px;
+}
+p{
+  font-size: large;
+  font-weight: 700;
+}
+

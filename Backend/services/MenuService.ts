@@ -1,7 +1,7 @@
-import {MenuRepo} from "../repository/MenuRepo"
+import {MenueRepo} from "../repository/MenueRepo"
 
 export class menuserice {
-    menuRepo = new MenuRepo();
+    menuRepo = new MenueRepo();
 
     public serve(req) {
         switch (req.service) {
