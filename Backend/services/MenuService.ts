@@ -1,19 +1,9 @@
-import {MenuRepo} from "../repository/MenuRepo"
+import {MenueRepo} from "../repository/MenueRepo"
 
 export class menuserice {
-    menuRepo = new MenuRepo();
-
-    public serve(req) {
-        switch (req.service) {
-            case "getAll":
-                return this.menuRepo.GetAllItems();
-                break;
-            case "get6":
-                
-                break;
-            default:
-                return "error";
-                break;
-        }
+    menuRepo = new MenueRepo();
+    get6(){
+        // implement method in repo first
+        return;
     }
 }
