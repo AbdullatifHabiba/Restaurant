@@ -8,16 +8,18 @@ function App() {
   return (
 
     <Router>
-      <Signin/>
-      <SignUp />
+     <Signin/>
       <Routes>
-        <Route path='/signin' element={<Signin/>}/>
+        <Route path='/Signin' element={<Signin/>}/>
          <Route  path="/page" element={<Page />} /> 
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<SignUp />} />
+
       </Routes>
     </Router>
 
   );
+  //AQSCVD14789
+  //a9866do@gmail.com
 }
 
 

@@ -3,6 +3,8 @@ import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';
 import cors from 'cors';
+import db from './../repository/sequalize';
+
 
 
 const app = express()
@@ -15,6 +17,11 @@ app.use(cors({
 const sign_inservice = new signinservice();
 const sign_upservice = new signupservice();
 const menu_service = new menuserice();
+(async () => {
+  console.log("Initialize database connection...");
+  await db.sequelize.sync({ force: false });
+
+})();
 
 // GET method route
 app.post('/signin', (req, res) => {
