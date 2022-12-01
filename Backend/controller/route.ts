@@ -19,11 +19,8 @@ app.get('/signin', (req, res) => {
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(rejected));
 })
 
-app.get('/menu', (req, res) => {
-  let r = menu_service.serve(req.body);
-  if (r == "error") {
-    res.sendStatus(404);
-  } res.send(r)
+app.get('/homemenu', (req, res) => {
+  res.status(200).send(menu_service.get6());
 })
 
 const signup = new SignUp();
