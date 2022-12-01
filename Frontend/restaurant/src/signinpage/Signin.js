@@ -37,7 +37,7 @@ function Signin() {
     console.log(message.status);
     if(message.status === 200){
       //route to Main page
-      nav("/page");
+      nav("/Page");
       console.log("signed in successfully!")
     }else {
       window.alert("Email or Password not correct")
@@ -64,7 +64,7 @@ function Signin() {
                 <input className='btn-submit' type="submit" value="Sign In" name="Sign In" />
                 <div className='signup'>
                 <p>You don't have Acount?</p> 
-                <Link to="./signup"> Sign up </Link>
+                <Link to="./SignUp"> Sign up </Link>
                 </div>
             </form>  
           
