@@ -10,7 +10,8 @@
         "strict": true,                           /* Enable all strict type-checking options. */
         "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
         "strictNullChecks": false,              /* Enable strict null checks. */
-        "baseUrl": "/",                       /* Base directory to resolve non-absolute module names. */
+        "baseUrl": "/",   
+        
     "paths": {
       "*": [
           "node_modules/*"
@@ -19,6 +20,6 @@
 
       },
       "include": [
-        "models/*","repository/*"
-    ]
+        "models/*","repository/*", "test/*","test/**/*"    ],
+
     }

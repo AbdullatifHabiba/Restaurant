@@ -1,16 +1,14 @@
-import db  from './../repository/sequalize';
-import {MenueRepo} from './../repository/MenueItemRepo';
+import db from './../repository/sequalize';
 import { Json } from 'sequelize/types/utils';
-import {SignIn} from './../repository/SignInRepo'
-import {SignUp} from './../repository/SignupRepo'
-import {ItemRepo} from './../repository/ItemRepo'
+import { SignIn } from './../repository/SignInRepo'
+import { SignUp } from './../repository/SignupRepo'
 
 (async () => {
 
-    console.log("Initialize database connection...");
-    await db.sequelize.sync({ force: false });
-  
-  })();
+  console.log("Initialize database connection...");
+  await db.sequelize.sync({ force: false });
+
+})();
 
 // const obj =new MenueRepo();
 // obj.AddItem(3,20,"Giza","this meal for you");
@@ -30,9 +28,6 @@ import {ItemRepo} from './../repository/ItemRepo'
 //  (rejected) => console.log("Erron"+rejected)
 // );
 
-
-
-
 //  const obj2 =new SignIn();
 
 // obj2.checkCorrectAdmin('mohamed@gmail.com','78***').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
@@ -47,12 +42,7 @@ import {ItemRepo} from './../repository/ItemRepo'
 // obj2.checkCorrectCustomer('suzan@gmail.com','785***').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
 // (rejected) => console.log("Erron"+rejected));
 
+const obj3 = new SignUp();
 
- const obj3 =new SignUp();
-
-obj3.AddNewEmailCustomer(9,'012589','adel','adel@gmail.com','887d8rr').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
-(rejected) => console.log("Erron"+rejected));
-
-
-const obj4 =new ItemRepo();
-obj4.AddItem(1,2,"ahmed",'20$',2);
+obj3.AddNewEmailCustomer(9, '012589', 'adel', 'adel@gmail.com', '887d8rr').then((accepted) => console.log("ddddd" + JSON.stringify(accepted)),
+  (rejected) => console.log("Erron" + rejected));

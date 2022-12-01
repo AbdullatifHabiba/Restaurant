@@ -1,5 +1,4 @@
-
-module.exports = (sequelize:any, DataTypes:any) => {
+module.exports = (sequelize: any, DataTypes: any) => {
   const DeliveryMan = sequelize.define("Deliveryman", {
     deliveryman_id: {
       type: DataTypes.INTEGER,
@@ -18,24 +17,18 @@ module.exports = (sequelize:any, DataTypes:any) => {
     },
     HPassword: {
       type: DataTypes.STRING,
-    }
-    ,
+    },
     status: {
       type: DataTypes.STRING,
-
-    }
-    ,Branch_id:{
+    },
+    Branch_id: {
       type: DataTypes.INTEGER,
     }
-
-  },);
-  
-  const Branch = require(`./../models/Branch` )(sequelize, DataTypes);
-  Branch.hasMany(DeliveryMan,{
-      foreignKey:'Branch_id',
-      onDelete:'CASCADE'
-    })
-  
+  });
+  const Branch = require(`./../models/Branch`)(sequelize, DataTypes);
+  Branch.hasMany(DeliveryMan, {
+    foreignKey: 'Branch_id',
+    onDelete: 'CASCADE'
+  })
   return DeliveryMan;
-  
 };
