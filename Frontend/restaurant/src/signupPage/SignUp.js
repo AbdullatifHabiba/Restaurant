@@ -1,8 +1,11 @@
 import React from "react";
+import bcrypt from 'bcryptjs'
 import Burger from "./images/Hamburger-pana 1.png";
 import pizza from "./images/Pizza maker-cuate 1.png";
+import { useNavigate } from "react-router-dom";
 import "./signup.css";
 function SignUp() {
+  let nav = useNavigate();
   let [info, setInfo] = React.useState({
     name: "",
     mail: "",
@@ -12,10 +15,17 @@ function SignUp() {
     address: "",
   });
   let validateInfo = (data)=>{
+    //email regex
     if(!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.mail))){
       window.alert("invalid Email address!");
       return false;
     }
+    //password regex
+    if(!(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data.password))){
+      window.alert("Invalid password: at least 8 characters with at least 1 digit and 1 letter");
+      return false;
+    }
+    //phone number regex
     if(!(/^01[0-2]\d{1,8}$/.test(data.phone))){
       window.alert("invalid phone number!");
       return false;
@@ -37,15 +47,18 @@ function SignUp() {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(info),
+      body: JSON.stringify({
+        ...info,
+        password: bcrypt.hashSync(info.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
+      }),
     });
     let message = result.json();
     console.log(message.m);
-    if (message.m === "accepted") {
-      //route to log in page
+    if (message === "accepted") {
       console.log("signed up successfully!");
+      nav("/Signin");
     } else {
-      window.alert(`${message.m}`);
+      window.alert(`${message}`);
     }
   };
   return (
@@ -71,7 +84,7 @@ function SignUp() {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Password: at least 8 characters"
             name="password"
             required
             value={info.password}
