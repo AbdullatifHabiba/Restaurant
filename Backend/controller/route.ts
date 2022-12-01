@@ -6,7 +6,7 @@ import { signupservice } from '../services/SignUpService';
 
 const app = express()
 
-app.listen(5000);
+
 app.use(express.json());
 
 const sign_inservice = new signinservice();
@@ -35,3 +35,4 @@ app.post('/signup', (req, res) => {
         res.sendStatus(404);
       } res.send(r)
 })
+app.listen(5000);
