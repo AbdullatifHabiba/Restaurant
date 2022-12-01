@@ -3,6 +3,7 @@ import {MenueRepo} from './../repository/MenueItemRepo';
 import { Json } from 'sequelize/types/utils';
 import {SignIn} from './../repository/SignInRepo'
 import {SignUp} from './../repository/SignupRepo'
+import {ItemRepo} from './../repository/ItemRepo'
 
 (async () => {
 
@@ -49,10 +50,9 @@ import {SignUp} from './../repository/SignupRepo'
 
  const obj3 =new SignUp();
 
-
-
 obj3.AddNewEmailCustomer(9,'012589','adel','adel@gmail.com','887d8rr').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
 (rejected) => console.log("Erron"+rejected));
 
 
-
+const obj4 =new ItemRepo();
+obj4.AddItem(1,2,"ahmed",'20$',2);

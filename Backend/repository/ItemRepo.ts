@@ -2,21 +2,10 @@ import db  from './sequalize';
 
 export class ItemRepo{
     
-    async AddItem(id:number ,available:Number,location:String,description:String)
+    async AddItem(item_id:number,order_id:Number,name:String,price:String,amount_required:number)
     {
-     let item= await db['Item'].findAll({
-       where: {
-         item_id: [id]
-       }
-     });
-
-     if(JSON.stringify(item).length < 3)
-     {
-       await db['Item'].create({ item_id: id ,available_amount: available ,image_location:location ,description:description});
-       return "item added correctly" ;
-     }else{
-       return "item id already exist" ;
-     }
+     
+       await db['Item'].create({item_id:item_id,order_id: order_id ,name:name,price:price,amount_required:amount_required});     
  
     }
     async RemoveItemByID(Id:number)
