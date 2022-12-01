@@ -2,16 +2,22 @@ import db from './../repository/sequalize';
 import { Json } from 'sequelize/types/utils';
 import { SignIn } from './../repository/SignInRepo'
 import { SignUp } from './../repository/SignupRepo'
-
+import {MenueRepo} from './../repository/MenueRepo'
 (async () => {
 
     console.log("Initialize database connection...");
-    await db.sequelize.sync({ force: true });
+    await db.sequelize.sync({ force: false });
   
   })();
 
-// const obj =new MenueRepo();
-// obj.AddItem(3,20,"Giza","this meal for you");
+const obj =new MenueRepo();
+obj.AddItem('meal1',20,"Giza","this meal for you",'15').then((accepted) => console.log("yyyyyoooooiiii"+accepted),
+  (rejected) => console.log("Erron"+rejected));
+
+obj.GetAllItems().then((accepted) => console.log("mmmmmmmmmmmmmmmmmmwwwww"+JSON.stringify(accepted)),
+ (rejected) => console.log("Erron"+rejected)
+);
+
 
 // obj.RemoveItemByID(11);
 // obj.RemoveItemByID(1);
@@ -24,14 +30,15 @@ import { SignUp } from './../repository/SignupRepo'
 // obj.RemoveItemByID(8);
 // obj.RemoveItemByID(9);
 
-// obj.GetAll().then((accepted) => console.log(JSON.stringify(accepted)),
-//  (rejected) => console.log("Erron"+rejected)
-// );
 
-//  const obj2 =new SignIn();
 
-// obj2.checkCorrectAdmin('mohamed@gmail.com','78***').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
-// (rejected) => console.log("Erron"+rejected));
+///////////////////////////////////////////////////////
+ const obj2 =new SignIn();
+
+obj2.checkCorrectAdmin('mohamed@gmail.com','785***').then((accepted) => console.log("ffffffffffqqqq"+JSON.stringify(accepted)),
+(rejected) => console.log("Erron"+rejected));
+
+///////////////////////////////////////
 
 // obj2.checkCorrectAdmin('mohamed@gmail.com','785***').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
 // (rejected) => console.log("Erron"+rejected));
@@ -42,7 +49,7 @@ import { SignUp } from './../repository/SignupRepo'
 // obj2.checkCorrectCustomer('suzan@gmail.com','785***').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
 // (rejected) => console.log("Erron"+rejected));
 
-const obj3 = new SignUp();
+// const obj3 = new SignUp();
 
-obj3.AddNewEmailCustomer('012589', 'adel', 'adel@gmail.com', '887d8rr').then((accepted) => console.log("ddddd" + JSON.stringify(accepted)),
-  (rejected) => console.log("Erron" + rejected));
+// obj3.AddNewEmailCustomer('012589', 'adel', 'adel@gmail.com', '887d8rr').then((accepted) => console.log("ddddd" + JSON.stringify(accepted)),
+//   (rejected) => console.log("Erron" + rejected));

@@ -15,10 +15,10 @@ export class SignIn implements ISignInRepo
 
         if(JSON.stringify(item).length >=3)
         {
-          return true ;
+          return item ;
         }
         else{
-          return false ;
+          return "error" ;
         }
       
      }
@@ -34,14 +34,13 @@ export class SignIn implements ISignInRepo
 
       if(JSON.stringify(item).length >=3)
       {
-        return true ;
+        return item ;
       }
       else{
-        return false ;
+        return "error" ;
       }
     }
     
-  
 
  
   async checkCorrectCustomer(Email: String, PassWord: String) {
@@ -52,10 +51,10 @@ export class SignIn implements ISignInRepo
       }
     });
     if (JSON.stringify(item).length >= 3) {
-      return true;
+      return item;
     }
     else {
-      return false;
+      return "error";
     }
   }
 }
