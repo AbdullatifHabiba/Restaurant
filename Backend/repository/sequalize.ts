@@ -24,7 +24,6 @@ while ((file = directory.readSync()) !== null) {
 directory.closeSync()
  
    db.sequelize=sequelize
-   db.Sequelize=Sequelize
  
  export default db;
 

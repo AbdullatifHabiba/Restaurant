@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { MenueRepo } from "../../repository/ManueRepo";
+import { MenueRepo } from "../../repository/MenueRepo";
 
 describe("Menu item Repo", () => {
   const obj = new MenueRepo();

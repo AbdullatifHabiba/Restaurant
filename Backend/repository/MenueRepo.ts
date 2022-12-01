@@ -1,6 +1,7 @@
 import db  from './sequalize';
+import{IMenueRepo} from '../core/repos/IMenueRepo';
 
-export class MenueRepo{
+export class MenueRepo implements IMenueRepo{
     
     async AddItem(name:string,available:Number,location:String,description:String,price:Number)
     {

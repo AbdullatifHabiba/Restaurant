@@ -1,6 +1,7 @@
 import db  from './sequalize';
+import{ISignInRepo} from '../core/repos/ISignInRepo';
 
-export class SignIn
+export class SignIn implements ISignInRepo
 {
     async checkCorrectAdmin(Email:String , PassWord:String)
      {
