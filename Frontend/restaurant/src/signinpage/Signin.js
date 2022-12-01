@@ -6,13 +6,12 @@ import Customer from './Images/Eating healthy food-rafiki 1.png'
 import Delivery_Man from './Images/Delivery-bro (1) 1.png'
 import './Signin.css';
 import bcrypt from 'bcryptjs'
-import { Link } from "react-router-dom";
-
+import { Link , useNavigate} from "react-router-dom";
 function Signin() {
   
   const [User, setuser] = React.useState("customer");
   let [info,setInfo] = React.useState({mail:"",password:"",user:""});
-
+  let nav = useNavigate();
   let handleChange =  (e)=>{
     setInfo((prev)=>{
       return {...prev, [e.target.name]: e.target.value}
@@ -38,9 +37,10 @@ function Signin() {
     console.log(message.status);
     if(message.status === 200){
       //route to Main page
+      nav("/page");
       console.log("signed in successfully!")
     }else {
-      window.alert("Email or Password no correct")
+      window.alert("Email or Password not correct")
     }
   }
   return (
@@ -64,7 +64,7 @@ function Signin() {
                 <input className='btn-submit' type="submit" value="Sign In" name="Sign In" />
                 <div className='signup'>
                 <p>You don't have Acount?</p> 
-                <Link to="./SignUp"> Sign up </Link>
+                <Link to="./signup"> Sign up </Link>
                 </div>
             </form>  
           
