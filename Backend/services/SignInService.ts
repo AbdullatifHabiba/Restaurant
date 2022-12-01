@@ -1,6 +1,6 @@
 import { SignIn } from "../repository/SignInRepo";
 
-export class signinservice {
+export class signinservice implements ISignInService{
     
     signin = new SignIn();
     public sign_in(req) {
