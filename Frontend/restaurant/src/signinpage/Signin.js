@@ -25,15 +25,15 @@ function Signin() {
       window.alert("invalid email address");
       return;
     }
-
-    let result = await fetch('../signin', {
-      method: "get",
+   info.user = User;
+    let result = await fetch('http://localhost:5000/signin', {
+      method: "post",
       headers: {
         'Content-type': 'application/json'
       },
       body: JSON.stringify(info)
     });
-    let message = result.json();
+    let message = await result.json();
     console.log(message.status);
     if(message.status === 200){
       //route to Main page

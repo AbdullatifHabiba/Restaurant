@@ -2,36 +2,49 @@ import express from 'express'
 import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';
+import cors from 'cors';
 
 
 const app = express()
 
-app.listen(5000);
 app.use(express.json());
+app.use(cors({
+  origin: '*'
+}));
 
 const sign_inservice = new signinservice();
 const sign_upservice = new signupservice();
 const menu_service = new menuserice();
 
 // GET method route
-app.get('/signin', (req, res) => {
-      let r = sign_inservice.sign_in(req);
-      if (r == "error") {
-        res.sendStatus(404);
-      } res.send(r)
+app.post('/signin', (req, res) => {
+  console.log(req.body);
+      let r = sign_inservice.sign_in(req.body);
+       r.then((result) => {
+        res.send(result);
+       }  ).catch((err) => {
+        res.send(err);
+       });   
+      
 })
 
 app.get('/menu', (req, res) => {
       let r = menu_service.serve(req);
       if (r == "error") {
         res.sendStatus(404);
-      } res.send(r)
+      } res.sendStatus(200).send(r)
 })
-  
   // POST method route
 app.post('/signup', (req, res) => {
-      let r = sign_upservice.sign_up(req);
-      if (true) {
-        res.sendStatus(404);
-      } res.send(r)
+      let r = sign_upservice.sign_up(req.body).then((r) => {
+        if (r ) {
+          res.status(200).send(r)
+
+        } else {
+          res.sendStatus(404);
+
+        }
+      });
 })
+app.listen(5000);
+

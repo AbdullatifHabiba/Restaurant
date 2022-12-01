@@ -4,20 +4,23 @@ export class signinservice {
     
     signin = new SignIn();
     public sign_in(req) {
+        let res:any;
         switch (req.user) {
+
             case "customer":
-                this.customer_sign_in(req.email, req.password);
+              res=  this.customer_sign_in(req.email, req.password);
                 break;
             case "delivery":
-                this.delivery_sign_in(req.email, req.password);
+                res=this.delivery_sign_in(req.email, req.password);
                 break;
             case "admin":
-                this.admin_sign_in(req.email, req.password);
+                res=this.admin_sign_in(req.email, req.password);
                 break;
             default:
                 return "error";
-                break;
+                
         }
+        return res;
     }
 
     customer_sign_in(email : string, password :string) {

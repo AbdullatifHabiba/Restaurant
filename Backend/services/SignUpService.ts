@@ -6,5 +6,6 @@ export class signupservice {
 
     sign_up(req) {
         return this.signup.AddNewEmailCustomer(req.phone, req.name, req.mail, req.password);
+        
     }
 }
