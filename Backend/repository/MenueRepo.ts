@@ -17,7 +17,7 @@ export class MenueRepo implements IMenueRepo{
        await db['MenuItems'].create({ name: name ,available_amount: available ,image_location:location ,description:description,price:price});
        return "item added correctly" ;
      }else{
-       return "item id already exist" ;
+       return "item already exist" ;
      }
  
     }
