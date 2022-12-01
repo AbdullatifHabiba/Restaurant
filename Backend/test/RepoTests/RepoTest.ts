@@ -1,8 +1,8 @@
 import { expect } from "chai";
-import { MenuRepo } from "../../repository/MenuRepo";
+import { MenueRepo } from "../../repository/MenueRepo";
 
 describe("Menu item Repo", () => {
-  const obj = new MenuRepo();
+  const obj = new MenueRepo();
 
   it("shoud return void", () => {
     expect(obj.AddItem("fish", 15, "fish.png", "this meal for me", 10)).to.be.a(

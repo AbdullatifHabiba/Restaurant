@@ -5,10 +5,10 @@ import { SignUp } from './../repository/SignupRepo'
 
 (async () => {
 
-  console.log("Initialize database connection...");
-  await db.sequelize.sync({ force: true });
-
-})();
+    console.log("Initialize database connection...");
+    await db.sequelize.sync({ force: true });
+  
+  })();
 
 // const obj =new MenueRepo();
 // obj.AddItem(3,20,"Giza","this meal for you");
