@@ -25,7 +25,7 @@ export class SignIn implements ISignInRepo
      
     async checkCorrectDelivery(Email:String , PassWord:String)
      {
-      let item= await db['Admin'].findAll({
+      let item= await db['Deliveryman'].findAll({
         where: {
           email: [Email], 
           HPassword:[PassWord]
@@ -39,25 +39,23 @@ export class SignIn implements ISignInRepo
       else{
         return false ;
       }
-     }
-     async checkCorrectCustomer(Email:String , PassWord:String)
-     {
-      let item= await db['Admin'].findAll({
-        where: {
-          email: [Email], 
-          HPassword:[PassWord]
-        }
-      });
-
-      if(JSON.stringify(item).length >=3)
-      {
-        return true ;
-      }
-      else{
-        return false ;
-      }
-
-     }
-     
+    }
     
+  
+
+ 
+  async checkCorrectCustomer(Email: String, PassWord: String) {
+    let item = await db['Customer'].findAll({
+      where: {
+        email: [Email],
+        HPassword: [PassWord]
+      }
+    });
+    if (JSON.stringify(item).length >= 3) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

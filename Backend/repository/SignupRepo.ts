@@ -1,4 +1,4 @@
-import db  from './sequalize';
+import db from './sequalize';
 import{ISignUpRepo} from '../core/repos/ISignUpRepo';
 
 export class SignUp implements ISignUpRepo
