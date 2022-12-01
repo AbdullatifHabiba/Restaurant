@@ -1,12 +1,12 @@
-import { rejects } from 'assert';
 import express from 'express'
-import { SignUp } from '../repository/SignupRepo';
 import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';
 
 
 const app = express()
+
+app.listen(5000);
 app.use(express.json());
 
 const sign_inservice = new signinservice();
@@ -15,23 +15,23 @@ const menu_service = new menuserice();
 
 // GET method route
 app.get('/signin', (req, res) => {
-  let r = sign_inservice.sign_in(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(rejected));
+      let r = sign_inservice.sign_in(req);
+      if (r == "error") {
+        res.sendStatus(404);
+      } res.send(r)
 })
 
 app.get('/menu', (req, res) => {
-  let r = menu_service.serve(req.body);
+      let r = menu_service.serve(req);
+      if (r == "error") {
+        res.sendStatus(404);
+      } res.send(r)
 })
-
-app.get('/homemenu', (req, res) => {
-  let r = menu_service.ge;
-})
-
-const signup = new SignUp();
-// POST method route
+  
+  // POST method route
 app.post('/signup', (req, res) => {
-  let r = sign_upservice.sign_up(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(rejected));
+      let r = sign_upservice.sign_up(req);
+      if (true) {
+        res.sendStatus(404);
+      } res.send(r)
 })
-
-app.listen(5000);

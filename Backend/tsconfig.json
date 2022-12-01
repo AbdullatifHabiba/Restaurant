@@ -1,0 +1,25 @@
+{
+  
+    "compilerOptions": {
+      "target": "es6",
+          "module": "commonjs",
+        "esModuleInterop": true,
+        "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+        "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
+        "moduleResolution": "node",
+        "strict": true,                           /* Enable all strict type-checking options. */
+        "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+        "strictNullChecks": false,              /* Enable strict null checks. */
+        "baseUrl": "/",   
+        
+    "paths": {
+      "*": [
+          "node_modules/*"
+      ]
+    },  
+
+      },
+      "include": [
+        "models/*","repository/*", "test/*","test/**/*"    ],
+
+    }
