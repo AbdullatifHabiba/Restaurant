@@ -10,7 +10,6 @@ function App() {
   return (
 
     <Router>
-     <Signin/>
       <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/signin" element={<Signin />} />
@@ -19,8 +18,7 @@ function App() {
       </Routes>
     </Router>
   );
-  //AQSCVD14789
-  //a9866do@gmail.com
+  
 }
 
 
