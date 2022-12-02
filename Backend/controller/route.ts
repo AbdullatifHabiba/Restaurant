@@ -1,5 +1,8 @@
 import { rejects } from 'assert';
 import express from 'express'
+import { IMenueService } from '../core/service/IMenuService';
+import { ISignInService } from '../core/service/ISignInService';
+import { ISignUpService } from '../core/service/ISignUpService';
 import { SignUp } from '../repository/SignupRepo';
 import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
@@ -16,7 +19,12 @@ const menu_service: IMenueService = new menuserice();
 // GET method route
 app.get('/signin', (req, res) => {
   let r = sign_inservice.sign_in(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(rejected));
+  if( r.state === "database connection error" )
+  {
+    res.status(404).send("erro");
+  }else{
+    res.status(200).send(r);
+  }
 })
 
 app.get('/homemenu', (req, res) => {
@@ -27,7 +35,14 @@ app.get('/homemenu', (req, res) => {
 // POST method route
 app.post('/signup', (req, res) => {
   let r = sign_upservice.sign_up(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(rejected));
+  
+  if( r.state === "database connection error" )
+  {
+    res.status(404).send("erro");
+  }else{
+    res.status(200).send(r);
+  }
+  
 })
 
 app.listen(5000);

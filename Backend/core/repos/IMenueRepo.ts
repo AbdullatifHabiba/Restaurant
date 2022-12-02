@@ -21,6 +21,7 @@ export interface IMenueRepo {
   GetItemByName(name: string): Promise<any>;
   
   GetAllItems(): Promise<any>;
+  get6():Promise<any>;
   
   GetItemByAvailableAmount(amount: Number): Promise<any>;
 }

@@ -1,3 +1,3 @@
-interface ISignUpService {
-    sign_up(req: any): Promise<Boolean>;
+export interface ISignUpService {
+    sign_up(req: JSON): JSON;
 }
