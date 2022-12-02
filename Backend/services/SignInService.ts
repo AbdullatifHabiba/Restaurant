@@ -1,34 +1,37 @@
+import { Json } from "sequelize/types/utils";
 import { SignIn } from "../repository/SignInRepo";
 
-export class signinservice {
-    
+export class signinservice implements ISignInService {
+
     signin = new SignIn();
     public sign_in(req) {
+        let res;
         switch (req.user) {
             case "customer":
-                this.customer_sign_in(req.email, req.password);
+                res = this.customer_sign_in(req.mail, req.password);
                 break;
             case "delivery":
-                this.delivery_sign_in(req.email, req.password);
+                res = this.delivery_sign_in(req.mail, req.password);
                 break;
             case "admin":
-                this.admin_sign_in(req.email, req.password);
+                res = this.admin_sign_in(req.mail, req.password);
                 break;
             default:
-                return "error";
+                return "wrong user type";
                 break;
         }
+        return res;
     }
 
-    customer_sign_in(email : string, password :string) {
+    customer_sign_in(email: string, password: string) {
         return this.signin.checkCorrectCustomer(email, password);
     }
 
-    delivery_sign_in(email : string, password :string) {
+    delivery_sign_in(email: string, password: string) {
         return this.signin.checkCorrectDelivery(email, password);
     }
 
-    admin_sign_in(email : string, password :string) {
+    admin_sign_in(email: string, password: string) {
         return this.signin.checkCorrectAdmin(email, password);
     }
 }

@@ -2,20 +2,20 @@ import db from './../repository/sequalize';
 import { Json } from 'sequelize/types/utils';
 import { SignIn } from './../repository/SignInRepo'
 import { SignUp } from './../repository/SignupRepo'
-import {MenueRepo} from './../repository/MenueRepo'
+import { MenueRepo } from './../repository/MenueRepo'
 (async () => {
 
-    console.log("Initialize database connection...");
-    await db.sequelize.sync({ force: false });
-  
-  })();
+  console.log("Initialize database connection...");
+  await db.sequelize.sync({ force: false });
 
-const obj =new MenueRepo();
-obj.AddItem('meal1',20,"Giza","this meal for you",'15').then((accepted) => console.log("yyyyyoooooiiii"+accepted),
-  (rejected) => console.log("Erron"+rejected));
+})();
 
-obj.GetAllItems().then((accepted) => console.log("mmmmmmmmmmmmmmmmmmwwwww"+JSON.stringify(accepted)),
- (rejected) => console.log("Erron"+rejected)
+const obj = new MenueRepo();
+obj.AddItem('meal1', 20, "Giza", "this meal for you", '15').then((accepted) => console.log("yyyyyoooooiiii" + accepted),
+  (rejected) => console.log("Erron" + rejected));
+
+obj.GetAllItems().then((accepted) => console.log("mmmmmmmmmmmmmmmmmmwwwww" + JSON.stringify(accepted)),
+  (rejected) => console.log("Erron" + rejected)
 );
 
 
@@ -33,10 +33,10 @@ obj.GetAllItems().then((accepted) => console.log("mmmmmmmmmmmmmmmmmmwwwww"+JSON.
 
 
 ///////////////////////////////////////////////////////
- const obj2 =new SignIn();
+const obj2 = new SignIn();
 
-obj2.checkCorrectAdmin('mohamed@gmail.com','785***').then((accepted) => console.log("ffffffffffqqqq"+JSON.stringify(accepted)),
-(rejected) => console.log("Erron"+rejected));
+obj2.checkCorrectAdmin('mohamed@gmail.com', '785***').then((accepted) => console.log("ffffffffffqqqq" + JSON.stringify(accepted)),
+  (rejected) => console.log("Erron" + rejected));
 
 ///////////////////////////////////////
 
