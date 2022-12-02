@@ -1,7 +1,8 @@
+import { Json } from "sequelize/types/utils";
 import { SignIn } from "../repository/SignInRepo";
 
-export class signinservice {
-    
+export class signinservice implements ISignInService {
+
     signin = new SignIn();
     public sign_in(req) {
         let res;
@@ -22,15 +23,15 @@ export class signinservice {
         return res;
     }
 
-    customer_sign_in(email : string, password :string) {
+    customer_sign_in(email: string, password: string) {
         return this.signin.checkCorrectCustomer(email, password);
     }
 
-    delivery_sign_in(email : string, password :string) {
+    delivery_sign_in(email: string, password: string) {
         return this.signin.checkCorrectDelivery(email, password);
     }
 
-    admin_sign_in(email : string, password :string) {
+    admin_sign_in(email: string, password: string) {
         return this.signin.checkCorrectAdmin(email, password);
     }
 }

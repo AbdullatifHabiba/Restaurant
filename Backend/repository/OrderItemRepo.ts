@@ -9,7 +9,7 @@ export class OrderItem {
       throw Error("error in connection");
     }
   }
-  
+
   async RemoveItemByID(Id: number) {
     await db['MenuItems'].destroy({
       where: {
