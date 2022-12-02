@@ -1,3 +1,5 @@
+import './App.css';
+import HomePage from './HomePage/HomePage';
 
 import Signin from './signinpage/Signin';
 import Page from './Page'
@@ -10,13 +12,12 @@ function App() {
     <Router>
      <Signin/>
       <Routes>
-        <Route path='/Signin' element={<Signin/>}/>
-         <Route  path="/page" element={<Page />} /> 
-        <Route path="/" element={<SignUp />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/signin" element={<Signin />} />
+      <Route path="/signup" element={<SignUp />} />
 
       </Routes>
     </Router>
-
   );
   //AQSCVD14789
   //a9866do@gmail.com
