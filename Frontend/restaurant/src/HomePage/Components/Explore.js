@@ -1,13 +1,14 @@
 import React from "react";
 import FoodCard from "./FoodCard";
 import { Link } from "react-router-dom";
+import { environment } from "../../environment";
 
 import {FaChevronCircleRight} from "react-icons/fa"
 export default function Explore(){
 let Food=[];
     React.useEffect(()=>{
         async function getFood(){
-            let result = await fetch('http://localhost:5000/homemenu',{
+            let result = await fetch(`${environment.env}/homemenu`,{
                 method: "get",
                 headers: {
                     'Content-type': 'application/json'
@@ -39,42 +40,6 @@ let Food=[];
             </div>
             <div className="container">
                 {FoodHTML}
-                <FoodCard
-            img="../Images/sand.png"
-            name="Hand Sandwich"
-            price="10.25"
-            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
-                />
-                <FoodCard
-            img="../Images/sand.png"
-            name="Hand Sandwich"
-            price="10.25"
-            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
-                />
-                <FoodCard
-            img="../Images/sand.png"
-            name="Hand Sandwich"
-            price="10.25"
-            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
-                />
-                <FoodCard
-            img="../Images/sand.png"
-            name="Hand Sandwich"
-            price="10.25"
-            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
-                />
-                <FoodCard
-            img="../Images/sand.png"
-            name="Hand Sandwich"
-            price="10.25"
-            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
-                />
-                <FoodCard
-            img="../Images/sand.png"
-            name="Hand Sandwich"
-            price="10.25"
-            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
-                />
             </div>
             <div className="more">
                 <FaChevronCircleRight/>
