@@ -20,7 +20,8 @@ app.get('/signin', (req, res) => {
 })
 
 app.get('/homemenu', (req, res) => {
-  res.status(200).send(menu_service.get6());
+  let r =menu_service.get6();
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(rejected));
 })
 
 // POST method route
