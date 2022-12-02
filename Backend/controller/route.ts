@@ -1,9 +1,13 @@
 import { rejects } from 'assert';
 import express from 'express'
+import { IMenueService } from '../core/service/IMenuService';
+import { ISignInService } from '../core/service/ISignInService';
+import { ISignUpService } from '../core/service/ISignUpService';
 import { SignUp } from '../repository/SignupRepo';
 import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';
+
 
 
 const app = express()

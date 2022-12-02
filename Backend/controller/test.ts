@@ -3,6 +3,7 @@ import { Json } from 'sequelize/types/utils';
 import { SignIn } from './../repository/SignInRepo'
 import { SignUp } from './../repository/SignupRepo'
 import { MenueRepo } from './../repository/MenueRepo'
+import {signupservice} from './../services/SignUpService'
 (async () => {
 
   console.log("Initialize database connection...");
@@ -10,13 +11,16 @@ import { MenueRepo } from './../repository/MenueRepo'
 
 })();
 
-const obj = new MenueRepo();
-obj.AddItem('meal1', 20, "Giza", "this meal for you", '15').then((accepted) => console.log("yyyyyoooooiiii" + accepted),
-  (rejected) => console.log("Erron" + rejected));
+// const obj = new MenueRepo();
+// // obj.AddItem('meal1', 20, "Giza", "this meal for you", '15').then((accepted) => console.log("yyyyyoooooiiii" + accepted),
+// //   (rejected) => console.log("Erron" + rejected));
 
-obj.GetAllItems().then((accepted) => console.log("mmmmmmmmmmmmmmmmmmwwwww" + JSON.stringify(accepted)),
-  (rejected) => console.log("Erron" + rejected)
-);
+//   obj.get6().then((accepted) => console.log("mmmmmmmmmmmmmmmmmmoooooiiii" + JSON.stringify(accepted)),
+//   (rejected) => console.log("Erron" + rejected));
+
+// obj.GetAllItems().then((accepted) => console.log("mmmmmmmmmmmmmmmmmmwwwww" + JSON.stringify(accepted)),
+//   (rejected) => console.log("Erron" + rejected)
+// );
 
 
 // obj.RemoveItemByID(11);
@@ -33,10 +37,10 @@ obj.GetAllItems().then((accepted) => console.log("mmmmmmmmmmmmmmmmmmwwwww" + JSO
 
 
 ///////////////////////////////////////////////////////
-const obj2 = new SignIn();
+// const obj2 = new SignIn();
 
-obj2.checkCorrectAdmin('mohamed@gmail.com', '785***').then((accepted) => console.log("ffffffffffqqqq" + JSON.stringify(accepted)),
-  (rejected) => console.log("Erron" + rejected));
+// obj2.checkCorrectAdmin('mohamed@gmail.com', '785***').then((accepted) => console.log("ffffffffffqqqq" + JSON.stringify(accepted)),
+//   (rejected) => console.log("Erron" + rejected));
 
 ///////////////////////////////////////
 
@@ -49,7 +53,8 @@ obj2.checkCorrectAdmin('mohamed@gmail.com', '785***').then((accepted) => console
 // obj2.checkCorrectCustomer('suzan@gmail.com','785***').then((accepted) => console.log("ddddd"+JSON.stringify(accepted)),
 // (rejected) => console.log("Erron"+rejected));
 
-// const obj3 = new SignUp();
+const obj3 = new signupservice();
 
-// obj3.AddNewEmailCustomer('012589', 'adel', 'adel@gmail.com', '887d8rr').then((accepted) => console.log("ddddd" + JSON.stringify(accepted)),
-//   (rejected) => console.log("Erron" + rejected));
+console.log(obj3.sign_up( <JSON><unknown>{
+  "phone":'012587989', "name":'ibrahim', "mail":'ibrahim@gmail.com', "password":'ppp887d8rr'
+}));
