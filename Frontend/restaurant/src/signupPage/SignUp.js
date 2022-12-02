@@ -53,12 +53,12 @@ function SignUp() {
       }),
     });
     let message = result.json();
-    console.log(message.m);
-    if (message === "accepted") {
+    console.log(message.state);
+    if (message.state==="accepted") {
       console.log("signed up successfully!");
-      nav("/Signin");
+      nav("/signin");
     } else {
-      window.alert(`${message}`);
+      window.Error(`${message.state}`);
     }
   };
   return (

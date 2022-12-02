@@ -1,0 +1,85 @@
+import React from "react";
+import FoodCard from "./FoodCard";
+import { Link } from "react-router-dom";
+
+import {FaChevronCircleRight} from "react-icons/fa"
+export default function Explore(){
+let Food=[];
+    React.useEffect(()=>{
+        async function getFood(){
+            let result = await fetch('http://localhost:5000/homemenu',{
+                method: "get",
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+            Food=await result.json();
+        }
+        getFood();
+    } );
+
+    
+    // img="../Images/sand.png"
+    let FoodHTML= Food.map((item)=>{
+        return(
+            <FoodCard
+            img={item.img}
+            name={item.name}
+            price={item.price}
+            describe={item.describe}
+        />
+        );
+    } )
+    return(
+        <div className="Explore">
+            <div className="Title">
+                <h2>Explore Our Foods</h2>
+                <p>This is a sample of our food, to see all our meals and order any thing just 
+                <Link to="/signin"> Sign In </Link> to order</p>
+            </div>
+            <div className="container">
+                {FoodHTML}
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+            </div>
+            <div className="more">
+                <FaChevronCircleRight/>
+                <Link to="/signin"> Sign In </Link>
+            </div>
+        </div>
+    );
+}
