@@ -42,7 +42,7 @@ function SignUp() {
     if(!validateInfo(info)){
       return;
     }
-    let result = await fetch("http://localhost:5000/signup", {
+    let result = await fetch("https://full-planets-act-197-32-171-139.loca.lt/signup", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
