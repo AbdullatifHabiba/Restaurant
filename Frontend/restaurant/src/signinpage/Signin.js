@@ -27,7 +27,7 @@ function Signin() {
     }
 
     let result = await fetch(`${environment.env}/signin`, {
-      method: "get",
+      method: "POST",
       headers: {
         'Content-type': 'application/json'
       },
