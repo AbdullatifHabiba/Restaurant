@@ -7,7 +7,7 @@ export default function Explore(){
 let Food=[];
     React.useEffect(()=>{
         async function getFood(){
-            let result = await fetch('http://localhost:5000/signin',{
+            let result = await fetch('http://localhost:5000/homemenu',{
                 method: "get",
                 headers: {
                     'Content-type': 'application/json'

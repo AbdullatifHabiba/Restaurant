@@ -1,7 +1,6 @@
 import React from "react";
 export default function LandingTitle(props){
-//GET request 5000, empty body
-// /homemenu
+
     return(
         <div className="LandingTitle">
             <h2>{props.title}</h2>
