@@ -4,7 +4,7 @@
   "description": "\"webserver for restaurant\"",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only ./controller/test.ts",
+    "start": "ts-node-dev --respawn --transpile-only ./controller/route.ts",
     "tsc": "tsc",
     "test": "NODE_ENV=test mocha --check-leaks -r ts-node/register -r tsconfig-paths/register \"test/**/*.ts\"",
     "build": "tsc -p ."

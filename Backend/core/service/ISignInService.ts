@@ -1,3 +1,3 @@
 export interface ISignInService {
-    sign_in(req: any): any;
+    sign_in(req: any): Promise<any>;
 }
