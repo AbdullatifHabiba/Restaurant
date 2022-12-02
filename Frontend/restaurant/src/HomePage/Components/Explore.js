@@ -39,6 +39,42 @@ let Food=[];
             </div>
             <div className="container">
                 {FoodHTML}
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
+                <FoodCard
+            img="../Images/sand.png"
+            name="Hand Sandwich"
+            price="10.25"
+            describe="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est, adipiscing.  "
+                />
             </div>
             <div className="more">
                 <FaChevronCircleRight/>
