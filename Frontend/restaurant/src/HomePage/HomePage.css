@@ -367,7 +367,11 @@
     text-decoration: none;
 }
 /*Landing*/
+.Landing nav p a:hover, .check a:hover{
+    color:white;
+}
 .Landing nav p a, .check a{
     color: var(--main-color);
     text-decoration: none;
+
 }
