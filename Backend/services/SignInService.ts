@@ -1,4 +1,5 @@
 import { Json } from "sequelize/types/utils";
+import { ISignInService } from "../core/service/ISignInService";
 import { SignIn } from "../repository/SignInRepo";
 
 export class signinservice implements ISignInService {

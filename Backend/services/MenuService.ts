@@ -1,3 +1,4 @@
+import { IMenueService } from "../core/service/IMenuService";
 import {MenueRepo} from "../repository/MenueRepo"
 
 export class menuserice implements IMenueService{

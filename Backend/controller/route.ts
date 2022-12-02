@@ -1,6 +1,7 @@
-import { rejects } from 'assert';
 import express from 'express'
-import { SignUp } from '../repository/SignupRepo';
+import { ISignInService } from '../core/service/ISignInService';
+import { ISignUpService } from '../core/service/ISignUpService';
+import { IMenueService } from '../core/service/IMenuService';
 import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';

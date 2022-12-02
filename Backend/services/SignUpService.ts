@@ -1,3 +1,4 @@
+import { ISignUpService } from "../core/service/ISignUpService";
 import { SignUp } from "../repository/SignupRepo";
 
 export class signupservice implements ISignUpService {

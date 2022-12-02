@@ -55,7 +55,10 @@ export class SignIn implements ISignInRepo {
       return response;
     }
     else {
-      return "error";
+      const response: JSON = <JSON><unknown>{
+        "سstate":"rejected"
+      }
+      return response;
     }
   }
 }
