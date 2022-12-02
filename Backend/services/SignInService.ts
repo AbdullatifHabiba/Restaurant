@@ -1,12 +1,11 @@
-import { Json } from "sequelize/types/utils";
-import { ISignInService } from "../core/service/ISignInService";
 import { SignIn } from "../repository/SignInRepo";
 import { ISignInService } from "../core/service/ISignInService";
-import { resourceLimits } from "worker_threads";
+import { ISignInRepo } from "../core/repos/ISignInRepo";
 
 export class signinservice implements ISignInService {
 
-    signin = new SignIn();
+    signin: ISignInRepo = new SignIn();
+
     public sign_in(req) {
         let res;
         switch (req.user) {
@@ -20,7 +19,7 @@ export class signinservice implements ISignInService {
                 res = this.admin_sign_in(req.mail, req.password);
                 break;
             default:
-                return "wrong user type";
+                res = this.signin.wrongtype();
                 break;
         }
         return res;

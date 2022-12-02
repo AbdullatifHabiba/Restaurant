@@ -1,22 +1,16 @@
+import { IMenueRepo } from "../core/repos/IMenueRepo";
 import { IMenueService } from "../core/service/IMenuService";
-import {MenueRepo} from "../repository/MenueRepo"
-import {IMenueService} from "../core/service/IMenuService"
+import { MenueRepo } from "../repository/MenueRepo"
 
+export class menuserice implements IMenueService {
 
-export class menuserice implements IMenueService{
-    menuRepo = new MenueRepo();
+    menuRepo: IMenueRepo = new MenueRepo();
 
-   async getAll() {
-        let result:any;
-        await  this.menuRepo.GetAllItems().then((accepted) => result = accepted,
-            (rejected) => result="error");
-        return result ;
+    getAll() {
+        return this.menuRepo.GetAllItems();
     }
 
-   async get6(){
-        let result:any;
-        await  this.menuRepo.get6().then((accepted) => result = accepted,
-        (rejected) => result="error");
-        return result ;
+    get6() {
+        return this.menuRepo.get6();
     }
 }

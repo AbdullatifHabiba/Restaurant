@@ -13,14 +13,12 @@ export class SignIn implements ISignInRepo {
       const response: JSON = <JSON><unknown>{
         "id": item.Admin_id,
         "name": item.name,
-        'state':'accepted'
-      }
+        "state": "accepted"
+      };
       return response;
     }
     else {
-      const response: JSON = <JSON><unknown>{
-        "state":"error" 
-      }
+      const response: JSON = <JSON><unknown>{ "state": "Wrong E-mail or password" };
       return response;
     }
   }
@@ -36,14 +34,12 @@ export class SignIn implements ISignInRepo {
       const response: JSON = <JSON><unknown>{
         "id": item[0].deliveryman_id,
         "name": item[0].name,
-        'state':'accepted'
-      }
+        "state": "accepted"
+      };
       return response;
     }
     else {
-      const response: JSON = <JSON><unknown>{
-        "state":"error" 
-      }
+      const response: JSON = <JSON><unknown>{ "state": "Wrong E-mail or password" };
       return response;
     }
   }
@@ -59,15 +55,18 @@ export class SignIn implements ISignInRepo {
       const response: JSON = <JSON><unknown>{
         "id": item[0].customer_id,
         "name": item[0].name,
-        'state':'accepted'
-      }
+        "state": "accepted"
+      };
       return response;
     }
     else {
-      const response: JSON = <JSON><unknown>{
-        "state":"error" 
-      }
+      const response: JSON = <JSON><unknown>{ "state": "Wrong E-mail or password" };
       return response;
     }
+  }
+
+  async wrongtype() {
+    const response: JSON = <JSON><unknown>{ "state": "Undifined user type" };
+      return response;
   }
 }
