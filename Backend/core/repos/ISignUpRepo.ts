@@ -6,7 +6,7 @@ export interface ISignUpRepo {
     Password: String,
     Address: String,
     Phone: String
-  ): Promise<Boolean>;
+  ): Promise<JSON>;
 
   AddNewEmailDelivery(
     FirstName: String,
@@ -15,7 +15,7 @@ export interface ISignUpRepo {
     Password: String,
     Address: String,
     Phone: String
-  ): Promise<Boolean>;
+  ): Promise<JSON>;
 
   AddNewEmailAdmin(
     FirstName: String,
@@ -24,5 +24,5 @@ export interface ISignUpRepo {
     Password: String,
     Address: String,
     Phone: String
-  ): Promise<Boolean>;
+  ): Promise<JSON>;
 }

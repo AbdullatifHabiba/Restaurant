@@ -12,12 +12,16 @@ export class SignIn implements ISignInRepo {
     if (JSON.stringify(item).length >= 3) {
       const response: JSON = <JSON><unknown>{
         "id": item.Admin_id,
-        "name": item.name
+        "name": item.name,
+        'state':'accepted'
       }
       return response;
     }
     else {
-      return "error";
+      const response: JSON = <JSON><unknown>{
+        "state":"error" 
+      }
+      return response;
     }
   }
 
@@ -31,12 +35,16 @@ export class SignIn implements ISignInRepo {
     if (JSON.stringify(item).length >= 3) {
       const response: JSON = <JSON><unknown>{
         "id": item[0].deliveryman_id,
-        "name": item[0].name
+        "name": item[0].name,
+        'state':'accepted'
       }
       return response;
     }
     else {
-      return "error";
+      const response: JSON = <JSON><unknown>{
+        "state":"error" 
+      }
+      return response;
     }
   }
 
@@ -50,13 +58,14 @@ export class SignIn implements ISignInRepo {
     if (JSON.stringify(item).length >= 3) {
       const response: JSON = <JSON><unknown>{
         "id": item[0].customer_id,
-        "name": item[0].name
+        "name": item[0].name,
+        'state':'accepted'
       }
       return response;
     }
     else {
       const response: JSON = <JSON><unknown>{
-        "سstate":"rejected"
+        "state":"error" 
       }
       return response;
     }
