@@ -1,4 +1,4 @@
 interface IMenueService {
-    get6();
-    getAll();
+    get6(): Promise<any>;
+    getAll(): Promise<any>;
 }

@@ -1,6 +1,6 @@
 import { SignUp } from "../repository/SignupRepo";
 
-export class signupservice implements ISignUpService{
+export class signupservice implements ISignUpService {
     signup = new SignUp();
 
     sign_up(req) {

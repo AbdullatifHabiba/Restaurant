@@ -1,3 +1,3 @@
 interface ISignUpService {
-    sign_up(req: any);
+    sign_up(req: any): Promise<Boolean>;
 }

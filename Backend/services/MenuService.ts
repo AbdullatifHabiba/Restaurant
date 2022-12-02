@@ -4,11 +4,11 @@ export class menuserice implements IMenueService{
     menuRepo = new MenueRepo();
 
     getAll() {
-        throw new Error("Method not implemented.");
+        return this.menuRepo.GetAllItems();
     }
 
     get6(){
         // implement method in repo first
-        return;
+        return null;
     }
 }
