@@ -7,6 +7,7 @@ import Delivery_Man from './Images/Delivery-bro (1) 1.png'
 import './Signin.css';
 import bcrypt from 'bcryptjs'
 import { Link , useNavigate} from "react-router-dom";
+import { environment } from '../environment';
 function Signin() {
   
   const [User, setuser] = React.useState("customer");
@@ -24,9 +25,9 @@ function Signin() {
       window.alert("invalid email address");
       return;
     }
-   info.user = User;
-    let result = await fetch('http://localhost:5000/signin', {
-      method: "post",
+
+    let result = await fetch(`${environment.env}/signin`, {
+      method: "get",
       headers: {
         'Content-type': 'application/json'
       },
@@ -70,7 +71,7 @@ function Signin() {
                 <input className='btn-submit' type="submit" value="Sign In" name="Sign In" />
                 <div className='signup'>
                 <p>You don't have Acount?</p> 
-                <Link to="./SignUp"> Sign up </Link>
+                <Link to="/signUp"> Sign up </Link>
                 </div>
             </form>  
           
