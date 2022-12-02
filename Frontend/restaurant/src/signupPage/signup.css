@@ -24,7 +24,7 @@ form {
   width: 100%;
 }
 input {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   width: 100%;
   border-top: none;
   border-left: none;
@@ -32,11 +32,11 @@ input {
   background-color: transparent;
   color: #2B2176;
   opacity: .4;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 17px;
 }
 .sign-up-header {
   color: #2e266f;
@@ -51,9 +51,9 @@ input {
     background-color: #FE043C;
     color: #FFFFFF;
     border-radius: 15px;
-    font-size: 30px;
+    font-size: 25px;
     opacity: 1;
-    padding: 15px 0;
+    padding: 10px 0;
     cursor: pointer;
     transition: .5s;
     margin-top: 20px;
@@ -62,12 +62,13 @@ input {
     background-color: #ff8aa3;
 }
 .img-container{
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .img-container img{
- max-width: 400px;
+ max-width: 300px;
  min-width: auto;
 }
 @media (max-width: 1050px) {
