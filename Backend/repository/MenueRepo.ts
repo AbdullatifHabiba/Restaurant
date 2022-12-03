@@ -58,16 +58,12 @@ export class MenueRepo implements IMenueRepo {
     return item;
   }
 
-  async get6()
-  {
+  async get6() {
     let item = await db['MenuItems'].findAll({
       limit: 6,
     });
     return item;
-
   }
-
-
 }
 
 

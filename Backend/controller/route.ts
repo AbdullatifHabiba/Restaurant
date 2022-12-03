@@ -1,14 +1,10 @@
-import { rejects } from 'assert';
 import express from 'express'
-import { IMenueService } from '../core/service/IMenuService';
 import { ISignInService } from '../core/service/ISignInService';
 import { ISignUpService } from '../core/service/ISignUpService';
-import { SignUp } from '../repository/SignupRepo';
+import { IMenueService } from '../core/service/IMenuService';
 import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';
-
-
 
 const app = express()
 app.use(express.json());
@@ -20,18 +16,18 @@ const menu_service: IMenueService = new menuserice();
 // GET method route
 app.get('/signin', (req, res) => {
   let r = sign_inservice.sign_in(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(rejected));
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(<JSON><unknown>{"state":"failed to connect database"}));
 })
 
 app.get('/homemenu', (req, res) => {
-  let r =menu_service.get6();
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(rejected));
+  let r = menu_service.get6();
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(<JSON><unknown>{"state":"failed to connect database"}));
 })
 
 // POST method route
 app.post('/signup', (req, res) => {
   let r = sign_upservice.sign_up(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(rejected));
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(<JSON><unknown>{"state":"failed to connect database"}));
 })
 
 app.listen(5000);

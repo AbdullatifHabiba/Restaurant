@@ -2,7 +2,7 @@ import db from './sequalize';
 import { ISignUpRepo } from '../core/repos/ISignUpRepo';
 
 export class SignUp implements ISignUpRepo {
-  async AddNewEmailCustomer(phone: String, Name: String, Email: string, password: String) {
+  async AddNewEmailCustomer(Name: String, Email: string, password: String, phone: String) {
     let item = await db['Customer'].findAll({
       where: {
         email: [Email]
@@ -10,16 +10,12 @@ export class SignUp implements ISignUpRepo {
     });
     // check if string more than '[]'
     if (JSON.stringify(item).length >= 3) {
-      const response: JSON = <JSON><unknown>{
-        "state":"Email already exist" 
-      }
+      const response: JSON = <JSON><unknown>{ "state": "Email already exist" };
       return response;
     }
     else {
       await db['Customer'].create({ phone: phone, name: Name, email: Email, HPassword: password });
-      const response: JSON = <JSON><unknown>{
-        "state":"accepted" 
-      }
+      const response: JSON = <JSON><unknown>{ "state": "accepted" };
       return response;
     }
   }
@@ -32,20 +28,16 @@ export class SignUp implements ISignUpRepo {
     });
     // check if string more than '[]'
     if (JSON.stringify(item).length >= 3) {
-      const response: JSON = <JSON><unknown>{
-        "state":"Email already exist" 
-      }
+      const response: JSON = <JSON><unknown>{ "state": "Email already exist" };
       return response;
     }
     else {
       await db['Deliveryman'].create({ phone: phone, name: Name, email: Email, HPassword: password });
-      const response: JSON = <JSON><unknown>{
-        "state":"accepted" 
-      }
+      const response: JSON = <JSON><unknown>{ "state": "accepted" };
       return response;
     }
   }
-  
+
   async AddNewEmailAdmin(phone: String, Name: String, Email: string, password: String) {
     let item = await db['Admin'].findAll({
       where: {
@@ -54,16 +46,12 @@ export class SignUp implements ISignUpRepo {
     });
     // check if string more than '[]'
     if (JSON.stringify(item).length >= 3) {
-      const response: JSON = <JSON><unknown>{
-        "state":"Email already exist" 
-      }
+      const response: JSON = <JSON><unknown>{ "state": "Email already exist" };
       return response;
     }
     else {
       await db['Admin'].create({ phone: phone, name: Name, email: Email, HPassword: password });
-      const response: JSON = <JSON><unknown>{
-        "state":"accepted" 
-      }
+      const response: JSON = <JSON><unknown>{ "state": "accepted" };
       return response;
     }
   }

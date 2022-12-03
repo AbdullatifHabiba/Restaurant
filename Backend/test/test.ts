@@ -1,9 +1,10 @@
-import db from './../repository/sequalize';
+import db from '../repository/sequalize';
 import { Json } from 'sequelize/types/utils';
-import { SignIn } from './../repository/SignInRepo'
-import { SignUp } from './../repository/SignupRepo'
-import { MenueRepo } from './../repository/MenueRepo'
-import {signupservice} from './../services/SignUpService'
+import { SignIn } from '../repository/SignInRepo'
+import { SignUp } from '../repository/SignupRepo'
+import { MenueRepo } from '../repository/MenueRepo'
+import { signupservice } from '../services/SignUpService'
+
 (async () => {
 
   console.log("Initialize database connection...");
@@ -55,6 +56,6 @@ import {signupservice} from './../services/SignUpService'
 
 const obj3 = new signupservice();
 
-console.log(obj3.sign_up( <JSON><unknown>{
-  "phone":'012587989', "name":'ibrahim', "mail":'ibrahim@gmail.com', "password":'ppp887d8rr'
-}));
+obj3.sign_up(<JSON><unknown>{
+  "phone": '012587989', "name": 'ibrahim', "mail": 'i0brahim@gmail.com', "password": 'ppp887d8rr'
+}).then((accepted => console.log(accepted)));
