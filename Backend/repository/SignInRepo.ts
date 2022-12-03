@@ -3,6 +3,7 @@ import { ISignInRepo } from '../core/repos/ISignInRepo';
 
 export class SignIn implements ISignInRepo {
   async checkCorrectAdmin(Email: String, PassWord: String) {
+    if(Email !=undefined && PassWord !=undefined){
     let item = await db['Admin'].findAll({
       where: {
         email: [Email],
@@ -21,9 +22,14 @@ export class SignIn implements ISignInRepo {
       const response: JSON = <JSON><unknown>{ "state": "Wrong E-mail or password" };
       return response;
     }
+  }else{
+    const response: JSON = <JSON><unknown>{ "state": "data entered in request not completed" };
+    return response;
+  }
   }
 
   async checkCorrectDelivery(Email: String, PassWord: String) {
+    if(Email !=undefined && PassWord !=undefined){
     let item = await db['Deliveryman'].findAll({
       where: {
         email: [Email],
@@ -42,9 +48,14 @@ export class SignIn implements ISignInRepo {
       const response: JSON = <JSON><unknown>{ "state": "Wrong E-mail or password" };
       return response;
     }
+  }else{
+    const response: JSON = <JSON><unknown>{ "state": "data entered in request not completed" };
+    return response;
+  }
   }
 
   async checkCorrectCustomer(Email: String, PassWord: String) {
+    if(Email !=undefined && PassWord !=undefined){
     let item = await db['Customer'].findAll({
       where: {
         email: [Email],
@@ -63,6 +74,10 @@ export class SignIn implements ISignInRepo {
       const response: JSON = <JSON><unknown>{ "state": "Wrong E-mail or password" };
       return response;
     }
+  }else{
+    const response: JSON = <JSON><unknown>{ "state": "data entered in request not completed" };
+    return response;
+  }
   }
 
   async wrongtype() {
