@@ -53,13 +53,13 @@ function SignUp() {
         password: bcrypt.hashSync(info.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
       }),
     });
-    let message = result.json();
-    console.log(message.state);
-    if (message.state==="accepted") {
-      console.log("signed up successfully!");
+    let message =  await result.json();
+    console.log(message);
+    if (message) {
       nav("/signin");
+      window.alert("signed up successfully!");
     } else {
-      window.Error(`${message.state}`);
+      window.Error(`${message}`);
     }
   };
   return (

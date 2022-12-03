@@ -18,7 +18,7 @@ function Signin() {
       return {...prev, [e.target.name]: e.target.value}
     })
   }
-
+   info.user = User;
   let handleSubmit = async (e)=>{
     e.preventDefault();
     if(!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(info.mail))){
