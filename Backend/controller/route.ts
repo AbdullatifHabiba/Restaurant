@@ -5,9 +5,18 @@ import { IMenueService } from '../core/service/IMenuService';
 import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';
+import db from './../repository/sequalize';
+
 
 const app = express()
 app.use(express.json());
+
+(async () => {
+
+  console.log("Initialize database connection...");
+  await db.sequelize.sync({ force: false });
+
+})();
 
 const sign_inservice: ISignInService = new signinservice();
 const sign_upservice: ISignUpService = new signupservice();
