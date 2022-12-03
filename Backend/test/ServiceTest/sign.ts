@@ -39,7 +39,7 @@ describe("SignIn Service", () => {
     });
 
     it('check email is not correctly exist', async () => {
-        let result:any;
+        let result: any;
         const request: JSON = <JSON><unknown>{
             "mail": "yy",
             "password": "yy",

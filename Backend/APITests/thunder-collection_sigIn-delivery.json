@@ -1,36 +1,185 @@
-{"client":"Thunder Client","collectionName":"sigIn-delivery",
-"dateExported":"2022-12-03T16:37:16.895Z","version":"1.1","folders":[],
-"requests":[{"_id":"4e68fbbe-4139-455f-9936-25f6bec714bb","colId":"406b5c99-4a3c-41a4-8216-810b6b720ebc",
-"containerId":"","name":"test1","url":"http://localhost:5000/signin",
-"method":"GET","sortNum":10000,"created":"2022-12-03T16:16:37.953Z","modified":"2022-12-03T16:18:24.499Z",
-"headers":[],"params":[],
-"body":{"type":"json","raw":"{\n \"mail\":\"custom1n@gmail.com\",\n \"password\":\"sd75o4997\",\n \"user\":\"delivery\"\n}","form":[]},
-"tests":[{"type":"res-code","custom":"","action":"equal","value":"200"},
-{"type":"Content-Type","custom":"","action":"contains","value":"application/json"},
-{"type":"res-time","custom":"","action":"<","value":"30"},
-{"type":"json-query","custom":"json.state","action":"equal","value":"Wrong E-mail or password"}]}
-,{"_id":"98e37b7f-b44d-4ed5-a58c-a06a93a62737","colId":"406b5c99-4a3c-41a4-8216-810b6b720ebc",
-"containerId":"","name":"test4","url":"http://localhost:5000/signin",
-"method":"GET","sortNum":12500,"created":"2022-12-03T16:20:33.637Z",
-"modified":"2022-12-03T16:21:26.108Z",
-"headers":[],"params":[],"body":{"type":"json","raw":"{\n \"mail\":\"custom1n@gmail.com\",\n \"user\":\"delivery\"\n}",
-"form":[]},
-"tests":[{"type":"res-code","custom":"","action":"equal","value":"200"},
-{"type":"Content-Type","custom":"","action":"contains","value":"application/json"},
-{"type":"res-time","custom":"","action":"<","value":"30"},
-{"type":"json-query","custom":"json.state","action":"equal",
-"value":"data entered in request not completed"}]},
-{"_id":"3e62444c-d23e-43d3-ae53-43e55322df00","colId":"406b5c99-4a3c-41a4-8216-810b6b720ebc","containerId":"","name":"test3","url":"http://localhost:5000/signin","method":"GET","sortNum":15000,"created":"2022-12-03T16:19:35.910Z","modified":"2022-12-03T16:26:35.519Z","headers":[],"params":[],
-"body":{"type":"json","raw":"{\n \"password\":\"sd75o4997\",\n \"user\":\"delivery\"\n}",
-"form":[]},
-"tests":[{"type":"res-code","custom":"","action":"equal","value":"200"},
-{"type":"Content-Type","custom":"","action":"contains","value":"application/json"},
-{"type":"res-time","custom":"","action":"<","value":"30"},
-{"type":"json-query","custom":"json.state","action":"equal","value":"data entered in request not completed"}]},
-{"_id":"d1bcc3b7-7708-4560-99e4-8a3fee15d8f5","colId":"406b5c99-4a3c-41a4-8216-810b6b720ebc","containerId":"","name":"test2","url":"http://localhost:5000/signin",
-"method":"GET","sortNum":20000,"created":"2022-12-03T16:18:40.101Z","modified":"2022-12-03T16:19:14.905Z","headers":[],"params":[],
-"body":{"type":"json","raw":"{\n \"mail\":\"custom1n@gmail.com\",\n \"password\":\"sd75o4997\"\n}","form":[]},
-"tests":[{"type":"res-code","custom":"","action":"equal","value":"200"},
-{"type":"Content-Type","custom":"","action":"contains","value":"application/json"},
-{"type":"res-time","custom":"","action":"<","value":"30"},
-{"type":"json-query","custom":"json.state","action":"equal","value":"Undifined user type"}]}]}
+{
+    "client": "Thunder Client",
+    "collectionName": "sigIn-delivery",
+    "dateExported": "2022-12-03T16:37:16.895Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "4e68fbbe-4139-455f-9936-25f6bec714bb",
+            "colId": "406b5c99-4a3c-41a4-8216-810b6b720ebc",
+            "containerId": "",
+            "name": "test1",
+            "url": "http://localhost:5000/signin",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2022-12-03T16:16:37.953Z",
+            "modified": "2022-12-03T16:18:24.499Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"mail\":\"custom1n@gmail.com\",\n \"password\":\"sd75o4997\",\n \"user\":\"delivery\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "Content-Type",
+                    "custom": "",
+                    "action": "contains",
+                    "value": "application/json"
+                },
+                {
+                    "type": "res-time",
+                    "custom": "",
+                    "action": "<",
+                    "value": "30"
+                },
+                {
+                    "type": "json-query",
+                    "custom": "json.state",
+                    "action": "equal",
+                    "value": "Wrong E-mail or password"
+                }
+            ]
+        },
+        {
+            "_id": "98e37b7f-b44d-4ed5-a58c-a06a93a62737",
+            "colId": "406b5c99-4a3c-41a4-8216-810b6b720ebc",
+            "containerId": "",
+            "name": "test4",
+            "url": "http://localhost:5000/signin",
+            "method": "GET",
+            "sortNum": 12500,
+            "created": "2022-12-03T16:20:33.637Z",
+            "modified": "2022-12-03T16:21:26.108Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"mail\":\"custom1n@gmail.com\",\n \"user\":\"delivery\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "Content-Type",
+                    "custom": "",
+                    "action": "contains",
+                    "value": "application/json"
+                },
+                {
+                    "type": "res-time",
+                    "custom": "",
+                    "action": "<",
+                    "value": "30"
+                },
+                {
+                    "type": "json-query",
+                    "custom": "json.state",
+                    "action": "equal",
+                    "value": "data entered in request not completed"
+                }
+            ]
+        },
+        {
+            "_id": "3e62444c-d23e-43d3-ae53-43e55322df00",
+            "colId": "406b5c99-4a3c-41a4-8216-810b6b720ebc",
+            "containerId": "",
+            "name": "test3",
+            "url": "http://localhost:5000/signin",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2022-12-03T16:19:35.910Z",
+            "modified": "2022-12-03T16:26:35.519Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"password\":\"sd75o4997\",\n \"user\":\"delivery\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "Content-Type",
+                    "custom": "",
+                    "action": "contains",
+                    "value": "application/json"
+                },
+                {
+                    "type": "res-time",
+                    "custom": "",
+                    "action": "<",
+                    "value": "30"
+                },
+                {
+                    "type": "json-query",
+                    "custom": "json.state",
+                    "action": "equal",
+                    "value": "data entered in request not completed"
+                }
+            ]
+        },
+        {
+            "_id": "d1bcc3b7-7708-4560-99e4-8a3fee15d8f5",
+            "colId": "406b5c99-4a3c-41a4-8216-810b6b720ebc",
+            "containerId": "",
+            "name": "test2",
+            "url": "http://localhost:5000/signin",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2022-12-03T16:18:40.101Z",
+            "modified": "2022-12-03T16:19:14.905Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"mail\":\"custom1n@gmail.com\",\n \"password\":\"sd75o4997\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "Content-Type",
+                    "custom": "",
+                    "action": "contains",
+                    "value": "application/json"
+                },
+                {
+                    "type": "res-time",
+                    "custom": "",
+                    "action": "<",
+                    "value": "30"
+                },
+                {
+                    "type": "json-query",
+                    "custom": "json.state",
+                    "action": "equal",
+                    "value": "Undifined user type"
+                }
+            ]
+        }
+    ]
+}
