@@ -2,6 +2,7 @@ import React from "react";
 import bcrypt from 'bcryptjs'
 import Burger from "./images/Hamburger-pana 1.png";
 import pizza from "./images/Pizza maker-cuate 1.png";
+import { environment } from "../environment";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
 function SignUp() {
@@ -42,7 +43,7 @@ function SignUp() {
     if(!validateInfo(info)){
       return;
     }
-    let result = await fetch("http://localhost:5000/signup", {
+    let result = await fetch(`${environment.env}/signup`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -52,13 +53,13 @@ function SignUp() {
         password: bcrypt.hashSync(info.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
       }),
     });
-    let message = result.json();
-    console.log(message.m);
-    if (message === "accepted") {
-      console.log("signed up successfully!");
-      nav("/Signin");
+    let message =  await result.json();
+    console.log(message);
+    if (message) {
+      nav("/signin");
+      window.alert("signed up successfully!");
     } else {
-      window.alert(`${message}`);
+      window.Error(`${message}`);
     }
   };
   return (

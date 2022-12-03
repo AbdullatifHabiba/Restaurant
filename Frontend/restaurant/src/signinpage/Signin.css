@@ -24,8 +24,8 @@ margin-left: 70px;
 }
 
 .image_2{
-  width: 100%;
-  height: 250px;
+  /* width: 70%; */
+  height: 200px;
   padding-right: 20px;
   border-radius: 0px;
 
@@ -40,8 +40,8 @@ form{
   margin-left: 1109px;
 }
 .image_1{
-height: 350px;
-width: 400px;
+/* height: 350px; */
+width: 300px;
 align-items:flex-end;
 border-radius: 0px;
 }
@@ -78,7 +78,7 @@ input {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  font-size: 55px;
+  font-size: 45px;
 }
 .btn-submit{
     border: none;

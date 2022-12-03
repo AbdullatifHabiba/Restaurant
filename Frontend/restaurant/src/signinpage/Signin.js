@@ -7,6 +7,7 @@ import Delivery_Man from './Images/Delivery-bro (1) 1.png'
 import './Signin.css';
 import bcrypt from 'bcryptjs'
 import { Link , useNavigate} from "react-router-dom";
+import { environment } from '../environment';
 function Signin() {
   
   const [User, setuser] = React.useState("customer");
@@ -17,27 +18,33 @@ function Signin() {
       return {...prev, [e.target.name]: e.target.value}
     })
   }
-
+   info.user = User;
   let handleSubmit = async (e)=>{
-    info.password = bcrypt.hashSync(info.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
     e.preventDefault();
     if(!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(info.mail))){
       window.alert("invalid email address");
       return;
     }
 
-    let result = await fetch('../signin', {
-      method: "get",
+    let result = await fetch(`${environment.env}/signin`, {
+      method: "POST",
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(info)
+      body: JSON.stringify(
+        {
+          ...info,
+          password: bcrypt.hashSync(info.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
+        }
+        )
+        //'25', '0127834006', 'AbdullaMMMN', 'a98NKK6do@gmail.com', '$2a$10$CwTycUXWue0Thq9StjUM0u9sklaV.gMGaa.5rOjeOF9oLyJd7.udC', '2022-12-01 21:53:26', '2022-12-01 21:53:26'
+
     });
-    let message = result.json();
+    let message = await result.json();
     console.log(message.status);
-    if(message.status === 200){
+    if(message.body !== "error"){
       //route to Main page
-      nav("/page");
+      nav("/Page");
       console.log("signed in successfully!")
     }else {
       window.alert("Email or Password not correct")
@@ -64,7 +71,7 @@ function Signin() {
                 <input className='btn-submit' type="submit" value="Sign In" name="Sign In" />
                 <div className='signup'>
                 <p>You don't have Acount?</p> 
-                <Link to="./signup"> Sign up </Link>
+                <Link to="/signUp"> Sign up </Link>
                 </div>
             </form>  
           

@@ -5,7 +5,7 @@ const db: any = {}
 let sequelize = new Sequelize({
   'username': config.username,
   'password': config.password,
-  'database': config.database,
+   'database': config.database,
   'host': config.host,
   'dialect': 'mysql',
   'storage': ":memory:"

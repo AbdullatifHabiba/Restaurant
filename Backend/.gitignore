@@ -1,2 +1,2 @@
-node_modules/*
-Backend\repository\config.ts
+**node_modules
+**.env
