@@ -3,6 +3,7 @@ import { ISignUpRepo } from '../core/repos/ISignUpRepo';
 
 export class SignUp implements ISignUpRepo {
   async AddNewEmailCustomer(Name: String, Email: string, password: String, phone: String) {
+    if(Email !=undefined && password !=undefined){
     let item = await db['Customer'].findAll({
       where: {
         email: [Email]
@@ -18,6 +19,11 @@ export class SignUp implements ISignUpRepo {
       const response: JSON = <JSON><unknown>{ "state": "accepted" };
       return response;
     }
+
+  }else{
+    const response: JSON = <JSON><unknown>{ "state": "data entered in request not completed" };
+    return response;
+  }
   }
 
   async AddNewEmailDelivery(phone: String, Name: String, Email: string, password: String) {
