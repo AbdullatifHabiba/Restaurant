@@ -1,11 +1,23 @@
 export interface ISignUpRepo {
-    AddNewEmailCustomer(
-    FirstName: String,
-    LastName: String,
+  
+  AddNewEmailCustomer(
+    Name: String,
     Email: String,
     Password: String,
-    Address: String,
     Phone: String
-  ): Promise<Boolean>;
-  
+  ): Promise<JSON>;
+
+  AddNewEmailDelivery(
+    Name: String,
+    Email: String,
+    Password: String,
+    Phone: String
+  ): Promise<JSON>;
+
+  AddNewEmailAdmin(
+    Name: String,
+    Email: String,
+    Password: String,
+    Phone: String
+  ): Promise<JSON>;
 }
