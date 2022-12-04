@@ -11,19 +11,19 @@ export class SignIn implements ISignInRepo {
       }
     });
     if (JSON.stringify(item).length >= 3) {
-      const response: JSON = <JSON><unknown>{
-        "id": item.Admin_id,
-        "name": item.name,
-        "state": "accepted"
+      const response={
+        id: item.Admin_id,
+        name: item.name,
+        state: "accepted"
       };
       return response;
     }
     else {
-      const response: JSON = <JSON><unknown>{ "state": "Wrong E-mail or password" };
+      const response={ state: "Wrong E-mail or password" };
       return response;
     }
   }else{
-    const response: JSON = <JSON><unknown>{ "state": "data entered in request not completed" };
+    const response={ state: "data entered in request not completed" };
     return response;
   }
   }
@@ -37,19 +37,19 @@ export class SignIn implements ISignInRepo {
       }
     });
     if (JSON.stringify(item).length >= 3) {
-      const response: JSON = <JSON><unknown>{
-        "id": item[0].deliveryman_id,
-        "name": item[0].name,
-        "state": "accepted"
+      const response={
+        id: item[0].deliveryman_id,
+        name: item[0].name,
+        state: "accepted"
       };
       return response;
     }
     else {
-      const response: JSON = <JSON><unknown>{ "state": "Wrong E-mail or password" };
+      const response={ state: "Wrong E-mail or password" };
       return response;
     }
   }else{
-    const response: JSON = <JSON><unknown>{ "state": "data entered in request not completed" };
+    const response={ state: "data entered in request not completed" };
     return response;
   }
   }
@@ -63,25 +63,26 @@ export class SignIn implements ISignInRepo {
       }
     });
     if (JSON.stringify(item).length >= 3) {
-      const response: JSON = <JSON><unknown>{
-        "id": item[0].customer_id,
-        "name": item[0].name,
-        "state": "accepted"
+      const response={
+        id: item[0].customer_id,
+        name: item[0].name,
+        state: "accepted"
       };
+      
       return response;
     }
     else {
-      const response: JSON = <JSON><unknown>{ "state": "Wrong E-mail or password" };
+      const response={ state: "Wrong E-mail or password" };
       return response;
     }
   }else{
-    const response: JSON = <JSON><unknown>{ "state": "data entered in request not completed" };
+    const response={ state: "data entered in request not completed" };
     return response;
   }
   }
 
   async wrongtype() {
-    const response: JSON = <JSON><unknown>{ "state": "Undifined user type" };
+    const response={ state: "Undifined user type" };
       return response;
   }
 }

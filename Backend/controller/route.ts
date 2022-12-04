@@ -6,7 +6,7 @@ import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';
 import db from './../repository/sequalize';
-
+import cors from 'cors';
 
 const app = express()
 app.use(express.json());
@@ -17,7 +17,11 @@ app.use(express.json());
   await db.sequelize.sync({ force: true });
 
 })();
-
+app.use(cors(
+  {
+    origin: '*',
+  }
+))
 const sign_inservice: ISignInService = new signinservice();
 const sign_upservice: ISignUpService = new signupservice();
 const menu_service: IMenueService = new menuserice();
@@ -40,3 +44,4 @@ app.post('/signup', (req, res) => {
 })
 
 app.listen(5000);
+

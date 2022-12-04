@@ -9,17 +9,4 @@ export interface ISignUpRepo {
     Phone: String
   ): Promise<any>;
 
-  AddNewEmailDelivery(
-    Name: String,
-    Email: String,
-    Password: String,
-    Phone: String
-  ): Promise<JSON>;
-
-  AddNewEmailAdmin(
-    Name: String,
-    Email: String,
-    Password: String,
-    Phone: String
-  ): Promise<JSON>;
 }
