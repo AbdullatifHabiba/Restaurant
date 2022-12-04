@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: 60% 40%;
   min-height: 100vh;
-  max-height: fit-content;
   padding: 0 100px;
   background-color:#FFF5EC;
   ;
@@ -45,7 +44,9 @@ width: 300px;
 align-items:flex-end;
 border-radius: 0px;
 }
-
+.img-container{
+  margin-left: 150px;
+}
 .form-container {
   display: flex;
   flex-direction: column;
