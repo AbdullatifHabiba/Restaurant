@@ -5,6 +5,12 @@ import pizza from "./images/Pizza maker-cuate 1.png";
 import { environment } from "../environment";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
+
+export const ValidateEmail = (mail="")=>(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(mail));
+export const Validatepassword = (password="")=>(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password));
+export const ValidatePhonenumber = (number="")=>(/^01[0-2]\d{1,8}$/.test(number));
+export const passwordEncryption = (pass="")=>  bcrypt.hashSync(pass, '$2a$10$CwTycUXWue0Thq9StjUM0u');
+
 function SignUp() {
   let nav = useNavigate();
   let [info, setInfo] = React.useState({
@@ -17,17 +23,17 @@ function SignUp() {
   });
   let validateInfo = (data)=>{
     //email regex
-    if(!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.mail))){
+    if(!ValidateEmail(info.mail)){
       window.alert("invalid Email address!");
       return false;
     }
     //password regex
-    if(!(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(data.password))){
+    if(!Validatepassword(info.password)){
       window.alert("Invalid password: at least 8 characters with at least 1 digit and 1 letter");
       return false;
     }
     //phone number regex
-    if(!(/^01[0-2]\d{1,8}$/.test(data.phone))){
+    if(!ValidatePhonenumber(info.phone)){
       window.alert("invalid phone number!");
       return false;
     }
@@ -50,7 +56,7 @@ function SignUp() {
       },
       body: JSON.stringify({
         ...info,
-        password: bcrypt.hashSync(info.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
+        password: passwordEncryption(info.password)
       }),
     });
     let message =  await result.json();

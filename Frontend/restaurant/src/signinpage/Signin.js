@@ -8,9 +8,14 @@ import './Signin.css';
 import bcrypt from 'bcryptjs'
 import { Link , useNavigate} from "react-router-dom";
 import { environment } from '../environment';
+
+export const ValidateEmail = (mail="")=>(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(mail));
+export const passwordEncryption = (pass="")=>  bcrypt.hashSync(pass, '$2a$10$CwTycUXWue0Thq9StjUM0u');
+
 function Signin() {
   
   const [User, setuser] = React.useState("customer");
+
   let [info,setInfo] = React.useState({mail:"",password:"",user:""});
   let nav = useNavigate();
   let handleChange =  (e)=>{
@@ -21,7 +26,7 @@ function Signin() {
    info.user = User;
   let handleSubmit = async (e)=>{
     e.preventDefault();
-    if(!(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(info.mail))){
+    if(!ValidateEmail(info.mail)){
       window.alert("invalid email address");
       return;
     }
@@ -34,13 +39,12 @@ function Signin() {
       body: JSON.stringify(
         {
           ...info,
-          password: bcrypt.hashSync(info.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
+          password: passwordEncryption(info.password)
         }
         )
 
     });
     let message = await result.json();
-    console.log(message.status);
     if(message.body !== "error"){
       //route to Main page
       nav("/Page");
@@ -67,7 +71,7 @@ function Signin() {
                 <img className='image_2' name="image_2" src = {Admin} alt="" />
                 <input className="checkbox" type="checkbox" checked={User === "admin"} onChange={() => setuser("admin")} /> Admin </div>
                 </div>
-                <input className='btn-submit' type="submit" value="Sign In" name="Sign In" />
+                <input className='btn-submit' title='button'  type="submit" value="Sign In" name="Sign In" />
                 <div className='signup'>
                 <p>You don't have Acount?</p> 
                 <Link to="/signUp"> Sign up </Link>
