@@ -93,7 +93,7 @@ describe("SignUp service", () => {
             "password": "567",
             "phone": "01023567"
         };
-        expect(obj.sign_up("123")).to.be.a("promise");
+        expect(obj.sign_up(request)).to.be.a("promise");
     });
 
     it("check added email is ok", async () => {
