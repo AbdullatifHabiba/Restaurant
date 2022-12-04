@@ -14,7 +14,7 @@ app.use(express.json());
 (async () => {
 
   console.log("Initialize database connection...");
-  await db.sequelize.sync({ force: false });
+  await db.sequelize.sync({ force: true });
 
 })();
 

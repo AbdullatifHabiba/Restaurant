@@ -89,11 +89,11 @@ describe("SignUp service", () => {
     it("shoud return void", () => {
         const request: JSON = <JSON><unknown>{
             "name": "khalid",
-            "mail": "mohamed@",
+            "mail": "mohamed@gmqai.com",
             "password": "567",
             "phone": "01023567"
         };
-        expect(obj.sign_up("123")).to.be.a("promise");
+        expect(obj.sign_up(request)).to.be.a("promise");
     });
 
     it("check added email is ok", async () => {
@@ -104,7 +104,7 @@ describe("SignUp service", () => {
             "password": "mohamed@WppwW.com",
             "phone": "123785"
         };
-        await obj.sign_up("123").then((accepted) => result = accepted,
+        await obj.sign_up(request).then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));
         expect(result.state).to.equal("accepted");
     });
@@ -117,7 +117,7 @@ describe("SignUp service", () => {
             "password": "mohamed@",
             "phone": "015898723"
         };
-        await obj.sign_up('123').then((accepted) => result = accepted,
+        await obj.sign_up(request).then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));
         expect(result.state).to.equal("Email already exist");
     });
@@ -129,7 +129,7 @@ describe("SignUp service", () => {
             "password": "a",
             "phone": "a"
         };
-        expect(obj.sign_up("123")).to.be.a("promise");
+        expect(obj.sign_up(request)).to.be.a("promise");
     });
 
     it('check added email is ok', async () => {
@@ -140,7 +140,7 @@ describe("SignUp service", () => {
             "password": "aao",
             "phone": "a158"
         };
-        await obj.sign_up("123").then((accepted) => result = accepted,
+        await obj.sign_up(request).then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));
         expect(result.state).to.equal("accepted");
     });
