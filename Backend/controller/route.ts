@@ -23,20 +23,20 @@ const sign_upservice: ISignUpService = new signupservice();
 const menu_service: IMenueService = new menuserice();
 
 // GET method route
-app.get('/signin', (req, res) => {
+app.post('/signin', (req, res) => {
   let r = sign_inservice.sign_in(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(<JSON><unknown>{"state":"failed to connect database"}));
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send({state:"failed to connect database"}));
 })
 
 app.get('/homemenu', (req, res) => {
   let r = menu_service.get6();
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(<JSON><unknown>{"state":"failed to connect database"}));
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send({state:"failed to connect database"}));
 })
 
 // POST method route
 app.post('/signup', (req, res) => {
   let r = sign_upservice.sign_up(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send(<JSON><unknown>{"state":"failed to connect database"}));
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send({state:"failed to connect database"}));
 })
 
 app.listen(5000);
