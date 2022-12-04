@@ -34,14 +34,14 @@ describe("SignIn Repo", () => {
         expect(obj.checkCorrectCustomer("mohamed", "123")).to.be.a("promise");
     });
 
-    it("check added item is ok", async () => {
+    it("check email is valid", async () => {
         let result: any;
-        await obj.checkCorrectCustomer("mohamed@", "123").then((accepted) => (result = accepted),
+        await obj.checkCorrectCustomer('suzan@gmail.com','785***').then((accepted) => (result = accepted),
             (rejected) => console.log("Erron" + rejected));
         expect(result.state).to.equal("accepted");
     });
 
-    it("check added item is exist not to be added", async () => {
+    it("check email is not valid", async () => {
         let result: any;
         await obj.checkCorrectCustomer("mohamedKalid", "123").then((accepted) => (result = accepted),
             (rejected) => console.log("Erron" + rejected));
@@ -52,7 +52,7 @@ describe("SignIn Repo", () => {
 describe("SignUp Repo", () => {
     const obj = new SignUp();
     it("shoud return void", () => {
-        expect(obj.AddNewEmailCustomer("khalid", "mohamed@", "567", "01023567")).to.be.a("promise");
+        expect(obj.AddNewEmailCustomer("khalid", "mohamed@essam.com", "567", "01023567")).to.be.a("promise");
     });
 
     it("check added email is ok", async () => {
@@ -64,25 +64,25 @@ describe("SignUp Repo", () => {
 
     it("check added email is exist not to be added", async () => {
         let result: any;
-        await obj.AddNewEmailCustomer("ahmed", "mohamedrr@gmail.com", "mohamed@", "015898723").then((accepted) => result = accepted,
+        await obj.AddNewEmailCustomer("adel", "mohamedrr@gmail.com", "mohamed@WppwW.com", "123785").then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));
         expect(result.state).to.equals("Email already exist");
     });
 
     it("shoud return void", () => {
-        expect(obj.AddNewEmailCustomer("essam", "a@a", "a", "a")).to.be.a('promise');
+        expect(obj.AddNewEmailCustomer("essam", "a@a.com", "a", "a")).to.be.a('promise');
     });
 
     it("check added email is ok", async () => {
         let result: any;
-        await obj.AddNewEmailCustomer("anwar", "aa", "aao", "a158").then((accepted) => result = accepted,
+        await obj.AddNewEmailCustomer("anwar", "aa@122.com", "aao", "a158").then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));
         expect(result.state).to.equals("accepted");
     });
 
     it("check added email is exist not to be added", async () => {
         let result: any;
-        await obj.AddNewEmailCustomer("anwer", "aa", "aaoom", "a158").then((accepted) => result = accepted,
+        await obj.AddNewEmailCustomer("anwer", "aa@122.com", "aaoom", "a158").then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));
         expect(result.state).to.equals("Email already exist");
     });
