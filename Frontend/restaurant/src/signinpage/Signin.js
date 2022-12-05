@@ -42,16 +42,16 @@ function Signin() {
           password: passwordEncryption(info.password)
         }
         )
-        //'25', '0127834006', 'AbdullaMMMN', 'a98NKK6do@gmail.com', '$2a$10$CwTycUXWue0Thq9StjUM0u9sklaV.gMGaa.5rOjeOF9oLyJd7.udC', '2022-12-01 21:53:26', '2022-12-01 21:53:26'
 
     });
     let message = await result.json();
-    if(message.body !== "error"){
+    if(message.state === "accepted"){
       //route to Main page
       nav("/Page");
       console.log("signed in successfully!")
+      window.alert("signed in successfully!");
     }else {
-      window.alert("Email or Password not correct")
+      window.alert(message.state);
     }
   }
   return (

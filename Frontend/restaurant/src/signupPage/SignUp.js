@@ -61,11 +61,11 @@ function SignUp() {
     });
     let message =  await result.json();
     console.log(message);
-    if (message) {
+    if (message.state==="accepted") {
       nav("/signin");
       window.alert("signed up successfully!");
     } else {
-      window.Error(`${message}`);
+      window.Error(`${message.state}`);
     }
   };
   return (
