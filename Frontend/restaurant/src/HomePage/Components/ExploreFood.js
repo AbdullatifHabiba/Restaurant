@@ -1,7 +1,7 @@
 import React from "react";
-export default function exploreFood(){
+export default function exploreFood() {
 
-    return(
+    return (
         <div className="Food">
             <foodCard
                 img="sandwitch"

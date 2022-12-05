@@ -1,5 +1,3 @@
-import db from './sequalize';
-
 export class ItemRepo {
 
    // async AddItem(item_id: number, order_id: Number, name: String, price: String, amount_required: number) {
