@@ -6,20 +6,20 @@ describe("SignIn Service", () => {
     const obj = new signinservice();
 
     it("shoud return void", () => {
-        const request: JSON = <JSON><unknown>{
-            "mail": "a",
-            "password": "a",
-            "user": "admin"
+        const request = {
+            mail: "a",
+            password: "a",
+            user: "admin"
         };
         expect(obj.sign_in(request)).to.be.a("promise");
     });
 
     it("check email is not exist ", async () => {
         let result: any;
-        const request: JSON = <JSON><unknown>{
-            "mail": "a15",
-            "password": "a87",
-            "user": "admin"
+        const request = {
+            mail: "a15",
+            password: "a87",
+            user: "admin"
         };
         await obj.sign_in(request).then((accepted) => (result = accepted),
             (rejected) => console.log("Error database" + rejected));
@@ -28,10 +28,10 @@ describe("SignIn Service", () => {
 
     it("check email is exist ", async () => {
         let result: any;
-        const request: JSON = <JSON><unknown>{
-            "mail": "mohamed@gmail.com",
-            "password": "785***",
-            "user": "admin"
+        const request = {
+            mail: "mohamed@gmail.com",
+            password: "785***",
+            user: "admin"
         };
         await obj.sign_in(request).then((accepted) => (result = accepted),
             (rejected) => console.log("Erron" + rejected));
@@ -40,10 +40,10 @@ describe("SignIn Service", () => {
 
     it('check email is not correctly exist', async () => {
         let result: any;
-        const request: JSON = <JSON><unknown>{
-            "mail": "yy",
-            "password": "yy",
-            "user": "customer"
+        const request = {
+            mail: "yy",
+            password: "yy",
+            user: "customer"
         };
         await obj.sign_in(request).then((accepted) => (result = accepted),
             (rejected) => console.log("Erron" + rejected));
@@ -51,20 +51,20 @@ describe("SignIn Service", () => {
     });
 
     it("shoud return void", () => {
-        const request: JSON = <JSON><unknown>{
-            "mail": "mohamed",
-            "password": "123",
-            "user": "customer"
+        const request = {
+            mail: "mohamed",
+            password: "123",
+            user: "customer"
         };
         expect(obj.sign_in(request)).to.be.a("promise");
     });
 
     it("check valid customer email", async () => {
         let result: any;
-        const request: JSON = <JSON><unknown>{
-            "mail": "suzan@gmail.com",
-            "password": '785***',
-            "user": "customer"
+        const request = {
+            mail: "suzan@gmail.com",
+            password: '785***',
+            user: "customer"
         };
         await obj.sign_in(request).then((accepted) => (result = accepted),
             (rejected) => console.log("Erron" + rejected));
@@ -73,10 +73,10 @@ describe("SignIn Service", () => {
 
     it("check added item is exist not to be added", async () => {
         let result: any;
-        const request: JSON = <JSON><unknown>{
-            "mail": "mohamedKalid",
-            "password": "123",
-            "user": "customer"
+        const request = {
+            mail: "mohamedKalid",
+            password: "123",
+            user: "customer"
         };
         await obj.sign_in(request).then((accepted) => (result = accepted),
             (rejected) => console.log("Erron" + rejected));
@@ -87,22 +87,22 @@ describe("SignIn Service", () => {
 describe("SignUp service", () => {
     const obj = new signupservice();
     it("shoud return void", () => {
-        const request: JSON = <JSON><unknown>{
-            "name": "khalid",
-            "mail": "mohamed@essam.com",
-            "password": "567",
-            "phone": "01023567"
+        const request = {
+            name: "khalid",
+            mail: "mohamed@essam.com",
+            password: "567",
+            phone: "01023567"
         };
         expect(obj.sign_up(request)).to.be.a("promise");
     });
 
     it("check added email is ok", async () => {
         let result: any;
-        const request: JSON = <JSON><unknown>{
-            "name": "adel",
-            "mail": "mohamedrrgreatly@gmail.com",
-            "password": "mohamed@WppwW.com",
-            "phone": "123785"
+        const request = {
+            name: "adel",
+            mail: "mohamedrrgreatly@gmail.com",
+            password: "mohamed@WppwW.com",
+            phone: "123785"
         };
         await obj.sign_up(request).then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));
@@ -111,11 +111,11 @@ describe("SignUp service", () => {
 
     it("check added email is exist not to be added", async () => {
         let result: any;
-        const request: JSON = <JSON><unknown>{
-            "name": "ahmed",
-            "mail": "mohamedrrgreatly@gmail.com",
-            "password": "mohamed@",
-            "phone": "015898723"
+        const request = {
+            name: "ahmed",
+            mail: "mohamedrrgreatly@gmail.com",
+            password: "mohamed@",
+            phone: "015898723"
         };
         await obj.sign_up(request).then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));
@@ -123,22 +123,22 @@ describe("SignUp service", () => {
     });
 
     it("shoud return void", () => {
-        const request: JSON = <JSON><unknown>{
-            "name": "essam",
-            "mail": "a@a",
-            "password": "a",
-            "phone": "a"
+        const request = {
+            name: "essam",
+            mail: "a@a",
+            password: "a",
+            phone: "a"
         };
         expect(obj.sign_up(request)).to.be.a("promise");
     });
 
     it('check added email is ok', async () => {
         let result: any;
-        const request: JSON = <JSON><unknown>{
-            "name": "anwar",
-            "mail": "aaqqq@13.com",
-            "password": "aao",
-            "phone": "a158"
+        const request = {
+            name: "anwar",
+            mail: "aaqqq@13.com",
+            password: "aao",
+            phone: "a158"
         };
         await obj.sign_up(request).then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));
@@ -147,11 +147,11 @@ describe("SignUp service", () => {
 
     it('check added email is exist not to be added', async () => {
         let result: any;
-        const request: JSON = <JSON><unknown>{
-            "name": "anwer",
-            "mail": "aaqqq@13.com",
-            "password": "aaoom",
-            "phone": "a158"
+        const request = {
+            name: "anwer",
+            mail: "aaqqq@13.com",
+            password: "aaoom",
+            phone: "a158"
         };
         await obj.sign_up(request).then((accepted) => result = accepted,
             (rejected) => console.log("Erron" + rejected));

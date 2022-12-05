@@ -6,10 +6,10 @@ import { environment } from "../environment";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
 
-export const ValidateEmail = (mail="")=>(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(mail));
-export const Validatepassword = (password="")=>(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password));
-export const ValidatePhonenumber = (number="")=>(/^01[0-2]\d{1,8}$/.test(number));
-export const passwordEncryption = (pass="")=>  bcrypt.hashSync(pass, '$2a$10$CwTycUXWue0Thq9StjUM0u');
+export const ValidateEmail = (mail = "") => (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(mail));
+export const Validatepassword = (password = "") => (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password));
+export const ValidatePhonenumber = (number = "") => (/^01[0-2]\d{1,8}$/.test(number));
+export const passwordEncryption = (pass = "") => bcrypt.hashSync(pass, '$2a$10$CwTycUXWue0Thq9StjUM0u');
 
 function SignUp() {
   let nav = useNavigate();
@@ -21,19 +21,19 @@ function SignUp() {
     city: "",
     address: "",
   });
-  let validateInfo = (data)=>{
+  let validateInfo = (data) => {
     //email regex
-    if(!ValidateEmail(info.mail)){
+    if (!ValidateEmail(info.mail)) {
       window.alert("invalid Email address!");
       return false;
     }
     //password regex
-    if(!Validatepassword(info.password)){
+    if (!Validatepassword(info.password)) {
       window.alert("Invalid password: at least 8 characters with at least 1 digit and 1 letter");
       return false;
     }
     //phone number regex
-    if(!ValidatePhonenumber(info.phone)){
+    if (!ValidatePhonenumber(info.phone)) {
       window.alert("invalid phone number!");
       return false;
     }
@@ -46,7 +46,7 @@ function SignUp() {
   };
   let handleSubmit = async (e) => {
     e.preventDefault();
-    if(!validateInfo(info)){
+    if (!validateInfo(info)) {
       return;
     }
     let result = await fetch(`${environment.env}/signup`, {
@@ -59,13 +59,13 @@ function SignUp() {
         password: passwordEncryption(info.password)
       }),
     });
-    let message =  await result.json();
+    let message = await result.json();
     console.log(message);
-    if (message.state==="accepted") {
+    if (message.state === "accepted") {
       nav("/signin");
       window.alert("signed up successfully!");
     } else {
-      window.Error(`${message.state}`);
+      window.alert(`${message.state}`);
     }
   };
   return (

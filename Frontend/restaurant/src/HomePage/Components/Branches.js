@@ -1,9 +1,9 @@
 import React from "react";
 import LandingTitle from "./LandingTiltle";
 import BrancheItem from "./BranchItems";
-export default function Branches(){
+export default function Branches() {
 
-    return(
+    return (
         <div className="Branches">
             <LandingTitle
                 title="Some Top restaurant for dining in or Take away!"
@@ -12,19 +12,19 @@ export default function Branches(){
                 p3="Delivery any where in egypt"
             />
             <div className="container">
-            <BrancheItem
-                name="Moharram Bek"
-                disc="This is our first branch that we start all of this from"
-                loc="Alex"
-                one="true"
-            />
-            <BrancheItem
-                name="Sheraton"
-                disc="The second and not the last branch, near you in cairo"
-                loc="cairo"
-            />
+                <BrancheItem
+                    name="Moharram Bek"
+                    disc="This is our first branch that we start all of this from"
+                    loc="Alex"
+                    one="true"
+                />
+                <BrancheItem
+                    name="Sheraton"
+                    disc="The second and not the last branch, near you in cairo"
+                    loc="cairo"
+                />
             </div>
-            
+
         </div>
     );
 }

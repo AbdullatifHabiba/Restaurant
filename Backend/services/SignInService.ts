@@ -6,13 +6,13 @@ export class signinservice implements ISignInService {
 
     signin: ISignInRepo = new SignIn();
 
-    public sign_in(req:any) {
+    public sign_in(req: any) {
         let res;
         switch (req.user) {
             case "customer":
                 res = this.customer_sign_in(req.mail, req.password);
                 break;
-            case "delivery":
+            case "deliveryman":
                 res = this.delivery_sign_in(req.mail, req.password);
                 break;
             case "admin":

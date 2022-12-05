@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 .sign-up {
   display: grid;
   grid-template-columns: 60% 40%;
@@ -11,6 +12,7 @@
   padding: 0 100px;
   background-color: #fff5ec;
 }
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -18,11 +20,13 @@
   justify-content: center;
   width: 100%;
 }
+
 form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 input {
   margin-bottom: 10px;
   width: 100%;
@@ -38,6 +42,7 @@ input {
   font-weight: 700;
   font-size: 17px;
 }
+
 .sign-up-header {
   color: #2e266f;
   line-height: 90px;
@@ -46,42 +51,49 @@ input {
   font-weight: 700;
   font-size: 55px;
 }
-.btn-submit{
-    border: none;
-    background-color: #FE043C;
-    color: #FFFFFF;
-    border-radius: 15px;
-    font-size: 25px;
-    opacity: 1;
-    padding: 10px 0;
-    cursor: pointer;
-    transition: .5s;
-    margin-top: 20px;
+
+.btn-submit {
+  border: none;
+  background-color: #FE043C;
+  color: #FFFFFF;
+  border-radius: 15px;
+  font-size: 25px;
+  opacity: 1;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: .5s;
+  margin-top: 20px;
 }
-.btn-submit:hover{
-    background-color: #ff8aa3;
+
+.btn-submit:hover {
+  background-color: #ff8aa3;
 }
-.img-container{
+
+.img-container {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.img-container img{
- max-width: 300px;
- min-width: auto;
+
+.img-container img {
+  max-width: 300px;
+  min-width: auto;
 }
+
 @media (max-width: 1050px) {
-  .img-container img{
+  .img-container img {
     max-width: 300px;
     min-width: auto;
-   }
+  }
 }
+
 @media (max-width: 800px) {
-  .sign-up{
+  .sign-up {
     grid-template-columns: auto;
   }
-  .img-container{
+
+  .img-container {
     display: none;
-   }
+  }
 }

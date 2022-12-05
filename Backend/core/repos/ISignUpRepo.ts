@@ -1,5 +1,5 @@
 export interface ISignUpRepo {
-  
+
   AddNewEmailCustomer(
     Name: String,
     Address: String,
@@ -8,5 +8,4 @@ export interface ISignUpRepo {
     Password: String,
     Phone: String
   ): Promise<any>;
-
 }
