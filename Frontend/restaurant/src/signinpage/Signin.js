@@ -45,12 +45,13 @@ function Signin() {
 
     });
     let message = await result.json();
-    if(message.body !== "error"){
+    if(message.state === "accepted"){
       //route to Main page
       nav("/Page");
       console.log("signed in successfully!")
+      window.alert("signed in successfully!");
     }else {
-      window.alert("Email or Password not correct")
+      window.alert(message.state);
     }
   }
   return (
