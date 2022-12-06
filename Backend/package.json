@@ -4,15 +4,47 @@
   "description": "\"webserver for restaurant\"",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "ts-node-dev --respawn --transpile-only ./controller/route.ts",
     "tsc": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test mocha --check-leaks -r ts-node/register -r tsconfig-paths/register \"test/**/*.ts\"",
+    "build": "tsc -p ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/bluebird": "^3.5.26",
+    "bluebird": "^3.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "media-typer": "^1.1.0",
+    "mysql2": "^2.3.3",
+    "node-fetch": "^3.3.0",
+    "reflect-metadata": "^0.1.13",
     "sequelize": "^6.25.8",
+    "sequelize-cli": "^6.5.2",
+    "sequelize-typescript": "^2.1.5",
+    "tsc": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/jest": "^29.2.3",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^11.15.54",
+    "@types/sequelize": "^4.27.44",
+    "@types/supertest": "^2.0.12",
+    "chai": "^4.3.7",
+    "jest": "^29.3.1",
+    "media-typer": "^1.1.0",
+    "mocha": "^10.1.0",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "tsconfig-paths": "^4.1.0",
     "typescript": "^4.9.3"
   }
 }
