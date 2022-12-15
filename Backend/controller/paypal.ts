@@ -28,7 +28,7 @@ paypal.configure({
         "transactions": [{
           "item_list": {
             "items": [{
-              "name": "item",
+              "name": "sandwatch",
               "sku": "item",
               "price": total,
               "currency": currency,
