@@ -32,7 +32,7 @@ paypal.configure({
               "sku": "item",
               "price": total,
               "currency": currency,
-              "quantity": 1
+              "quantity": 1000
             }]
           },
           "amount": {
