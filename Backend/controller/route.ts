@@ -6,17 +6,29 @@ import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';
 import db from './../repository/sequalize';
-import cors from 'cors';
+import * as AWS from './aws';
+import*as paypal from'./paypal'
 
+import cors from 'cors';
 const app = express()
 app.use(express.json());
 
 (async () => {
 
-  console.log("Initialize database connection...");
-  await db.sequelize.sync({ force: false });
+  
 
-})();
+  //AWS.getPutSignedUrl("test");
+  // await AWS.upload_images("sandwatch").then(acc=>{
+  //   console.log("successfully sand at "+acc.Location);
+  //   const readStream = AWS.getFileStream("sandwatch");
+  //   console.log("successfully readStream");
+
+  //  console.log(readStream.readable);
+  });
+ // console.log("Initialize database connection...");
+ // await db.sequelize.sync({ force: false });
+
+//})();
 
 app.use(cors(
   {
@@ -27,7 +39,19 @@ app.use(cors(
 const sign_inservice: ISignInService = new signinservice();
 const sign_upservice: ISignUpService = new signupservice();
 const menu_service: IMenueService = new menuserice();
+app.get('/paypal', (req, res) => {
+  paypal.create_payment(100,15).then((accepted) => {
+    console.log("successfully sand at " + accepted);
+    res.status(200).send(accepted);
+  }).catch((rejected) => {
+    console.log("rejected");
+    res.status(404).send({ state: rejected });
+  });
 
+});
+app.get('/cancel', (req, res) => {
+  console.log(req.body+"cancel");
+});
 // GET method route
 app.post('/signin', (req, res) => {
   let r = sign_inservice.sign_in(req.body);
