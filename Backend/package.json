@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only ./controller/route.ts",
     "tsc": "tsc",
-    "test": "NODE_ENV=test mocha --check-leaks -r ts-node/register -r tsconfig-paths/register \"test/**/*.ts\"",
+    "test": "NODE_ENV=test mocha --check-leaks -r ts-node/register -r tsconfig-paths/register \"test/ServiceTest/Admin.ts\"",
     "build": "tsc -p ."
   },
   "author": "",

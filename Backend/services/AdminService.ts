@@ -1,7 +1,10 @@
 
 import * as AWS from '../services/aws';
 
-export class adminsrevice {
+import { IAdminService } from "../core/service/IAdminService";
+import { AdminRepo } from "../repository/AdminRepo"
+
+export class adminsrevice implements IAdminService{
   
 
 AddItem_toDB_and_s3(file:any,body:any) {
@@ -14,5 +17,10 @@ AddItem_toDB_and_s3(file:any,body:any) {
    });
    
 }
-
+    
+    adminR_Obj =new AdminRepo();
+    getAllItems()
+    {
+        return this.adminR_Obj.getALL();
+    }
 }
