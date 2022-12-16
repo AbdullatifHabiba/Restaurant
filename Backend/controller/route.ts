@@ -24,11 +24,10 @@ app.use(express.json());
   //   console.log("successfully readStream");
 
   //  console.log(readStream.readable);
-  });
- // console.log("Initialize database connection...");
- // await db.sequelize.sync({ force: false });
+ console.log("Initialize database connection...");
+ await db.sequelize.sync({ force: false });
 
-//})();
+})();
 
 app.use(cors(
   {
