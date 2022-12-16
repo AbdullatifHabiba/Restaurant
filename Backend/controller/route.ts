@@ -5,29 +5,35 @@ import { IMenueService } from '../core/service/IMenuService';
 import { menuserice } from '../services/MenuService';
 import { signinservice } from '../services/SignInService';
 import { signupservice } from '../services/SignUpService';
+import { IAdminService } from '../core/service/IAdminService';
+import { adminsrevice } from '../services/AdminService';
 import db from './../repository/sequalize';
-import * as AWS from './aws';
+import * as AWS from '../services/aws';
 import*as paypal from'./paypal'
-
 import cors from 'cors';
+import multer from 'multer';
+import crypto from 'crypto';
+import bodyParser from 'body-parser';
+
 const app = express()
 app.use(express.json());
 
-(async () => {
+// (async () => {
 
   
 
-  //AWS.getPutSignedUrl("test");
-  // await AWS.upload_images("sandwatch").then(acc=>{
-  //   console.log("successfully sand at "+acc.Location);
-  //   const readStream = AWS.getFileStream("sandwatch");
-  //   console.log("successfully readStream");
+//   //AWS.getPutSignedUrl("test");
+//   // await AWS.upload_images("sandwatch").then(acc=>{
+//   //   console.log("successfully sand at "+acc.Location);
+//   //   const readStream = AWS.getFileStream("sandwatch");
+//   //   console.log("successfully readStream");
 
-  //  console.log(readStream.readable);
- console.log("Initialize database connection...");
- await db.sequelize.sync({ force: false });
+//   //  console.log(readStream.readable);
+//   });
+ // console.log("Initialize database connection...");
+ // await db.sequelize.sync({ force: false });
 
-})();
+//})();
 
 app.use(cors(
   {
@@ -38,10 +44,12 @@ app.use(cors(
 const sign_inservice: ISignInService = new signinservice();
 const sign_upservice: ISignUpService = new signupservice();
 const menu_service: IMenueService = new menuserice();
+const admin_service: IAdminService = new adminsrevice();
 app.get('/paypal', (req, res) => {
   paypal.create_payment(100,15).then((accepted) => {
     console.log("successfully sand at " + accepted);
     res.status(200).send(accepted);
+
   }).catch((rejected) => {
     console.log("rejected");
     res.status(404).send({ state: rejected });
@@ -51,6 +59,34 @@ app.get('/paypal', (req, res) => {
 app.get('/cancel', (req, res) => {
   console.log(req.body+"cancel");
 });
+
+const storage=multer.memoryStorage();
+
+const upload=multer({storage:storage});
+//app.use(bodyParser.urlencoded({ extended: false }));
+const fs = require('fs')
+
+const imageURL = 'G:/Fifth Term/Software Engineering/Project/Frontend/restaurant/public/Images/Bignine.jfif'
+  const fileStream = fs.createReadStream(imageURL);
+app.post('/additem',upload.any() ,async(req,res)=>{
+  
+  console.log(req.body);
+  const fileBuffer =fileStream;
+  admin_service.AddItem_toDB_and_s3(fileBuffer,req.body).then((accepted) => {
+    res.status(200).send(accepted);}).catch((rejected) => {
+      res.status(404).send({ state: rejected });
+    });
+
+
+  });
+
+
+
+
+app.post('/order',(req, res) => {
+  console.log(req.body);
+  res.status(200).send({ state: "success" });
+})
 // GET method route
 app.post('/signin', (req, res) => {
   let r = sign_inservice.sign_in(req.body);
