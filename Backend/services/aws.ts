@@ -34,12 +34,10 @@ export function getGetSignedUrl( key: string ): string {
     });
   }
 
-  const imageURL = 'G:/Fifth Term/Software Engineering/Project/Frontend/restaurant/public/Images/Bignine.jfif'
-  let blob :any={};
+  
 
 
   export function upload_images( key: string ,blob:any) {
-    const fileStream = fs.createReadStream(imageURL);
 
     return s3.upload({
       Bucket: buc!,
