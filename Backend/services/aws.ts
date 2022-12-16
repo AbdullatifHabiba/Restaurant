@@ -39,23 +39,25 @@ export function getGetSignedUrl( key: string ): string {
   let blob :any={};
 
 
-  export function upload_images( key: string ) {
+  export function upload_images( key: string ,blob:any) {
     const fileStream = fs.createReadStream(imageURL);
 
     return s3.upload({
       Bucket: buc!,
-      Body: fileStream,
+      Body: blob,
       Key: key,
     }).promise()
 
   }
-  export function getFileStream(fileKey) {
+  export function getFileStream(fileKey:any) {
   return s3.getObject({
     Key: fileKey,
     Bucket: buc!,
   }).createReadStream();
   }
   
+
+export { AWS };
   //export function upload_image(){
     
   //}
