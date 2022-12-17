@@ -5,8 +5,10 @@ export class customerRepo implements ICustomerRepo {
 
     menuRepo = new MenueRepo();
 
-    get_Available_Items() {
+    async get_Available_Items() {
         return this.menuRepo.GetAllItems();
     }
+
+    
 
 }
