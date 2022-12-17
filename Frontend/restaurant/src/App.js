@@ -4,6 +4,7 @@ import HomePage from './HomePage/HomePage';
 import Signin from './signinpage/Signin';
 import SignUp from './signupPage/SignUp';
 import Page from './Page';
+import CustomerMenu from'./CustomerMenu/CustomerMenu'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/Page" element={<Page />} />
+        <Route path="/CustomerMenu" element={<CustomerMenu />} />
 
 
       </Routes>

@@ -89,7 +89,6 @@ export default function CustomerMenu() {
         }
         NewOrder.push({Name:"Price",Count:Price});
         NewOrder.push({Name:"User",Count:UserID});
-         
         console.log(NewOrder);
     }
     const [count, setCount] = React.useState(0);
