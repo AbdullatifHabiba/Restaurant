@@ -6,10 +6,6 @@ module.exports = (sequelize: any, Sequelize: any) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    item_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
     customer_id: {
       type: Sequelize.INTEGER,
       allowNull: false,

@@ -1,2 +1,2 @@
-export const environment ={env:"http://localhost:5000"};
+export const environment = { env: "http://localhost:5000" };
 

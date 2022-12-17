@@ -1,12 +1,13 @@
+import { ISignUpRepo } from "../core/repos/ISignUpRepo";
+import { ISignUpService } from "../core/service/ISignUpService";
 import { SignUp } from "../repository/SignupRepo";
 
+export class signupservice implements ISignUpService {
+  signup: ISignUpRepo = new SignUp();
 
-export class signupservice {
-    signup = new SignUp();
+  sign_up(req: any) {
 
-    sign_up(req) {
+    return this.signup.AddNewEmailCustomer(req.name, req.address, req.city, req.mail, req.password, req.phone);
 
-        return this.signup.AddNewEmailCustomer(req.phone, req.name, req.mail, req.password);
-        
-    }
+  }
 }

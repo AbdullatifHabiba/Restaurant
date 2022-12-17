@@ -34,3 +34,5 @@ module.exports = (sequelize: any, Sequelize: any) => {
   })
   return MenuItems;
 };
+
+ let item1={}

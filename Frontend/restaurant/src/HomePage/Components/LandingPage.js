@@ -1,13 +1,13 @@
 import React from "react";
-import LandImg from"../Images/landPhoto.png"
-import khs from"../Images/khs.png"
-import {GoLocation} from "react-icons/go"
+import LandImg from "../Images/landPhoto.png"
+import khs from "../Images/khs.png"
+import { GoLocation } from "react-icons/go"
 
 import { Link } from "react-router-dom";
 
-export default function LandingPage(){
+export default function LandingPage() {
 
-    return(
+    return (
         <div className="Landing">
             <nav>
                 <h1 className="Logo">Eat Nine</h1>
@@ -19,13 +19,13 @@ export default function LandingPage(){
                     <p className="p1">Discover Restaurant</p>
                     <p className="p2">& Delicious Food</p>
                 </div>
-        <div >
-            <img src={khs} alt="Landing page"/>
-            <img src={LandImg} alt="Landing page"/>
-        </div>
+                <div >
+                    <img src={khs} alt="Landing page" />
+                    <img src={LandImg} alt="Landing page" />
+                </div>
 
             </div>
-            <p className="Loc"><GoLocation/> Egypt</p>
+            <p className="Loc"><GoLocation /> Egypt</p>
         </div>
     );
 }

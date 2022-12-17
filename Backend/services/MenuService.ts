@@ -1,19 +1,16 @@
-import {MenueRepo} from "../repository/MenueRepo"
+import { IMenueRepo } from "../core/repos/IMenueRepo";
+import { IMenueService } from "../core/service/IMenuService";
+import { MenueRepo } from "../repository/MenueRepo"
 
-export class menuserice {
-    menuRepo = new MenueRepo();
+export class menuserice implements IMenueService {
 
-    public serve(req) {
-        switch (req.service) {
-            case "getAll":
-                return this.menuRepo.GetAllItems();
-                break;
-            case "get6":
-                
-                break;
-            default:
-                return "error";
-                break;
-        }
+    menuRepo: IMenueRepo = new MenueRepo();
+
+    getAll() {
+        return this.menuRepo.GetAllItems();
+    }
+
+    get6() {
+        return this.menuRepo.get6();
     }
 }
