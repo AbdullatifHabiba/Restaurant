@@ -53,7 +53,7 @@ paypal.configure({
     })
   }
   
-  export function execute_payment(payment_id, payer_id, total){
+  export function execute_payment(payment_id, payer_id,total){
     return new Promise((resolve, reject) => {
       const execute_payment_json = {
         "payer_id": payer_id,
