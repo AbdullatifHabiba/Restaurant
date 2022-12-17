@@ -53,9 +53,15 @@ app.get('/order', (req, res) => {
 
 
 });
+app.get('/cash', (req, res) => {
+
+});
 app.get('/paypal', (req, res) => {
-  paypal.create_payment(100,15).then((accepted:any) => {
+
+  paypal.create_payment(11,140).then((accepted:any) => {
     
+    console.log(accepted.links)
+
     res.redirect(accepted.links[1].href)
 
   }).catch((rejected) => {
@@ -65,20 +71,17 @@ app.get('/paypal', (req, res) => {
 
 });
 app.get('/cancel', (req, res) => {
-  console.log(req.body+"cancel");
-  res.redirect('/paypal')
+  console.log(req.body);
 });
-app.get('/success', (req:any, res) => {
-  
-
-  paypal.execute_payment(req.payment_id,req.payer_id,1).then((accepted:any) => {
-    console.log(accepted);
-    res.status(200).send(accepted);
+app.get('/success', (req, res) => {
+  paypal.execute_payment(req.query.paymentId,req.query.PayerID,140).then((accepted:any) => {
+    console.log(accepted.state);
+    res.status(200).send(accepted.state);
   }).catch((rejected) => {
-    console.log("rejected");
-  res.redirect('/paypal')
+    console.log(rejected);
+  res.send(rejected)
 
-  });
+ });
 
 });
 
@@ -91,18 +94,20 @@ const fs = require('fs')
 const imageURL = 'G:/Fifth Term/Software Engineering/Project/Frontend/restaurant/public/Images/Bignine.jfif'
   const fileStream = fs.createReadStream(imageURL);
 app.post('/additem',upload.any() ,async(req,res)=>{
-  console.log("Initialize database connection...");
-    await db.sequelize.sync({ force: false });
-  console.log(req.body);
-  const fileBuffer =fileStream;
+  
+  console.log(req);
+  console.log(storage)
+  const fileBuffer =req.file;
+  console.log(fileBuffer)
   await admin_service.AddItem_toDB_and_s3(fileBuffer,req.body).then((accepted) => {
-    res.status(200).send(accepted);}).catch((rejected) => {
+    res.status(200).send(accepted);})
+    .catch((rejected) => {
       res.status(404).send({ state: rejected });
     });
 
-admin_service.getAllItems().then((acc)=>{
-  console.log(acc);
-})
+// admin_service.getAllItems().then((acc)=>{
+//   console.log(acc);
+// })
 
 });
 
@@ -126,7 +131,10 @@ app.get('/homemenu', (req, res) => {
   let r = menu_service.get6();
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send({ state: "failed to connect database" }));
 })
-
+app.get('/menu', (req, res) => {
+  let r = menu_service.getAll();
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send({ state: "failed to connect database" }));
+})
 // POST method route
 app.post('/signup', (req, res) => {
   let r = sign_upservice.sign_up(req.body);
