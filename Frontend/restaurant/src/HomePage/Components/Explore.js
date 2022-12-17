@@ -6,12 +6,12 @@ import { environment } from "../../environment";
 import { FaChevronCircleRight } from "react-icons/fa"
 export default function Explore() {
     const Food = [
-        { name: "CheeseBurgerDelux", price: "$15", describe: "delicious", img: "../Images/CheeseBurgerDelux.jfif" },
-        { name: "Beefburger", price: "$10", describe: "amazing", img: "../Images/Beefburger.jfif" },
-        { name: "Bignine", price: "$20", describe: "wonderful", img: "../Images/Bignine.jfif" },
-        { name: "DoubleCheeseBurger", price: "$15", describe: "tasty", img: "../Images/DoubleCheeseBurger.jfif" },
-        { name: "Double-Chicken", price: "$15", describe: "super", img: "../Images/Double-Chicken.jfif" },
-        { name: "Royal", price: "$20", describe: "priceless", img: "../Images/Royal.jfif" }
+        { name: "CheeseBurgerDelux", price: "15", describe: "delicious", img: "../Images/CheeseBurgerDelux.jfif" },
+        { name: "Beefburger", price: "10", describe: "amazing", img: "../Images/Beefburger.jfif" },
+        { name: "Bignine", price: "20", describe: "wonderful", img: "../Images/Bignine.jfif" },
+        { name: "DoubleCheeseBurger", price: "15", describe: "tasty", img: "../Images/DoubleCheeseBurger.jfif" },
+        { name: "Double-Chicken", price: "15", describe: "super", img: "../Images/Double-Chicken.jfif" },
+        { name: "Royal", price: "20", describe: "priceless", img: "../Images/Royal.jfif" }
     ];
 
     React.useEffect(() => {
