@@ -10,7 +10,7 @@ module.exports = (sequelize: any, Sequelize: any) => {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    totsl_price: {
+    totol_price: {
       type: Sequelize.INTEGER,
       allowNull: false,
     }
