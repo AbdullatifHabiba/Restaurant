@@ -28,16 +28,16 @@
     width: 100%;
   }
   .name{
-    width: 88%;
+    width: 80%;
   }
   .phone{
-    width: 72%;
+    width: 65%;
   }
   .city{
-    width: 91%;
+    width: 82%;
   }
   .address{
-    width: 84%;
+    width: 75%;
   }
   input {
     margin-bottom: auto;
@@ -46,7 +46,7 @@
     border-right: none;
     background-color: transparent;
     color: #2B2176;
-    opacity: .3;
+    opacity: .7;
     padding-bottom: 20px;
     font-family: "Poppins";
     font-style: normal;
@@ -55,6 +55,7 @@
   }
 
   label {
+    margin-right: 20px;
     display:inline-flex;
         text-align: right;
         font:icon;
@@ -119,7 +120,7 @@
  .but_container{
   align-items: center;
  }
-  .btn-submit_1, .btn-submit_2{
+  .btn-submit{
     margin-left: 20px;
     width: 45%;
     border: none;
