@@ -3,9 +3,10 @@ import HomePage from './HomePage/HomePage';
 
 import Signin from './signinpage/Signin';
 import SignUp from './signupPage/SignUp';
-import Page from './Page';
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Admin from './AdminPage/Admin';
+import AdminItems from './AdminPage/AdminItems';
+import AddItem from './AdminPage/AddItem';
 function App() {
   return (
 
@@ -14,9 +15,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/Page" element={<Page />} />
-
-
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/menu-items" element={<AdminItems />} />
+        <Route path="/admin/menu-items/add-new-item" element={<AddItem />} />
       </Routes>
     </Router>
   );
