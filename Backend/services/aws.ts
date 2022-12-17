@@ -55,7 +55,4 @@ export function getGetSignedUrl( key: string ): string {
   
 
 export { AWS };
-  //export function upload_image(){
-    
-  //}
   
