@@ -1,10 +1,11 @@
 import React from "react";
 import "./admin.css";
 import { environment } from "../environment";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import FoodCard from "./FoodCard";
 function AdminItems() {
   let nav = useNavigate();
+  const location = useLocation();
   let food = [];
   React.useEffect(() => {
     async function getFood() {
@@ -31,11 +32,11 @@ function AdminItems() {
   return (
     <div className="admin-container">
       <div className="side-bar">
-        <div className="side-bar-link" onClick={() => nav("/admin")}>
+        <div className="side-bar-link" onClick={() => nav("/admin",{state:location.state})}>
           Dash Board
         </div>
-        <div className="side-bar-link active" onClick={() => nav("/admin/menu-items")}>Menu Items</div>
-        <div className="side-bar-link">Link3</div>
+        <div className="side-bar-link active" onClick={() => nav("/admin/menu-items",{state:location.state})}>Menu Items</div>
+        <div className="side-bar-link">Delivery men</div>
       </div>
       <div className="admin-main">
       <div className="add-new">

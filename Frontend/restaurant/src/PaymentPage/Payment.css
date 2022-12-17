@@ -39,7 +39,7 @@
   .address{
     width: 75%;
   }
-  input {
+  .vertify_class input {
     margin-bottom: auto;
     border-top: none;
     border-left: none;
@@ -52,6 +52,7 @@
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
+  
   }
 
   label {

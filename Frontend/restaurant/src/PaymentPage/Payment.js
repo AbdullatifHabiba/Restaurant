@@ -1,10 +1,11 @@
 import React from "react";
-import { environment } from "./environment";
+import { environment } from "../environment";
 import './Payment.css';
-import signin from'./pa';
-import Hamburger from'./signinpage/Images/Hamburger-pana 1.png'
-import Pizza_Maker from './signinpage/Images/Pizza maker-cuate 1.png'
-import { useNavigate } from "react-router-dom";
+import Hamburger from'../signinpage/Images/Hamburger-pana 1.png'
+import Pizza_Maker from '../signinpage/Images/Pizza maker-cuate 1.png'
+import {useLocation} from 'react-router-dom';
+// import { useNavigate } from "react-router-dom";
+
 
 export const ValidatePhonenumber = (number = "") =>
   /^01[0125][0-9]{8}$/gm.test(number) || number === "";
@@ -14,6 +15,9 @@ export const VaidateCity = (city = "") =>
   /^[a-zA-Z]*$/.test(city) || city === "";
 
 function Payment(props) {
+  
+  const location = useLocation();
+  console.log(location.state)
   let [pay_method, setpay_method]=React.useState({paymentmethod:""});
   let [info, setInfo] = React.useState({ name: "", phone: "", city: "",address:"" });
 
@@ -82,6 +86,7 @@ else {
   }
 }
 }
+
   return (
     <div className="vertify_class">
       <div className='form_container'>

@@ -1,8 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import { environment } from "../environment";
 function AddItem() {
     let nav = useNavigate();
+    const location = useLocation();
     const [data, setdata] = React.useState({name:"",describe:"",price:""});
     const [selectedFile, setSelectedFile] = React.useState(null);
     let func = ()=>{console.log(selectedFile)}
@@ -27,12 +28,12 @@ function AddItem() {
   return (
     <div className="admin-container">
       <div className="side-bar">
-        <div className="side-bar-link" onClick={() => nav("/admin")}>Dash Board</div>
-        <div className="side-bar-link active" onClick={() => nav("/admin/menu-items")}>
+        <div className="side-bar-link" onClick={() => nav("/admin",{state:location.state})}>Dash Board</div>
+        <div className="side-bar-link active" onClick={() => nav("/admin/menu-items",{state:location.state})}>
           Menu Items
         </div>
         <div className="side-bar-link">
-          Link3
+        Delivery men
         </div>
       </div>
       <div className="admin-items-main">
