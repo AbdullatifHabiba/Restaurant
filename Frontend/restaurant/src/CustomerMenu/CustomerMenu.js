@@ -10,18 +10,11 @@ import {useNavigate,useLocation} from 'react-router-dom';
 let Order=[];
 
 export default function CustomerMenu() {
-    let [Food,setFood] = React.useState([
-        { name: "CheeseBurgerDelux", price: "15", describe: "delicious", img: "../Images/CheeseBurgerDelux.jfif",quantity:"3" },
-        { name: "Beefburger", price: "10", describe: "amazing", img: "../Images/Beefburger.jfif",quantity:"70" },
-        { name: "Bignine", price: "20", describe: "wonderful", img: "../Images/Bignine.jfif",quantity:"90" },
-        { name: "DoubleCheeseBurger", price: "15", describe: "tasty", img: "../Images/DoubleCheeseBurger.jfif",quantity:"190" },
-        { name: "Double-Chicken", price: "15", describe: "super", img: "../Images/Double-Chicken.jfif",quantity:"120" },
-        { name: "Royal", price: "20", describe: "priceless", img: "../Images/Royal.jfif",quantity:"90" }
-    ]);
+    let [Food,setFood] = React.useState([]);
 
     const location = useLocation();
 
-    React.useEffect(() => {
+     React.useEffect(() => {
         async function getFood() {
             let result = await fetch(`${environment.env}/menu`, {
                 method: "get",
@@ -37,7 +30,7 @@ export default function CustomerMenu() {
 
     
     React.useEffect(()=>{
-
+        console.log(Food);
         for(let i=0;i<Food.length;i++){
             Order[i]={Name:Food[i].name,CNT:0};
         }
@@ -75,11 +68,11 @@ export default function CustomerMenu() {
     let FoodHTML = Food.map((item) => {
         return (
             <FoodCard
-                img={item.img}
+                img={item.image_location}
                 name={item.name}
                 price={item.price}
-                describe={item.describe}
-                available={item.quantity}
+                describe={item.description }
+                available={item.available_amount}
                 getData={GetData}
             />
         );

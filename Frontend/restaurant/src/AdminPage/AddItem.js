@@ -10,7 +10,10 @@ function AddItem() {
     let handleSubmit = async(e)=>{
         e.preventDefault();
         let form = new FormData();
-        form.append("data",data);
+        form.append("name",data.name);
+        form.append("describe",data.describe);
+        form.append("price",data.price);
+
         form.append("File",selectedFile);
         let result = await fetch(`${environment.env}/additem`, {
             method: "POST",

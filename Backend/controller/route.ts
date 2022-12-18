@@ -105,8 +105,7 @@ let resault:any;
     resault=accepted
    // res.status(200).send(accepted)
   }
-    )
-    .catch((rejected) => {
+    ).catch((rejected) => {
       res.status(404).send({ state: rejected });
     });
   

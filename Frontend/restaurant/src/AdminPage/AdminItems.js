@@ -23,10 +23,10 @@ function AdminItems() {
   let menuItems = food.map((item)=>{
     return(
       <FoodCard
-            img={item.image}
+            img={item.image_location}
             name={item.name}
             price={item.price}
-            describe={item.describe}
+            describe={item.description}
           />
     )
   });
@@ -46,7 +46,9 @@ function AdminItems() {
         <div>Update Item</div>
       </div>
         <div className="food-container">
-          <FoodCard
+          {
+            menuItems
+          /* <FoodCard
             img="../images/DoubleCheeseBurger.jfif"
             name="Sand"
             price="50"
@@ -75,7 +77,7 @@ function AdminItems() {
             name="Sand"
             price="50"
             describe="lovely sandwich tasty and healthy"
-          />
+          /> */}
         </div>
       </div>
     </div>
