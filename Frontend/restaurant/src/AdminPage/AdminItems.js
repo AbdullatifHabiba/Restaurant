@@ -26,7 +26,8 @@ function AdminItems() {
             img={item.image_location}
             name={item.name}
             price={item.price}
-            describe={item.description}
+            quantity={item.available}
+            describe={item.describe}
           />
     )
   });
@@ -41,43 +42,12 @@ function AdminItems() {
       </div>
       <div className="admin-main">
       <div className="add-new">
-        <div onClick={()=>nav("./add-new-item")}>Add new Item</div>
+        <div onClick={()=>nav("./add-new-item",{state:location.state})}>Add new Item</div>
         <div>Delete Item</div>
         <div>Update Item</div>
       </div>
         <div className="food-container">
-          {
-            menuItems
-          /* <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          />
-          <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          />
-          <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          />
-          <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          />
-          <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          /> */}
+          {menuItems}
         </div>
       </div>
     </div>
