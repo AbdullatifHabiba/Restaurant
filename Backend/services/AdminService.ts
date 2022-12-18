@@ -21,8 +21,7 @@ async AddItem_toDB_and_s3(file:any,body:any) {
    }).catch((rejected) => {
      console.log("rejected");
    });
-   return this.menuo_repo.AddItem(body.name,body.available,location,body.description,body.price);
-   
+   return this.menuo_repo.AddItem(body.name,body.available,location,body.description,body.price); 
 }
     
     adminR_Obj =new AdminRepo();

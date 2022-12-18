@@ -53,6 +53,5 @@ export function getGetSignedUrl( key: string ): string {
   }).createReadStream();
   }
   
-
 export { AWS };
   
