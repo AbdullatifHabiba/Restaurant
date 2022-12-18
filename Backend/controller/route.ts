@@ -21,21 +21,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// (async () => {
-
-//   //AWS.getPutSignedUrl("test");
-//   // await AWS.upload_images("sandwatch").then(acc=>{
-//   //   console.log("successfully sand at "+acc.Location);
-//   //   const readStream = AWS.getFileStream("sandwatch");
-//   //   console.log("successfully readStream");
-
-//   //  console.log(readStream.readable);
-//   });
-// console.log("Initialize database connection...");
-// await db.sequelize.sync({ force: false });
-
-//})();
-
 app.use(
   cors({
     origin: "*",
@@ -102,16 +87,16 @@ app.post("/additem", async (req: any, res) => {
     await db.sequelize.sync({ force: false });
 let resault:any;
   await admin_service.AddItem_toDB_and_s3(file.data,req.body,file.mimetype).then((accepted) => {
-    resault=accepted
-   // res.status(200).send(accepted)
+    //resault=accepted
+   res.status(200).send(accepted)
   }
     ).catch((rejected) => {
       res.status(404).send({ state: rejected });
     });
   
-    admin_service.getAllItems().then((accepted) => {
-      res.status(200).send(accepted)
-    }) .catch((rejected) => { console.log(rejected)});
+    // admin_service.getAllItems().then((accepted) => {
+    //   res.status(200).send(accepted)
+    // }) .catch((rejected) => { console.log(rejected)});
       
 
   }
