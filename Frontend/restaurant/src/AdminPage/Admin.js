@@ -13,7 +13,7 @@ function Admin() {
       </div>
       <div className="admin-main">
         <div className="welcome-div">
-          <h1 className="welcome-header">Welcome location.state.name</h1>
+          <h1 className="welcome-header">Welcome {location.state.name}</h1>
         </div>
       </div>
     </div>
