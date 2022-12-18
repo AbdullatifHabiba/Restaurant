@@ -42,7 +42,7 @@ function AdminItems() {
       </div>
       <div className="admin-main">
       <div className="add-new">
-        <div onClick={()=>nav("./add-new-item")}>Add new Item</div>
+        <div onClick={()=>nav("./add-new-item",{state:location.state})}>Add new Item</div>
         <div>Delete Item</div>
         <div>Update Item</div>
       </div>
