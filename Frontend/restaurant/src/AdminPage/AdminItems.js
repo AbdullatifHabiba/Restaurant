@@ -1,11 +1,12 @@
 import React from "react";
 import "./admin.css";
 import { environment } from "../environment";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import FoodCard from "./FoodCard";
 function AdminItems() {
   let nav = useNavigate();
-  let food = [];
+  const location = useLocation();
+  let [food,setFood] = React.useState([]);
   React.useEffect(() => {
     async function getFood() {
       let result = await fetch(`${environment.env}/menu`, {
@@ -14,10 +15,11 @@ function AdminItems() {
           "Content-type": "application/json",
         },
       });
-      food = await result.json();
+      let res = await result.json();
+      setFood(res);
     }
     getFood();
-  });
+  },[]);
   let menuItems = food.map((item)=>{
     return(
       <FoodCard
@@ -31,11 +33,11 @@ function AdminItems() {
   return (
     <div className="admin-container">
       <div className="side-bar">
-        <div className="side-bar-link" onClick={() => nav("/admin")}>
+        <div className="side-bar-link" onClick={() => nav("/admin",{state:location.state})}>
           Dash Board
         </div>
-        <div className="side-bar-link active" onClick={() => nav("/admin/menu-items")}>Menu Items</div>
-        <div className="side-bar-link">Link3</div>
+        <div className="side-bar-link active" onClick={() => nav("/admin/menu-items",{state:location.state})}>Menu Items</div>
+        <div className="side-bar-link">Delivery men</div>
       </div>
       <div className="admin-main">
       <div className="add-new">

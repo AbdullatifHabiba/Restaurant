@@ -6,15 +6,14 @@
     padding: 0 100px;
     background-color: #FFF5EC;
     font-family: "poppins";
-  
   }
-  .form_container{
+  .vertify_class.form_container{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
   }
-  .vertify_header{
+  .vertify_class .vertify_header{
     color: #2e266f;
     line-height: 90px;
     font-family: "Poppins";
@@ -22,24 +21,25 @@
     font-weight: 700;
     font-size: 45px;
   }
-  form {
+  .vertify_class form {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-right: auto;
   }
-  .name{
+  .vertify_class  .name{
     width: 80%;
   }
-  .phone{
+  .vertify_class  .phone{
     width: 65%;
   }
-  .city{
+  .vertify_class .city{
     width: 82%;
   }
-  .address{
+  .vertify_class .address{
     width: 75%;
   }
-  input {
+  .vertify_class  input {
     margin-bottom: auto;
     border-top: none;
     border-left: none;
@@ -51,10 +51,11 @@
     font-family: "Poppins";
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 25px;
+  
   }
 
-  label {
+  .vertify_class label {
     margin-right: 20px;
     display:inline-flex;
         text-align: right;
@@ -69,7 +70,7 @@
         color: #2B2176;
         align-content: flex-start;
   }
-  .price{
+  .vertify_class .price{
     display: flex;
     justify-content: center;
     height:70px;
@@ -78,7 +79,7 @@
     border-radius: 15px;
     align-items: center;
   }
-  .price > p{
+  .vertify_class .price > p{
     font-weight: 700;
     font-size: 30px;
     vertical-align:top;
@@ -87,26 +88,20 @@
     opacity: 0.7;
     align-items: center;
   }
-  .price_word{
+  .vertify_class .price_word{
     color: #2B2176;   
   }
-  .price_total{
+  .vertify_class  .price_total{
     color: #FE043C;
   }
-  .img-container {
+  .vertify_class .img-container {
     margin-left: 150px;
   }
-  .image_1 {
+  .vertify_class .image_1 {
     /* height: 350px; */
     width: 350px;
     align-items: flex-end;
     border-radius: 0px;
-  }
-  form {
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
   }
   @media (max-width: 800px) {
     .vertify_class {
@@ -117,10 +112,10 @@
       display: none;
     }
   }
- .but_container{
+  .vertify_class.paym_but_container{
   align-items: center;
  }
-  .btn-submit{
+ .vertify_class .paym_but_container input{
     margin-left: 20px;
     width: 45%;
     border: none;
@@ -132,5 +127,6 @@
     opacity: 1;
     cursor: pointer;
     transition: .5s;
+    border: none;
     margin-top: 20px;
   }

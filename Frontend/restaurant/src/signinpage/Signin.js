@@ -15,6 +15,7 @@ export const passwordEncryption = (pass = "") => bcrypt.hashSync(pass, '$2a$10$C
 function Signin() {
 
   const [User, setuser] = React.useState("customer");
+  const [Error, setError] = React.useState(false);
 
   let [info, setInfo] = React.useState({ mail: "", password: "", user: "" });
   let nav = useNavigate();
@@ -27,7 +28,7 @@ function Signin() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     if (!ValidateEmail(info.mail)) {
-      window.alert("invalid email address");
+      setError(()=>{return true;})
       return;
     }
 
@@ -47,11 +48,15 @@ function Signin() {
     let message = await result.json();
     if (message.state === "accepted") {
       //route to Main page
-      nav("/Page");
-      console.log("signed in successfully!")
-      window.alert("signed in successfully!");
+      let UserState={name:message.name,id:message.id};
+      if(User==="customer"){
+        nav("/CustomerMenu",{state:UserState});
+      }
+      else if(User==="admin"){
+        nav("/admin",{state:UserState});
+      }
     } else {
-      window.alert(message.state);
+      setError(()=>{return true;})
     }
   }
   return (
@@ -84,6 +89,14 @@ function Signin() {
         <img className='image_1' name="image_1" src={Hamburger} alt="" />
         <img className='image_1' name="image_1" src={Pizza_Maker} alt="" />
       </div>
+      {Error &&<div className='ErrorPOP'>
+        <div className='PopUP'>
+          <p>Email or Password are not correct !!</p>
+          <button onClick={()=>{setError(()=>{return false;})}}>OK</button>
+        </div>
+      </div> }
+      
+
     </div>
   )
 }
