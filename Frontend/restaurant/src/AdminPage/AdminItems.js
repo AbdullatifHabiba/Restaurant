@@ -26,6 +26,7 @@ function AdminItems() {
             img={item.image}
             name={item.name}
             price={item.price}
+            quantity={item.available}
             describe={item.describe}
           />
     )
@@ -46,36 +47,7 @@ function AdminItems() {
         <div>Update Item</div>
       </div>
         <div className="food-container">
-          <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          />
-          <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          />
-          <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          />
-          <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          />
-          <FoodCard
-            img="../images/DoubleCheeseBurger.jfif"
-            name="Sand"
-            price="50"
-            describe="lovely sandwich tasty and healthy"
-          />
+          {menuItems}
         </div>
       </div>
     </div>

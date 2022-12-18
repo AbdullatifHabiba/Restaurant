@@ -4,13 +4,18 @@ import { environment } from "../environment";
 function AddItem() {
     let nav = useNavigate();
     const location = useLocation();
-    const [data, setdata] = React.useState({name:"",describe:"",price:""});
+    let [data, setdata] = React.useState({name:"",describe:"",price:"",available:""});
+    let [error,setError] = React.useState(false);
+    let [succ,setSucc] = React.useState(false);
     const [selectedFile, setSelectedFile] = React.useState(null);
     let func = ()=>{console.log(selectedFile)}
     let handleSubmit = async(e)=>{
         e.preventDefault();
         let form = new FormData();
-        form.append("data",data);
+        form.append("name",data.name);
+        form.append("describe",data.describe);
+        form.append("price",data.price);
+        form.append("available",data.available);
         form.append("File",selectedFile);
         let result = await fetch(`${environment.env}/additem`, {
             method: "POST",
@@ -19,10 +24,10 @@ function AddItem() {
           let message = await result.json();
           console.log(message);
           if(message.state === "success"){
-            window.alert("item added successfully");
+            setSucc(true);
           }
           else{
-            window.alert(message.state)
+            setError(true);
           }
     }
   return (
@@ -59,6 +64,13 @@ function AddItem() {
           value={data.price}
           onChange={(e) => setdata({...data,price:e.target.value})}
         />
+        <input
+          type="text"
+          name="available"
+          placeholder="Quantity of new Item"
+          value={data.available}
+          onChange={(e) => setdata({...data,available:e.target.value})}
+        />
 
         <input
           type="file"
@@ -67,6 +79,18 @@ function AddItem() {
         />
         <input className="btn-submit" type="submit" value="submit" onClick={func}/>
       </form>
+      {succ &&<div className='ErrorPOP'>
+        <div className='PopUP'>
+          <p className="green">Item added successfully</p>
+          <button className="back-green" onClick={()=>{setSucc(()=>{return false;})}}>OK</button>
+        </div>
+      </div> }
+      {error &&<div className='ErrorPOP'>
+        <div className='PopUP'>
+          <p>There was an error, the item wasn't added!!</p>
+          <button onClick={()=>{setError(()=>{return false;})}}>OK</button>
+        </div>
+      </div> }
       </div>
     </div>
   );

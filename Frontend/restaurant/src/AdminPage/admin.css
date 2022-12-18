@@ -82,3 +82,9 @@
 .card-items{
     transform: scale(.95);
 }
+.green{
+    color: green;
+}
+.back-green{
+    background-color: green;
+}
