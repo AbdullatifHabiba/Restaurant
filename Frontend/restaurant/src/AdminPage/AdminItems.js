@@ -6,7 +6,7 @@ import FoodCard from "./FoodCard";
 function AdminItems() {
   let nav = useNavigate();
   const location = useLocation();
-  let food = [];
+  let [food,setFood] = React.useState([]);
   React.useEffect(() => {
     async function getFood() {
       let result = await fetch(`${environment.env}/menu`, {
@@ -15,10 +15,11 @@ function AdminItems() {
           "Content-type": "application/json",
         },
       });
-      food = await result.json();
+      let res = await result.json();
+      setFood(res);
     }
     getFood();
-  });
+  },[]);
   let menuItems = food.map((item)=>{
     return(
       <FoodCard

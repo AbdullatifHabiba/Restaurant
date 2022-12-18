@@ -10,14 +10,14 @@ import {useNavigate,useLocation} from 'react-router-dom';
 let Order=[];
 
 export default function CustomerMenu() {
-    const Food = [
+    let [Food,setFood] = React.useState([
         { name: "CheeseBurgerDelux", price: "15", describe: "delicious", img: "../Images/CheeseBurgerDelux.jfif",quantity:"3" },
         { name: "Beefburger", price: "10", describe: "amazing", img: "../Images/Beefburger.jfif",quantity:"70" },
         { name: "Bignine", price: "20", describe: "wonderful", img: "../Images/Bignine.jfif",quantity:"90" },
         { name: "DoubleCheeseBurger", price: "15", describe: "tasty", img: "../Images/DoubleCheeseBurger.jfif",quantity:"190" },
         { name: "Double-Chicken", price: "15", describe: "super", img: "../Images/Double-Chicken.jfif",quantity:"120" },
         { name: "Royal", price: "20", describe: "priceless", img: "../Images/Royal.jfif",quantity:"90" }
-    ];
+    ]);
 
     const location = useLocation();
 
@@ -29,10 +29,11 @@ export default function CustomerMenu() {
                     'Content-type': 'application/json'
                 }
             });
-            // Food = await result.json();
+            let res = await result.json();
+            setFood(res);
         }
         getFood();
-    });
+    },[]);
 
     
     React.useEffect(()=>{
