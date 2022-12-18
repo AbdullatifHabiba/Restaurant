@@ -37,13 +37,15 @@ export function getGetSignedUrl( key: string ): string {
   
 
 
-  export function upload_images( key: string ,blob:any) {
+  export function upload_images( key: string ,blob:any,mimetype:any) {
 
-    return s3.upload({
+     return s3.upload({
       Bucket: buc!,
       Body: blob,
       Key: key,
-    }).promise()
+      ContentType:mimetype
+
+    }).promise();
 
   }
   export function getFileStream(fileKey:any) {
