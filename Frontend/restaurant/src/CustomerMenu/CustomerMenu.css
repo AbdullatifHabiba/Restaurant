@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: Poppins;
+}
+
+:root {
+    --back-color: #FFF5EC;
+    --main-color: #FE043C;
+    --second-color: #2E266F;
+    --second-paragraph: #707070;
+}
+
+.Main {
+    background-color: var(--back-color);
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+/* Start Explore section  */
+.Explore .Title svg{
+    color: var(--main-color);
+    font-size: 25px;
+    margin-bottom: -5px;
+}
+.Explore .Title {
+    width: 550px;
+    margin: auto;
+    text-align: center;
+}
+
+.Explore .Title h2 {
+    color: var(--second-color);
+    font-size: 34px;
+}
+
+.Explore .Title a {
+    text-decoration: none;
+    margin: 0 15px 0 15px;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.Explore .Title p {
+    text-align: left;
+    color: var(--second-paragraph);
+}
+
+.Explore {
+    padding-top: 60px;
+}
+
+.Explore .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 70px 20px;
+}
+.Explore .container2 {
+    display: grid;
+    width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    justify-content: center;
+    justify-items: center;
+}
+
+.Card img {
+    width: 400px;
+}
+
+.Card .description {
+    padding: 10px 25px;
+    background-color: white;
+    margin-top: -12px;
+    border-radius: 0 0 30px 30px;
+}
+
+.Card {
+    width: 400px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+}
+
+.Card p {
+    color: var(--second-paragraph);
+    margin-top: -7px;
+}
+
+.Card h3 {
+    color: var(--second-color);
+}
+
+.priceCard {
+    display: flex;
+    justify-content: space-between;
+}
+
+#price {
+    color: var(--main-color);
+}
+/* Start Price Footer */
+.pricefooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pricefooter .quantity{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width:100px ;
+    background: var(--main-color);
+    padding: 10px;
+    border-radius: 30px;
+}
+.pricefooter .quantity button{
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    color: var(--main-color);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.pricefooter .quantity p{
+    margin: 0;
+    color: white;
+}
+.Error {
+    color:var(--main-color);
+    text-align: right;
+    font-weight: bold;
+}
+/* End Price Footer */
+/* End Explore section  */
+/* Start Cart  */
+.Cart{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top :50%;
+    right: 10px;
+    background-color: var(--main-color);
+    font-size: 55px;
+    padding: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+/* End Cart  */
+/* Start Footer  */
+.OrderFooter .contain{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+}
+.OrderFooter{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:20px 0 100px;
+}
+
+.OrderFooter button:hover{
+    background-color: white;
+    color: var(--main-color);
+    border:1px solid var(--main-color) ;
+    letter-spacing: 1.7px;
+}
+.OrderFooter button{
+    width: 100%;
+    height: 50px;
+    color: white;
+    background: var(--main-color);
+    border-radius: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.OrderFooter div{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 10px;
+}
+
+/* End Footer  */

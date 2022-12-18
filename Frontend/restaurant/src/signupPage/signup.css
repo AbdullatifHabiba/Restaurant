@@ -12,7 +12,26 @@
   padding: 0 100px;
   background-color: #fff5ec;
 }
+.contain{
+  position: relative;
+}
+.error{
+  border-bottom: 2px solid red;
+}
 
+.error-message{
+  display: block;
+  padding: 20px;
+  color: red;
+  background-color: #e7b6b641;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: -15px;
+}
+.hide{
+  display: none;
+}
 .form-container {
   display: flex;
   flex-direction: column;
@@ -28,7 +47,7 @@ form {
 }
 
 input {
-  margin-bottom: 10px;
+  margin-top: 10px;
   width: 100%;
   border-top: none;
   border-left: none;
@@ -41,6 +60,7 @@ input {
   font-style: normal;
   font-weight: 700;
   font-size: 17px;
+  position: relative;
 }
 
 .sign-up-header {
