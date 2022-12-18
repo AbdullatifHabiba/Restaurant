@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Admin from './AdminPage/Admin';
 import AdminItems from './AdminPage/AdminItems';
 import AddItem from './AdminPage/AddItem';
+import Payment from './PaymentPage/Payment'
 function App() {
   return (
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
 
         <Route path="/CustomerMenu" element={<CustomerMenu />} />
+        <Route path="/CustomerMenu/Payment" element={<Payment />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/menu-items" element={<AdminItems />} />
         <Route path="/admin/menu-items/add-new-item" element={<AddItem />} />

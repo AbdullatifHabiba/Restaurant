@@ -1,11 +1,10 @@
 import React from "react";
-import { environment } from "./environment";
+import { environment } from "../environment";
 import './Payment.css';
-import signin from'./pa';
-import Hamburger from'./signinpage/Images/Hamburger-pana 1.png'
-import Pizza_Maker from './signinpage/Images/Pizza maker-cuate 1.png'
+import Hamburger from'../signinpage/Images/Hamburger-pana 1.png'
+import Pizza_Maker from '../signinpage/Images/Pizza maker-cuate 1.png'
+import {useLocation} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-
 export const ValidatePhonenumber = (number = "") =>
   /^01[0125][0-9]{8}$/gm.test(number) || number === "";
   export const VaidateAdress = (address = "") =>
@@ -13,33 +12,57 @@ export const ValidatePhonenumber = (number = "") =>
 export const VaidateCity = (city = "") =>
   /^[a-zA-Z]*$/.test(city) || city === "";
 
-function Payment(props) {
+function Payment() {
+  let data ;
+  React.useEffect(()=>{
+    async function getdata(){
+      let result = await fetch(`${environment.env}/customer_data`, {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(
+          {
+            id:location.state[location.state.length-1].Count
+          }
+        )
+      });
+       data = await result.json();
+    } 
+    getdata();
+  });
+    //const data ={name:"ayman mohamed", phone:"01145481793",city:"alex", address:"alexandria egypt"};
+  let nav = useNavigate();
+  const location = useLocation();
+  const price = location.state[location.state.length-2].Count;
+  const [Error, setError] = React.useState(false);
   let [pay_method, setpay_method]=React.useState({paymentmethod:""});
-  let [info, setInfo] = React.useState({ name: "", phone: "", city: "",address:"" });
-
+  let [info, setInfo] = React.useState({ name: data.name, phone: data.phone, city: data.city,address:data.address });
   let handleChange = (e) => {
     setInfo((prev) => {
       return { ...prev, [e.target.name]: e.target.value }
     })
   }
 
-
  let handleSubmit = async (e) => {
   e.preventDefault();
   if (!ValidatePhonenumber(info.phone)) {
-    window.alert("invalid phone number");
+    setError(()=>{return true;})
     return;
   }
   else if (!VaidateCity(info.city)){
-    window.alert("invalid city");
+    setError(()=>{return true;})
     return;
   }
   else if (!VaidateAdress(info.address)){
-    window.alert("invalid Address");
+    setError(()=>{return true;})
     return;
   }
+  let UserState={name:location.state[location.state.length-1].Name,
+                 id:location.state[location.state.length-1].Count};
   // payment with paypal
   if(pay_method==="paypal"){
+    
   let result = await fetch(`${environment.env}/paypal`, {
     method: "POST",
     headers: {
@@ -47,18 +70,18 @@ function Payment(props) {
     },
     body: JSON.stringify(
       {
-        ...info
+        arr:location.state, 
+        info:info
       }
     )
-
   });
   let message = await result.json();
-  if (message.state === "accepted") {
-    //nav("/signin");
-    window.alert("Order vertification success");
-  } else {
-    window.alert(message.state);
-  }
+    if (message.state === "accepted") {
+      nav("/CustomerMenu",{state:UserState});
+    } else {
+      setError(()=>{return true;})
+    }
+ 
 }
 // payment in cash 
 else {
@@ -69,19 +92,22 @@ else {
     },
     body: JSON.stringify(
       {
-        ...info
+        arr:location.state,
+        info
       }
     )
 
   });
   let message = await result.json();
   if (message.state === "accepted") {
-    window.alert("Order vertification success");
+    nav("/CustomerMenu",{state:UserState});
   } else {
-    window.alert(message.state);
+    setError(()=>{return true;})
   }
 }
+
 }
+
   return (
     <div className="vertify_class">
       <div className='form_container'>
@@ -89,8 +115,8 @@ else {
         <form onSubmit={handleSubmit}>
           <div className="price">
           <p className="price_word">Price &ensp;</p>
-          <p > &ensp;$82 + $5 &ensp;(Delivery)&ensp; = </p>
-          <p className="price_total"> &ensp;$87 </p>
+          <p > &ensp;${price} + $5 &ensp;(Delivery)&ensp; = </p>
+          <p className="price_total"> &ensp;${price+5} </p>
           </div>
           <div>
           <label for="name" >Name</label>
@@ -108,7 +134,7 @@ else {
           <label for="address">Address</label>
           <input className="address" id="address" type="address" name="address" required value={info.address} onChange={handleChange}/>
           </div>
-          <div className="but_container">
+          <div className="paym_but_container">
           <input className='btn-submit' title='button' type="submit" value="Paypal" name="Paypal" onClick={() => setpay_method("paypal")}/>
           <input className='btn-submit' title='button' type="submit" value="Cash" name="Cash" onClick={() => setpay_method("cash")} />
           </div>
@@ -118,6 +144,12 @@ else {
         <img className='image_1' name="image_1" src={Hamburger} alt="" />
         <img className='image_1' name="image_1" src={Pizza_Maker} alt="" />
       </div>
+      {Error &&<div className='ErrorPOP'>
+        <div className='PopUP'>
+          <p>Enterd data is not correct !!</p>
+          <button onClick={()=>{setError(()=>{return false;})}}>OK</button>
+        </div>
+      </div> }
       </div>
 
   );

@@ -21,6 +21,7 @@ export const passwordEncryption = (pass = "") =>
 
 function SignUp() {
   let nav = useNavigate();
+  const [Error, setError] = React.useState(false);
   let [info, setInfo] = React.useState({
     name: "",
     mail: "",
@@ -94,11 +95,11 @@ function SignUp() {
     console.log(message);
     if (message.state === "accepted") {
       nav("/signin");
-      window.alert("signed up successfully!");
     } else {
-      window.alert(`${message.state}`);
+      setError(()=>{return true;});
     }
   };
+  
   return (
     <div className="sign-up">
       <div className="form-container">
@@ -199,6 +200,12 @@ function SignUp() {
         <img className="hamburger" src={Burger} alt="burger" />
         <img className="pizza" src={pizza} alt="pizza maker" />
       </div>
+      {Error &&<div className='ErrorPOP'>
+        <div className='PopUP'>
+          <p>This Email Is in use !!</p>
+          <button onClick={()=>{setError(()=>{return false;})}}>OK</button>
+        </div>
+      </div> }
     </div>
   );
 }

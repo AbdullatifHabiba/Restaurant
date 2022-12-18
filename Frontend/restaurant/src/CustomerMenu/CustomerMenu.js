@@ -5,19 +5,16 @@ import FoodCard from './Components/FoodCard';
 import { environment } from '../environment';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { BsFillCartCheckFill} from 'react-icons/bs';
+import Payment from '../PaymentPage/Payment';
+import {useNavigate,useLocation} from 'react-router-dom';
 let Order=[];
 
 export default function CustomerMenu() {
-    const Food = [
-        { name: "CheeseBurgerDelux", price: "15", describe: "delicious", img: "../Images/CheeseBurgerDelux.jfif",quantity:"3" },
-        { name: "Beefburger", price: "10", describe: "amazing", img: "../Images/Beefburger.jfif",quantity:"70" },
-        { name: "Bignine", price: "20", describe: "wonderful", img: "../Images/Bignine.jfif",quantity:"90" },
-        { name: "DoubleCheeseBurger", price: "15", describe: "tasty", img: "../Images/DoubleCheeseBurger.jfif",quantity:"190" },
-        { name: "Double-Chicken", price: "15", describe: "super", img: "../Images/Double-Chicken.jfif",quantity:"120" },
-        { name: "Royal", price: "20", describe: "priceless", img: "../Images/Royal.jfif",quantity:"90" }
-    ];
+    let [Food,setFood] = React.useState([]);
 
-    React.useEffect(() => {
+    const location = useLocation();
+
+     React.useEffect(() => {
         async function getFood() {
             let result = await fetch(`${environment.env}/menu`, {
                 method: "get",
@@ -25,18 +22,19 @@ export default function CustomerMenu() {
                     'Content-type': 'application/json'
                 }
             });
-            // Food = await result.json();
+            let res = await result.json();
+            setFood(res);
         }
         getFood();
-    });
+    },[]);
 
     
     React.useEffect(()=>{
-
+        console.log(Food);
         for(let i=0;i<Food.length;i++){
             Order[i]={Name:Food[i].name,CNT:0};
         }
-    },{})
+    },{});
     
     function GetIndex(NN){
         for(let i=0;i<Food.length;i++){
@@ -70,26 +68,27 @@ export default function CustomerMenu() {
     let FoodHTML = Food.map((item) => {
         return (
             <FoodCard
-                img={item.img}
+                img={item.image_location}
                 name={item.name}
                 price={item.price}
-                describe={item.describe}
-                available={item.quantity}
+                describe={item.description }
+                available={item.available_amount}
                 getData={GetData}
             />
         );
     })
+    //Use Navigate
+    const NAV = useNavigate();
     function ORDER(){
         let NewOrder=[];
-        let UserID="231634";
         for(let ord=0;ord<Order.length;ord++){
             if(Order[ord].CNT>0){
                 NewOrder.push({Name:Order[ord].Name,Count:Order[ord].CNT})
             }
         }
         NewOrder.push({Name:"Price",Count:Price});
-        NewOrder.push({Name:"User",Count:UserID});
-        console.log(NewOrder);
+        NewOrder.push({Name:location.state.name,Count:location.state.id});
+        NAV('/CustomerMenu/Payment',{state:NewOrder});
     }
     const [count, setCount] = React.useState(0);
     const [Price, setPrice] = React.useState(0);
@@ -118,6 +117,7 @@ export default function CustomerMenu() {
                 </div>
             </div>
             <div className='Cart' onClick={()=>{document.getElementById("OrderNow").scrollIntoView({ behavior: 'smooth'})}}><BsFillCartCheckFill/></div>
+
         </div>
     );
 }
