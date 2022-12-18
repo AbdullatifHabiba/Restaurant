@@ -1,3 +1,4 @@
 export interface IAdminRepo {
-getALL(): Promise<any>;
+    
+    getALL(): Promise<any>;
 }
