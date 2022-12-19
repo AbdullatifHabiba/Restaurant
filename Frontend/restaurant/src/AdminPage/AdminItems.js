@@ -33,6 +33,7 @@ function AdminItems() {
   });
   return (
     <div className="admin-container">
+            <h1 className="Logo2">Eat Nine</h1>
       <div className="side-bar">
         <div className="side-bar-link" onClick={() => nav("/admin",{state:location.state})}>
           Dash Board

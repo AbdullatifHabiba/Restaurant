@@ -95,6 +95,9 @@ export default function CustomerMenu() {
     return (
         <div className="Main">
             <div className="Explore">
+            <div className='CHeader'>
+                <p>Welcome, <span> {location.state.name}</span> </p>
+            </div>
                 <div className="Title">
                     <h2>Choose Your Order</h2>
                     <p>This is our available food now, Just add the amount of items you need, verify your order, and enjoy <IoFastFoodOutline/> </p>
