@@ -32,6 +32,7 @@ function AddItem() {
     }
   return (
     <div className="admin-container">
+            <h1 className="Logo2">Eat Nine</h1>
       <div className="side-bar">
         <div className="side-bar-link" onClick={() => nav("/admin",{state:location.state})}>Dash Board</div>
         <div className="side-bar-link active" onClick={() => nav("/admin/menu-items",{state:location.state})}>
@@ -79,7 +80,7 @@ function AddItem() {
         />
         <input className="btn-submit" type="submit" value="submit" onClick={func}/>
       </form>
-      {succ &&<div className='ErrorPOP'>
+      {succ &&<div className='ErrorPOP Success'>
         <div className='PopUP'>
           <p className="green">Item added successfully</p>
           <button className="back-green" onClick={()=>{setSucc(()=>{return false;})}}>OK</button>

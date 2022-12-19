@@ -23,16 +23,17 @@ function AdminItems() {
   let menuItems = food.map((item)=>{
     return(
       <FoodCard
-            img={item.image}
+            img={item.image_location}
             name={item.name}
             price={item.price}
-            quantity={item.available}
+            quantity={item.available_amount}
             describe={item.describe}
           />
     )
   });
   return (
     <div className="admin-container">
+            <h1 className="Logo2">Eat Nine</h1>
       <div className="side-bar">
         <div className="side-bar-link" onClick={() => nav("/admin",{state:location.state})}>
           Dash Board

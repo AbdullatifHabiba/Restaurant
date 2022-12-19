@@ -16,6 +16,24 @@
     min-height: 100vh;
     scroll-behavior: smooth;
 }
+/*Start Header*/
+.CHeader span{
+    color: var(--main-color);
+    /* background-color: #2e266f0c; */
+    background-color: rgba(243, 140, 140, 0.103);
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow:  6px 6px 10px #888888, -6px -2px 10px #888888;
+    margin-left: 5px;
+}
+.CHeader p{
+    padding: 20;
+    color: var(--second-color);
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+}
+/*End Header*/
 /* Start Explore section  */
 .Explore .Title svg{
     color: var(--main-color);

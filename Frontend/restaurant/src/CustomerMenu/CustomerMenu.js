@@ -10,14 +10,7 @@ import {useNavigate,useLocation} from 'react-router-dom';
 let Order=[];
 
 export default function CustomerMenu() {
-    let [Food,setFood] = React.useState([
-        { name: "CheeseBurgerDelux", price: "15", describe: "delicious", img: "../Images/CheeseBurgerDelux.jfif",quantity:"3" },
-        { name: "Beefburger", price: "10", describe: "amazing", img: "../Images/Beefburger.jfif",quantity:"70" },
-        { name: "Bignine", price: "20", describe: "wonderful", img: "../Images/Bignine.jfif",quantity:"90" },
-        { name: "DoubleCheeseBurger", price: "15", describe: "tasty", img: "../Images/DoubleCheeseBurger.jfif",quantity:"190" },
-        { name: "Double-Chicken", price: "15", describe: "super", img: "../Images/Double-Chicken.jfif",quantity:"120" },
-        { name: "Royal", price: "20", describe: "priceless", img: "../Images/Royal.jfif",quantity:"90" }
-    ]);
+    let [Food,setFood] = React.useState([]);
 
     const location = useLocation();
 
@@ -41,7 +34,7 @@ export default function CustomerMenu() {
         for(let i=0;i<Food.length;i++){
             Order[i]={Name:Food[i].name,CNT:0};
         }
-    },{});
+    },[Food]);
     
     function GetIndex(NN){
         for(let i=0;i<Food.length;i++){
@@ -75,11 +68,11 @@ export default function CustomerMenu() {
     let FoodHTML = Food.map((item) => {
         return (
             <FoodCard
-                img={item.img}
+                img={item.image_location}
                 name={item.name}
                 price={item.price}
                 describe={item.describe}
-                available={item.quantity}
+                available={item.available_amount}
                 getData={GetData}
             />
         );
@@ -102,6 +95,9 @@ export default function CustomerMenu() {
     return (
         <div className="Main">
             <div className="Explore">
+            <div className='CHeader'>
+                <p>Welcome, <span> {location.state.name}</span> </p>
+            </div>
                 <div className="Title">
                     <h2>Choose Your Order</h2>
                     <p>This is our available food now, Just add the amount of items you need, verify your order, and enjoy <IoFastFoodOutline/> </p>

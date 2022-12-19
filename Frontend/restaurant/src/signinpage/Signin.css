@@ -139,7 +139,7 @@ p {
   height: 25%;
   position: absolute;
   left: 25%;
-  top:20%;
+  top:10%;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -148,11 +148,11 @@ p {
   color:#FE043C;
   transition: 0.7s;
   border-radius: 30px;
-  box-shadow:  10px 10px 8px #888888, -10px -5px 8px #888888;;
+  box-shadow:  10px 10px 8px #888888, -10px -5px 8px #888888;
   z-index: 2;
 }
 .ErrorPOP{
-  position: absolute;
+  position: fixed;
   left: 0;
   top:0;
   width: 100%;
