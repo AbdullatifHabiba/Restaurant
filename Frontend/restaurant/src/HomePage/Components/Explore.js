@@ -15,11 +15,11 @@ export default function Explore() {
                     'Content-type': 'application/json'
                 }
             });
-            let temp = await result.json();
-            setFood(temp);
+            let res = await result.json();
+            setFood(res);
         }
         getFood();
-    });
+    },[]);
 
 
     // img="../Images/sand.png"
