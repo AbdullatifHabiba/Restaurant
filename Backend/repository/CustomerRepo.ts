@@ -15,16 +15,17 @@ async get_customer_details(customer_id:Number){
     let customer = await db['Customer'].findAll({
         
         where:{
-            id:[customer_id]
+            customer_id:[customer_id],
+
         }
 
     })
     if (JSON.stringify(customer).length >= 3) {
         const response = {
-          name: customer.name,
-          phone: customer.phone,
-         city: customer.city,
-         address: customer.address
+          name: customer[0].name,
+          phone: customer[0].phone,
+         city: customer[0].city,
+         address: customer[0].address
         };
 
         return response;

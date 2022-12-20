@@ -3,7 +3,7 @@ import { environment } from "../environment";
 import './Payment.css';
 import Hamburger from'../signinpage/Images/Hamburger-pana 1.png'
 import Pizza_Maker from '../signinpage/Images/Pizza maker-cuate 1.png'
-import {useLocation} from 'react-router-dom';
+import {redirect, useLocation} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 export const ValidatePhonenumber = (number = "") =>
   /^01[0125][0-9]{8}$/gm.test(number) || number === "";
@@ -13,7 +13,9 @@ export const VaidateCity = (city = "") =>
   /^[a-zA-Z]*$/.test(city) || city === "";
 
 function Payment() {
-  let [data, setdata]=({}) ;
+  let [data,setdata] = React.useState({});
+
+ // let data ;
   React.useEffect(()=>{
     async function getdata(){
       let result = await fetch(`${environment.env}/customer_data`, {
@@ -31,32 +33,34 @@ function Payment() {
       setdata(res);
     } 
     getdata();
-  });
+
+  },[]);
     //const data ={name:"ayman mohamed", phone:"01145481793",city:"alex", address:"alexandria egypt"};
+    console.log(data);
+
   let nav = useNavigate();
   const location = useLocation();
   const price = location.state[location.state.length-2].Count;
   const [Error, setError] = React.useState(false);
   let [pay_method, setpay_method]=React.useState({paymentmethod:""});
 
-  let [info, setInfo] = React.useState({ name: data.name, phone: data.phone, city: data.city,address:data.address });
   let handleChange = (e) => {
-    setInfo((prev) => {
+    setdata((prev) => {
       return { ...prev, [e.target.name]: e.target.value }
     })
   }
 
  let handleSubmit = async (e) => {
   e.preventDefault();
-  if (!ValidatePhonenumber(info.phone)) {
+  if (!ValidatePhonenumber(data.phone)) {
     setError(()=>{return true;})
     return;
   }
-  else if (!VaidateCity(info.city)){
+  else if (!VaidateCity(data.city)){
     setError(()=>{return true;})
     return;
   }
-  else if (!VaidateAdress(info.address)){
+  else if (!VaidateAdress(data.address)){
     setError(()=>{return true;})
     return;
   }
@@ -73,11 +77,13 @@ function Payment() {
     body: JSON.stringify(
       {
         arr:location.state, 
-        info:info
+        info:data
       }
     )
   });
-  let message = await result.json();
+  let message = await result;
+  console.log(message);
+  redirect(message);
     if (message.state === "accepted") {
       nav("/CustomerMenu",{state:UserState});
     } else {
@@ -95,7 +101,7 @@ else {
     body: JSON.stringify(
       {
         arr:location.state,
-        info
+        info:data
       }
     )
 
@@ -122,19 +128,19 @@ else {
           </div>
           <div>
           <label for="name" >Name</label>
-          <input  className="name" id="name" type="name"  name="name" required value={info.name} onChange={handleChange}/>
+          <input  className="name" id="name" type="name"  name="name" required value={data.name} onChange={handleChange}/>
           </div>
           <div>
           <label for="phone_number">Phone Number</label>
-          <input className="phone" id="phone" type="phone" name="phone" required value={info.phone} onChange={handleChange}/>
+          <input className="phone" id="phone" type="phone" name="phone" required value={data.phone} onChange={handleChange}/>
           </div>
           <div>
           <label for="city">City</label>
-          <input className="city" id="city" type="city" name="city" required value={info.city} onChange={handleChange}/>
+          <input className="city" id="city" type="city" name="city" required value={data.city} onChange={handleChange}/>
           </div>
           <div>
           <label for="address">Address</label>
-          <input className="address" id="address" type="address" name="address" required value={info.address} onChange={handleChange}/>
+          <input className="address" id="address" type="address" name="address" required value={data.address} onChange={handleChange}/>
           </div>
           <div className="paym_but_container">
           <input className='btn-submit' title='button' type="submit" value="Paypal" name="Paypal" onClick={() => setpay_method("paypal")}/>

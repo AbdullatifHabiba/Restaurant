@@ -14,11 +14,8 @@ import db from "./../repository/sequalize";
 import * as AWS from "../services/aws";
 import * as paypal from "./paypal";
 import cors from "cors";
-import multer from "multer";
-import crypto from "crypto";
-import bodyParser from "body-parser";
+
 import fileupload from "express-fileupload";
-import { Json } from "sequelize/types/utils";
 
 const app = express();
 app.use(express.json());
@@ -43,14 +40,14 @@ const customer_service: ICustomerService = new CustomerServices();
 )
 
 app.get("/cash", (req, res) => {});
-app.get("/paypal", (req, res) => {
+app.post("/paypal", (req, res) => {
 
   paypal
     .create_payment(11, 140)
     .then((accepted: any) => {
       console.log(accepted.links);
-
-      res.redirect(accepted.links[1].href);
+    res.send(accepted.links[1].href);
+      //res.redirect(accepted.links[1].href);
     })
     .catch((rejected) => {
       console.log("rejected");
@@ -150,8 +147,14 @@ app.post("/addDelivery", (req, res) => {
 });
 app.post("/customer_data", (req, res) => {
   let r = customer_service.get_customer_details(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+  r.then(
+    (accepted) => res.status(200).send(accepted)
+
+  ).catch((rejected) =>{
+  console.log(rejected);
+
     res.status(404).send({ state: "failed to connect database" })
+  }
   );
 
 })
