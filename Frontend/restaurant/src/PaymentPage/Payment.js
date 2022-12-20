@@ -3,7 +3,7 @@ import { environment } from "../environment";
 import './Payment.css';
 import Hamburger from'../signinpage/Images/Hamburger-pana 1.png'
 import Pizza_Maker from '../signinpage/Images/Pizza maker-cuate 1.png'
-import {redirect, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 export const ValidatePhonenumber = (number = "") =>
   /^01[0125][0-9]{8}$/gm.test(number) || number === "";
@@ -81,14 +81,18 @@ function Payment() {
       }
     )
   });
-  let message = await result;
-  console.log(message);
-  redirect(message);
-    if (message.state === "accepted") {
-      nav("/CustomerMenu",{state:UserState});
-    } else {
-      setError(()=>{return true;})
-    }
+  
+  let message = await result.json();
+  //console.log(message[1].href);
+  let re= window.open(message[1].href, '_blank');
+  
+
+ // await redirect(message[1].href);
+    // if (message.state === "accepted") {
+    //   nav("/CustomerMenu",{state:UserState});
+    // } else {
+    //   setError(()=>{return true;})
+    // }
  
 }
 // payment in cash 

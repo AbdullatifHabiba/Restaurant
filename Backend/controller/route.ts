@@ -11,8 +11,7 @@ import { CustomerServices } from './../services/CustomerService';
 import { ICustomerService } from './../core/service/ICustomerService';
 
 import db from "./../repository/sequalize";
-import * as AWS from "../services/aws";
-import * as paypal from "./paypal";
+import * as paypal from "../services/paypal";
 import cors from "cors";
 
 import fileupload from "express-fileupload";
@@ -39,27 +38,22 @@ const customer_service: ICustomerService = new CustomerServices();
   }
 )
 
-app.get("/cash", (req, res) => {});
+app.post("/cash", (req, res) => {
+
+ customer_service.cash_payment(req,res);
+});
 app.post("/paypal", (req, res) => {
 
-  paypal
-    .create_payment(11, 140)
-    .then((accepted: any) => {
-      console.log(accepted.links);
-    res.send(accepted.links[1].href);
-      //res.redirect(accepted.links[1].href);
-    })
-    .catch((rejected) => {
-      console.log("rejected");
-      res.status(404).send({ state: rejected });
-    });
+customer_service.paypal_payment(req,res);  
+  
 });
+
+
 app.get("/cancel", (req, res) => {
-  console.log(req.body);
+  res.send("cancel");
 });
 app.get("/success", (req, res) => {
-  paypal
-    .execute_payment(req.query.paymentId, req.query.PayerID, 140)
+  paypal.execute_payment(req.query.paymentId, req.query.PayerID)
     .then((accepted: any) => {
       console.log(accepted.state);
       res.status(200).send(accepted.state);
