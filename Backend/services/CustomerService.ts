@@ -56,7 +56,7 @@ export class CustomerServices implements ICustomerService {
 
         order.then((accepted) => {
             if (accepted.state === "accepted") {
-                paypal.create_payment(items, price).then((createpay: any) => {
+                paypal.create_payment(items,accepted.id, price).then((createpay: any) => {
                     console.log(createpay.links);
                     res.send(createpay.links);
                 }).catch((rejpay) => {

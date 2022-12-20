@@ -14,7 +14,7 @@ paypal.configure({
   'client_id': client_id!,
   'client_secret': client_secret!
 });
-export function create_payment(items:any, total:any) {
+export function create_payment(items:any,order_id:any ,total:any) {
   let item_list:any = [];
   items.forEach((item:any) => {
     item_list.push({
@@ -43,6 +43,7 @@ export function create_payment(items:any, total:any) {
           "currency": currency,
           "total": total
         },
+        "order_id":order_id,
         "description": "This is the payment description."
       }]
     };

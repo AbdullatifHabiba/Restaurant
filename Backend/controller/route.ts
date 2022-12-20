@@ -127,7 +127,7 @@ app.get("/success", (req, res) => {
     .execute_payment(req.query.paymentId, req.query.PayerID)
     .then((accepted: any) => {
 
-      console.log(accepted);
+      console.log(accepted.transactions);
     
       res.status(200).send(accepted.state);
     })
