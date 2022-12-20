@@ -43,4 +43,7 @@ export class CustomerServices implements ICustomerService {
             null
         });
     }
+    async get_customer_details(req: any) {
+        return this.customerRepo.get_customer_details(req.customer_id);
+    }
 }

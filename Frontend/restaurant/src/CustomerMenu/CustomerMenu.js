@@ -5,7 +5,6 @@ import FoodCard from './Components/FoodCard';
 import { environment } from '../environment';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { BsFillCartCheckFill} from 'react-icons/bs';
-import Payment from '../PaymentPage/Payment';
 import {useNavigate,useLocation} from 'react-router-dom';
 let Order=[];
 

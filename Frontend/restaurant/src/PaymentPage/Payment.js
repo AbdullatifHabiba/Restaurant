@@ -13,7 +13,9 @@ export const VaidateCity = (city = "") =>
   /^[a-zA-Z]*$/.test(city) || city === "";
 
 function Payment() {
-  let data ;
+  let [data,setFood] = React.useState([]);
+
+ // let data ;
   React.useEffect(()=>{
     async function getdata(){
       let result = await fetch(`${environment.env}/customer_data`, {
@@ -27,7 +29,8 @@ function Payment() {
           }
         )
       });
-       data = await result.json();
+      let r = await result.json();
+      setFood(r);
     } 
     getdata();
   });

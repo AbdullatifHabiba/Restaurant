@@ -7,6 +7,9 @@ import { signinservice } from "../services/SignInService";
 import { signupservice } from "../services/SignUpService";
 import { IAdminService } from "../core/service/IAdminService";
 import { adminsrevice } from "../services/AdminService";
+import { CustomerServices } from './../services/CustomerService';
+import { ICustomerService } from './../core/service/ICustomerService';
+
 import db from "./../repository/sequalize";
 import * as AWS from "../services/aws";
 import * as paypal from "./paypal";
@@ -31,10 +34,14 @@ const sign_inservice: ISignInService = new signinservice();
 const sign_upservice: ISignUpService = new signupservice();
 const menu_service: IMenueService = new menuserice();
 const admin_service: IAdminService = new adminsrevice();
-app.post("/or", (req, res) => {
-   db.sequelize.sync({ force: true });
+const customer_service: ICustomerService = new CustomerServices();
+(
+  async () => {
+    await db.sequelize.sync({ force: false });
 
-});
+  }
+)
+
 app.get("/cash", (req, res) => {});
 app.get("/paypal", (req, res) => {
 
@@ -82,21 +89,15 @@ app.post("/additem", async (req: any, res) => {
     });
   } else {
     let file = req.files.File;
-    console.log(req.body);
-    console.log(file.name);
-    await db.sequelize.sync({ force: false });
-let resault:any;
+    
   await admin_service.AddItem_toDB_and_s3(file.data,req.body,file.mimetype).then((accepted) => {
-    //resault=accepted
    res.status(200).send(accepted)
   }
     ).catch((rejected) => {
       res.status(404).send({ state: rejected });
     });
   
-    // admin_service.getAllItems().then((accepted) => {
-    //   res.status(200).send(accepted)
-    // }) .catch((rejected) => { console.log(rejected)});
+    
       
 
   }
@@ -147,5 +148,12 @@ app.post("/addDelivery", (req, res) => {
   );
 
 });
+app.post("/customer_data", (req, res) => {
+  let r = customer_service.get_customer_details(req.body);
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state: "failed to connect database" })
+  );
+
+})
 
 app.listen(5000);
