@@ -378,8 +378,12 @@
     padding: 70px 20px;
 }
 
+
 .Card img {
     width: 400px;
+    height: 320px;
+    object-fit:cover;
+    border-radius: 20px  20px 0 0;
 }
 
 .Card .description {
