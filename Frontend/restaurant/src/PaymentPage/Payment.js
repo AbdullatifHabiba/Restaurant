@@ -13,9 +13,7 @@ export const VaidateCity = (city = "") =>
   /^[a-zA-Z]*$/.test(city) || city === "";
 
 function Payment() {
-  let [data,setFood] = React.useState([]);
-
- // let data ;
+  let [data, setdata]=({}) ;
   React.useEffect(()=>{
     async function getdata(){
       let result = await fetch(`${environment.env}/customer_data`, {
@@ -29,8 +27,8 @@ function Payment() {
           }
         )
       });
-      let r = await result.json();
-      setFood(r);
+      let res = await result.json();
+      setdata(res);
     } 
     getdata();
   });
@@ -40,6 +38,7 @@ function Payment() {
   const price = location.state[location.state.length-2].Count;
   const [Error, setError] = React.useState(false);
   let [pay_method, setpay_method]=React.useState({paymentmethod:""});
+
   let [info, setInfo] = React.useState({ name: data.name, phone: data.phone, city: data.city,address:data.address });
   let handleChange = (e) => {
     setInfo((prev) => {
