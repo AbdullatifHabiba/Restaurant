@@ -26,7 +26,7 @@ function AdminItems() {
             img={item.image_location}
             name={item.name}
             price={item.price}
-            quantity={item.available}
+            quantity={item.available_amount}
             describe={item.describe}
           />
     )

@@ -134,4 +134,18 @@ app.post("/signup", (req, res) => {
   );
 });
 
+app.post("/addAdmin", (req, res) => {
+  let r =sign_upservice.Add_Admin (req.body);
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state: "failed to connect database" })
+  );
+});
+app.post("/addDelivery", (req, res) => {
+  let r =sign_upservice.Add_Delivery (req.body);
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state: "failed to connect database" })
+  );
+
+});
+
 app.listen(5000);
