@@ -39,9 +39,18 @@ export class CustomerServices implements ICustomerService {
     }
     async paypal_payment(req: any,res:any) {
 
-        let customer_id=req.customer_id;
-        let price=req.price;
-        let items=req.items;
+    const items:any=[];
+    for (let i = 0; i < req.body.arr.length-2; i++) 
+    {
+        await this.menueRepo.GetItemByName(req.body.arr[i].Name).then((item:any)=>{
+           item=JSON.parse(JSON.stringify(item));
+            items.push({id:item[0].item_id,count:req.body.arr[i].Count,price:item[0].price})
+        });
+    }
+
+    let customer_id=req.body.arr[req.body.arr.length-1].Count;
+    let price=req.body.arr[req.body.arr.length-2].Count;
+    
         let order = this.order_repo.create_order(customer_id, price);
 
 
@@ -62,7 +71,6 @@ export class CustomerServices implements ICustomerService {
 
     }
     async cash_payment(req: any,res:any) {
-        console.log(req.body.arr);
     const items:any=[];
     for (let i = 0; i < req.body.arr.length-2; i++) 
     {
@@ -71,6 +79,7 @@ export class CustomerServices implements ICustomerService {
             items.push({id:item[0].item_id,count:req.body.arr[i].Count,price:item[0].price})
         });
     }
+
     let customer_id=req.body.arr[req.body.arr.length-1].Count;
     let price=req.body.arr[req.body.arr.length-2].Count;
     
@@ -79,7 +88,7 @@ export class CustomerServices implements ICustomerService {
             if (accepted.state === "accepted") {
                 let id: number = accepted.id;
                 for (let i = 0; i < items.length; i++) {
-                    console.log(items[i]);
+                    
                     this.orderitem_repo.create_orderItem(id, items[i].id, items[i].count, items[i].price);
                 }
                 const response = {

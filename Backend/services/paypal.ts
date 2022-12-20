@@ -75,7 +75,7 @@ export function execute_payment(payment_id:any, payer_id:any) {
     });
   })
 }
-export function get_payment(paymentId: string) {
+export function get_payment(paymentId: any) {
   return new Promise((resolve, reject) => {
     paypal.payment.get(paymentId, function (error, payment) {
       if (error) {
@@ -87,7 +87,7 @@ export function get_payment(paymentId: string) {
   });
 }
 
-export function refund_payment(paymentId: string) {
+export function refund_payment(paymentId: any) {
   return new Promise((resolve, reject) => {
     paypal.payment.get(paymentId, function (error, payment) {
       if (error) {
