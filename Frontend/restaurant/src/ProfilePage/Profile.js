@@ -1,6 +1,8 @@
 import React from "react";
 import './Profile.css';
 import { useLocation} from 'react-router-dom';
+import { environment } from "../environment";
+
 
 function Profile() {
   const location = useLocation();
