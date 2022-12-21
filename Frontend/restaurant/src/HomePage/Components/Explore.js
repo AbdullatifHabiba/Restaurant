@@ -26,10 +26,10 @@ export default function Explore() {
     let FoodHTML = Food.map((item) => {
         return (
             <FoodCard
-                img={item.image_location}
-                name={item.name}
-                price={item.price}
-                describe={item.describe}
+            img={item.image_location}
+            name={item.name}
+            price={item.price}
+            describe={item.description}
             />
         );
     })

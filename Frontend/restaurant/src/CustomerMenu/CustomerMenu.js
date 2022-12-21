@@ -5,7 +5,6 @@ import FoodCard from './Components/FoodCard';
 import { environment } from '../environment';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { BsFillCartCheckFill} from 'react-icons/bs';
-import Payment from '../PaymentPage/Payment';
 import {useNavigate,useLocation} from 'react-router-dom';
 let Order=[];
 
@@ -14,7 +13,7 @@ export default function CustomerMenu() {
 
     const location = useLocation();
 
-    React.useEffect(() => {
+     React.useEffect(() => {
         async function getFood() {
             let result = await fetch(`${environment.env}/menu`, {
                 method: "get",
@@ -30,7 +29,7 @@ export default function CustomerMenu() {
 
     
     React.useEffect(()=>{
-
+        console.log(Food);
         for(let i=0;i<Food.length;i++){
             Order[i]={Name:Food[i].name,CNT:0};
         }
@@ -71,7 +70,7 @@ export default function CustomerMenu() {
                 img={item.image_location}
                 name={item.name}
                 price={item.price}
-                describe={item.describe}
+                describe={item.description }
                 available={item.available_amount}
                 getData={GetData}
             />
@@ -90,13 +89,16 @@ export default function CustomerMenu() {
         NewOrder.push({Name:location.state.name,Count:location.state.id});
         NAV('/CustomerMenu/Payment',{state:NewOrder});
     }
+    function Profile(){
+        NAV('/CustomerMenu/Profile',{state:location.state.id});
+    }
     const [count, setCount] = React.useState(0);
     const [Price, setPrice] = React.useState(0);
     return (
         <div className="Main">
             <div className="Explore">
             <div className='CHeader'>
-                <p>Welcome, <span> {location.state.name}</span> </p>
+                <p>Welcome, <span onClick={Profile}> {location.state.name}</span> </p>
             </div>
                 <div className="Title">
                     <h2>Choose Your Order</h2>

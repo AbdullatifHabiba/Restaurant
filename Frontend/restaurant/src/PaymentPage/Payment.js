@@ -13,7 +13,9 @@ export const VaidateCity = (city = "") =>
   /^[a-zA-Z]*$/.test(city) || city === "";
 
 function Payment() {
-  let [data, setdata]=({}) ;
+  let [data,setdata] = React.useState({});
+
+ // let data ;
   React.useEffect(()=>{
     async function getdata(){
       let result = await fetch(`${environment.env}/customer_data`, {
@@ -31,32 +33,34 @@ function Payment() {
       setdata(res);
     } 
     getdata();
-  });
+
+  },[]);
     //const data ={name:"ayman mohamed", phone:"01145481793",city:"alex", address:"alexandria egypt"};
+    console.log(data);
+
   let nav = useNavigate();
   const location = useLocation();
   const price = location.state[location.state.length-2].Count;
   const [Error, setError] = React.useState(false);
   let [pay_method, setpay_method]=React.useState({paymentmethod:""});
 
-  let [info, setInfo] = React.useState({ name: data.name, phone: data.phone, city: data.city,address:data.address });
   let handleChange = (e) => {
-    setInfo((prev) => {
+    setdata((prev) => {
       return { ...prev, [e.target.name]: e.target.value }
     })
   }
 
  let handleSubmit = async (e) => {
   e.preventDefault();
-  if (!ValidatePhonenumber(info.phone)) {
+  if (!ValidatePhonenumber(data.phone)) {
     setError(()=>{return true;})
     return;
   }
-  else if (!VaidateCity(info.city)){
+  else if (!VaidateCity(data.city)){
     setError(()=>{return true;})
     return;
   }
-  else if (!VaidateAdress(info.address)){
+  else if (!VaidateAdress(data.address)){
     setError(()=>{return true;})
     return;
   }
@@ -73,16 +77,26 @@ function Payment() {
     body: JSON.stringify(
       {
         arr:location.state, 
-        info:info
+        info:data
       }
     )
   });
+  
   let message = await result.json();
-    if (message.state === "accepted") {
+  //console.log(message[1].href);
+ let res= window.open(message[1].href, '_blank');
+ console.log(res);
+ res.onclose=()=>{
       nav("/CustomerMenu",{state:UserState});
-    } else {
-      setError(()=>{return true;})
-    }
+
+ }
+
+ // await redirect(message[1].href);
+    // if (message.state === "accepted") {
+    //   nav("/CustomerMenu",{state:UserState});
+    // } else {
+    //   setError(()=>{return true;})
+    // }
  
 }
 // payment in cash 
@@ -95,7 +109,7 @@ else {
     body: JSON.stringify(
       {
         arr:location.state,
-        info
+        info:data
       }
     )
 
@@ -122,19 +136,19 @@ else {
           </div>
           <div>
           <label for="name" >Name</label>
-          <input  className="name" id="name" type="name"  name="name" required value={info.name} onChange={handleChange}/>
+          <input  className="name" id="name" type="name"  name="name" required value={data.name} onChange={handleChange}/>
           </div>
           <div>
           <label for="phone_number">Phone Number</label>
-          <input className="phone" id="phone" type="phone" name="phone" required value={info.phone} onChange={handleChange}/>
+          <input className="phone" id="phone" type="phone" name="phone" required value={data.phone} onChange={handleChange}/>
           </div>
           <div>
           <label for="city">City</label>
-          <input className="city" id="city" type="city" name="city" required value={info.city} onChange={handleChange}/>
+          <input className="city" id="city" type="city" name="city" required value={data.city} onChange={handleChange}/>
           </div>
           <div>
           <label for="address">Address</label>
-          <input className="address" id="address" type="address" name="address" required value={info.address} onChange={handleChange}/>
+          <input className="address" id="address" type="address" name="address" required value={data.address} onChange={handleChange}/>
           </div>
           <div className="paym_but_container">
           <input className='btn-submit' title='button' type="submit" value="Paypal" name="Paypal" onClick={() => setpay_method("paypal")}/>
