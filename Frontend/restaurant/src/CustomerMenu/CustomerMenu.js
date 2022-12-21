@@ -5,7 +5,6 @@ import FoodCard from './Components/FoodCard';
 import { environment } from '../environment';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { BsFillCartCheckFill} from 'react-icons/bs';
-import Payment from '../PaymentPage/Payment';
 import {useNavigate,useLocation} from 'react-router-dom';
 let Order=[];
 
@@ -34,7 +33,7 @@ export default function CustomerMenu() {
         for(let i=0;i<Food.length;i++){
             Order[i]={Name:Food[i].name,CNT:0};
         }
-    },{});
+    },[Food]);
     
     function GetIndex(NN){
         for(let i=0;i<Food.length;i++){
@@ -95,6 +94,9 @@ export default function CustomerMenu() {
     return (
         <div className="Main">
             <div className="Explore">
+            <div className='CHeader'>
+                <p>Welcome, <span> {location.state.name}</span> </p>
+            </div>
                 <div className="Title">
                     <h2>Choose Your Order</h2>
                     <p>This is our available food now, Just add the amount of items you need, verify your order, and enjoy <IoFastFoodOutline/> </p>

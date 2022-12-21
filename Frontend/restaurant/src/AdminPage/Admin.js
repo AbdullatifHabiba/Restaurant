@@ -6,15 +6,16 @@ function Admin() {
     const location = useLocation();
   return (
     <div className="admin-container">
+      <h1 className="Logo2">Eat Nine</h1>
       <div className="side-bar">
         <div className="side-bar-link active">Dash Board</div>
         <div className="side-bar-link" onClick={()=>nav("./menu-items",{state:location.state})}>Menu Items</div>
         <div className="side-bar-link" onClick={()=>nav("./delivery", {state:location.state})}>Delivery men</div>
       </div>
       <div className="admin-main">
-        <div className="welcome-div">
-          <h1 className="welcome-header">Welcome Admin</h1>
-        </div>
+      <div className='CHeader'>
+                <p>Welcome, <span> {location.state.name}</span> </p>
+      </div>
       </div>
     </div>
   );

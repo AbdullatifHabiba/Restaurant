@@ -21,7 +21,7 @@ console.log(memotype)
    }).catch((rejected) => {
      console.log("rejected");
    });
-   return this.menuo_repo.AddItem(body.name,100,location,body.describe,body.price);
+   return this.menuo_repo.AddItem(body.name,body.available,location,body.describe,body.price);
    
 }
     
@@ -30,4 +30,5 @@ console.log(memotype)
     {
         return this.adminR_Obj.getALL();
     }
+   
 }
