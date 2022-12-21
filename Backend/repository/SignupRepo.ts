@@ -61,7 +61,7 @@ export class SignUp implements ISignUpRepo {
         return response;
       }
       else {
-        await db['Deliveryman'].create({  name:Name,email: Email, HPassword: password,phone:phone,status:"free",Branch_id:1 });
+        await db['Deliveryman'].create({  name:Name,email: Email, HPassword: password,phone:phone,status:"free",Branch_id:3 });
         const response = { state: "accepted" };
         return response;
       }

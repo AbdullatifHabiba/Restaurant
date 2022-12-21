@@ -102,7 +102,7 @@ app.post("/addAdmin", (req, res) => {
 app.post("/addDelivery", (req, res) => {
   let r = sign_upservice.Add_Delivery(req.body);
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
-    res.status(404).send({ state: "failed to connect database" })
+    res.status(404).send({ state:rejected+ "failed to connect database" })
   );
 });
 app.post("/customer_data", (req, res) => {
