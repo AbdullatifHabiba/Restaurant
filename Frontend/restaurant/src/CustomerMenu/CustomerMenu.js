@@ -89,13 +89,16 @@ export default function CustomerMenu() {
         NewOrder.push({Name:location.state.name,Count:location.state.id});
         NAV('/CustomerMenu/Payment',{state:NewOrder});
     }
+    function Profile(){
+        NAV('/CustomerMenu/Profile',{state:location.state.id});
+    }
     const [count, setCount] = React.useState(0);
     const [Price, setPrice] = React.useState(0);
     return (
         <div className="Main">
             <div className="Explore">
             <div className='CHeader'>
-                <p>Welcome, <span> {location.state.name}</span> </p>
+                <p>Welcome, <span onClick={Profile}> {location.state.name}</span> </p>
             </div>
                 <div className="Title">
                     <h2>Choose Your Order</h2>
