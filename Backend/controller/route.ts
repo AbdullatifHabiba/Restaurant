@@ -21,20 +21,20 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-(async () => {
+// (async () => {
 
-//   //AWS.getPutSignedUrl("test");
-//   // await AWS.upload_images("sandwatch").then(acc=>{
-//   //   console.log("successfully sand at "+acc.Location);
-//   //   const readStream = AWS.getFileStream("sandwatch");
-//   //   console.log("successfully readStream");
+//   //   //AWS.getPutSignedUrl("test");
+//   //   // await AWS.upload_images("sandwatch").then(acc=>{
+//   //   //   console.log("successfully sand at "+acc.Location);
+//   //   //   const readStream = AWS.getFileStream("sandwatch");
+//   //   //   console.log("successfully readStream");
+  
+//   //   //  console.log(readStream.readable);
+//   //   });
+//   // console.log("Initialize database connection...");
 
-//   //  console.log(readStream.readable);
-//   });
-// console.log("Initialize database connection...");
-await db.sequelize.sync({ force: false });
-
-})();
+  
+//   })();
 
 app.use(
   cors({
@@ -46,10 +46,7 @@ const sign_inservice: ISignInService = new signinservice();
 const sign_upservice: ISignUpService = new signupservice();
 const menu_service: IMenueService = new menuserice();
 const admin_service: IAdminService = new adminsrevice();
-app.post("/or", (req, res) => {
-   db.sequelize.sync({ force: true });
 
-});
 app.get("/cash", (req, res) => {});
 app.get("/paypal", (req, res) => {
 
@@ -137,7 +134,7 @@ app.get("/homemenu", (req, res) => {
 });
 app.get("/menu", (req, res) => {
   let r = menu_service.getAll();
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+  r.then((accepted) => console.log(accepted)).catch((rejected) =>
     res.status(404).send({ state: "failed to connect database" })
   );
 });
