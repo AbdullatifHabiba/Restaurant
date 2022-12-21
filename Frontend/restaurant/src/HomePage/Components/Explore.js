@@ -5,14 +5,7 @@ import { environment } from "../../environment";
 
 import { FaChevronCircleRight } from "react-icons/fa"
 export default function Explore() {
-    const Food = [
-        { name: "CheeseBurgerDelux", price: "$15", describe: "delicious", img: "../Images/CheeseBurgerDelux.jfif" },
-        { name: "Beefburger", price: "$10", describe: "amazing", img: "../Images/Beefburger.jfif" },
-        { name: "Bignine", price: "$20", describe: "wonderful", img: "../Images/Bignine.jfif" },
-        { name: "DoubleCheeseBurger", price: "$15", describe: "tasty", img: "../Images/DoubleCheeseBurger.jfif" },
-        { name: "Double-Chicken", price: "$15", describe: "super", img: "../Images/Double-Chicken.jfif" },
-        { name: "Royal", price: "$20", describe: "priceless", img: "../Images/Royal.jfif" }
-    ];
+    let [Food,setFood] = React.useState([]);
 
     React.useEffect(() => {
         async function getFood() {
@@ -22,20 +15,21 @@ export default function Explore() {
                     'Content-type': 'application/json'
                 }
             });
-            Food = await result.json();
+            let res = await result.json();
+            setFood(res);
         }
         getFood();
-    });
+    },[]);
 
 
     // img="../Images/sand.png"
     let FoodHTML = Food.map((item) => {
         return (
             <FoodCard
-                img={item.img}
-                name={item.name}
-                price={item.price}
-                describe={item.describe}
+            img={item.image_location}
+            name={item.name}
+            price={item.price}
+            describe={item.description}
             />
         );
     })

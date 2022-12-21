@@ -1,73 +1,139 @@
-import express from 'express'
-import { ISignInService } from '../core/service/ISignInService';
-import { ISignUpService } from '../core/service/ISignUpService';
-import { IMenueService } from '../core/service/IMenuService';
-import { menuserice } from '../services/MenuService';
-import { signinservice } from '../services/SignInService';
-import { signupservice } from '../services/SignUpService';
-import db from './../repository/sequalize';
-import * as AWS from './aws';
-import*as paypal from'./paypal'
+import express from "express";
+import { ISignInService } from "../core/service/ISignInService";
+import { ISignUpService } from "../core/service/ISignUpService";
+import { IMenueService } from "../core/service/IMenuService";
+import { menuserice } from "../services/MenuService";
+import { signinservice } from "../services/SignInService";
+import { signupservice } from "../services/SignUpService";
+import { IAdminService } from "../core/service/IAdminService";
+import { adminsrevice } from "../services/AdminService";
+import { CustomerServices } from "./../services/CustomerService";
+import { ICustomerService } from "./../core/service/ICustomerService";
 
-import cors from 'cors';
-const app = express()
+import db from "./../repository/sequalize";
+import * as paypal from "../services/paypal";
+import cors from "cors";
+import fileupload from "express-fileupload";
+
+const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-(async () => {
-
-  
-
-  //AWS.getPutSignedUrl("test");
-  // await AWS.upload_images("sandwatch").then(acc=>{
-  //   console.log("successfully sand at "+acc.Location);
-  //   const readStream = AWS.getFileStream("sandwatch");
-  //   console.log("successfully readStream");
-
-  //  console.log(readStream.readable);
-  });
- // console.log("Initialize database connection...");
- // await db.sequelize.sync({ force: false });
-
-//})();
-
-app.use(cors(
-  {
-    origin: '*',
-  }
-))
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+app.use(
+  fileupload({
+    createParentPath: true,
+  })
+);
 
 const sign_inservice: ISignInService = new signinservice();
 const sign_upservice: ISignUpService = new signupservice();
 const menu_service: IMenueService = new menuserice();
-app.get('/paypal', (req, res) => {
-  paypal.create_payment(100,15).then((accepted) => {
-    console.log("successfully sand at " + accepted);
-    res.status(200).send(accepted);
-  }).catch((rejected) => {
-    console.log("rejected");
-    res.status(404).send({ state: rejected });
-  });
+const admin_service: IAdminService = new adminsrevice();
+const customer_service: ICustomerService = new CustomerServices();
 
-});
-app.get('/cancel', (req, res) => {
-  console.log(req.body+"cancel");
-});
-// GET method route
-app.post('/signin', (req, res) => {
-  let r = sign_inservice.sign_in(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send({ state: "failed to connect database" }));
-})
+async () => {
+  await db.sequelize.sync({ force: false });
+};
 
-app.get('/homemenu', (req, res) => {
-  let r = menu_service.get6();
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send({ state: "failed to connect database" }));
-})
+
+//You're other codes
+
 
 // POST method route
-app.post('/signup', (req, res) => {
+app.post("/signup", (req, res) => {
   let r = sign_upservice.sign_up(req.body);
-  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => res.status(404).send({ state: "failed to connect database" }));
-})
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state: "failed to connect database" })
+  );
+});
 
+// GET method route
+app.post("/signin", (req, res) => {
+  let r = sign_inservice.sign_in(req.body);
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state: "failed to connect database" })
+  );
+});
+
+app.get("/homemenu", (req, res) => {
+  let r = menu_service.get6();
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state: "failed to connect database" })
+  );
+});
+app.get("/menu", (req, res) => {
+  let r = menu_service.getAll();
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state: "failed to connect database" })
+  );
+});
+app.post("/additem", async (req: any, res) => {
+  if (!req.files) {
+    res.send({
+      status: "failed",
+      message: "No file uploaded",
+    });
+  } else {
+    let file = req.files.File;
+
+    await admin_service
+      .AddItem_toDB_and_s3(file.data, req.body, file.mimetype)
+      .then((accepted) => {
+        res.status(200).send(accepted);
+      })
+      .catch((rejected) => {
+        res.status(404).send({ state: rejected });
+      });
+  }
+});
+
+
+app.post("/addAdmin", (req, res) => {
+  let r = sign_upservice.Add_Admin(req.body);
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state: "failed to connect database" })
+  );
+});
+app.post("/addDelivery", (req, res) => {
+  let r = sign_upservice.Add_Delivery(req.body);
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state:rejected+ "failed to connect database" })
+  );
+});
+app.post("/customer_data", (req, res) => {
+  let r = customer_service.get_customer_details(req.body);
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => {
+    console.log(rejected);
+    res.status(404).send({ state: "failed to connect database" });
+  });
+});
+app.post("/cash", (req, res) => {
+  customer_service.cash_payment(req, res);
+});
+app.post("/paypal", (req, res) => {
+  customer_service.paypal_payment(req, res);
+});
+
+app.get("/cancel", (req, res) => {
+  res.send("cancel");
+});
+app.get("/success", (req, res) => {
+  paypal
+    .execute_payment(req.query.paymentId, req.query.PayerID)
+    .then((accepted: any) => {
+
+      console.log(accepted.transactions);
+    
+      res.status(200).send(accepted.state);
+    })
+    .catch((rejected) => {
+      console.log(rejected);
+      res.send(rejected);
+    });
+});
 app.listen(5000);
-
