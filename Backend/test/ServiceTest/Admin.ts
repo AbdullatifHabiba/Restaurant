@@ -35,8 +35,6 @@ describe("Admin Service layer Tests", () => {
     expect(result).to.equals("item already exist");
   });
 
-
-
   it("check  adding picture to s3 and item into database", async () => {
     const imageURL = 'G:/Fifth Term/Software Engineering/Project/Frontend/restaurant/public/Images/Bignine.jfif'
     const fileStream = fs.createReadStream(imageURL);
@@ -52,8 +50,5 @@ describe("Admin Service layer Tests", () => {
       (rejected) => console.log("Erron" + rejected));
     console.log(result);
     expect(result).to.equals("item added correctly");
-
   });
-
-
 });
