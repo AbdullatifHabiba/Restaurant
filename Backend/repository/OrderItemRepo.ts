@@ -20,7 +20,7 @@ export class OrderItem {
   }
 
 
-  async create_orderitems( req:any) {
+  async create_orderitems(req: any) {
     let item = await db['OrderItems'].findAll({
       where: {
         order_id: [req.order_id],
@@ -36,6 +36,6 @@ export class OrderItem {
     }
   }
 
-  }
-  
+}
+
 

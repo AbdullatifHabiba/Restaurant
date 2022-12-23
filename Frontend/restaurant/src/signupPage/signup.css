@@ -12,14 +12,16 @@
   padding: 0 100px;
   background-color: #fff5ec;
 }
-.contain{
+
+.contain {
   position: relative;
 }
-.error{
+
+.error {
   border-bottom: 2px solid red;
 }
 
-.error-message{
+.error-message {
   display: block;
   padding: 20px;
   color: red;
@@ -29,9 +31,11 @@
   font-weight: 400;
   margin-top: -15px;
 }
-.hide{
+
+.hide {
   display: none;
 }
+
 .form-container {
   display: flex;
   flex-direction: column;

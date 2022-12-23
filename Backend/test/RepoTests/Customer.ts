@@ -9,14 +9,11 @@ describe("Customer Repo Tests", () => {
   });
 
   it("check length of item returned", async () => {
-    let result:any;
+    let result: any;
     await obj.get_Available_Items().then(
-      (accepted) => result=accepted,
+      (accepted) => result = accepted,
       (rejected) => console.log("Erron" + rejected));
-      console.log(result);
-      expect(result.length).to.equals(1);
-    
+    console.log(result);
+    expect(result.length).to.equals(1);
   });
- 
-
 });

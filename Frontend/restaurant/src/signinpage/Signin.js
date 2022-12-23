@@ -28,7 +28,7 @@ function Signin() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     if (!ValidateEmail(info.mail)) {
-      setError(()=>{return true;})
+      setError(() => { return true; })
       return;
     }
 
@@ -48,15 +48,15 @@ function Signin() {
     let message = await result.json();
     if (message.state === "accepted") {
       //route to Main page
-      let UserState={name:message.name,id:message.id};
-      if(User==="customer"){
-        nav("/CustomerMenu",{state:UserState});
+      let UserState = { name: message.name, id: message.id };
+      if (User === "customer") {
+        nav("/CustomerMenu", { state: UserState });
       }
-      else if(User==="admin"){
-        nav("/admin",{state:UserState});
+      else if (User === "admin") {
+        nav("/admin", { state: UserState });
       }
     } else {
-      setError(()=>{return true;})
+      setError(() => { return true; })
     }
   }
   return (
@@ -89,13 +89,13 @@ function Signin() {
         <img className='image_1' name="image_1" src={Hamburger} alt="" />
         <img className='image_1' name="image_1" src={Pizza_Maker} alt="" />
       </div>
-      {Error &&<div className='ErrorPOP'>
+      {Error && <div className='ErrorPOP'>
         <div className='PopUP'>
           <p>Email or Password are not correct !!</p>
-          <button onClick={()=>{setError(()=>{return false;})}}>OK</button>
+          <button onClick={() => { setError(() => { return false; }) }}>OK</button>
         </div>
-      </div> }
-      
+      </div>}
+
 
     </div>
   )

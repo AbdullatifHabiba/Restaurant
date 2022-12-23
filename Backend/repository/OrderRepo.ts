@@ -15,18 +15,18 @@ export class OrderRepo {
     });
 
     //if (JSON.stringify(item).length < 3) {
-      let response:any;
-      await db['Order'].create({ customer_id: customer_id, totol_price: price }).then(async (ress:any) => {
-         item=JSON.parse( JSON.stringify(ress));
-          response = {
-          id: item.order_id,
-          state: "accepted"
-        };
-      }).catch((err:any)=>{
-        response = {state: "can't create order because"+err  };
-      });
-      
-      return response;
+    let response: any;
+    await db['Order'].create({ customer_id: customer_id }).then(async (ress: any) => {
+      item = JSON.parse(JSON.stringify(ress));
+      response = {
+        id: item.order_id,
+        state: "accepted"
+      };
+    }).catch((err: any) => {
+      response = { state: "can't create order because" + err };
+    });
+
+    return response;
     // } else {
     //   const response = {
     //     state: "can't create order"
