@@ -16,6 +16,7 @@ export class OrderRepo {
 
     //if (JSON.stringify(item).length < 3) {
     let response: any;
+
     await db['Order'].create({ customer_id: customer_id }).then(async (ress: any) => {
       item = JSON.parse(JSON.stringify(ress));
       response = {
@@ -25,7 +26,7 @@ export class OrderRepo {
     }).catch((err: any) => {
       response = { state: "can't create order because" + err };
     });
-
+    console.log(response);
     return response;
     // } else {
     //   const response = {

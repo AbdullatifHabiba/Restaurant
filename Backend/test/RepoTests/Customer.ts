@@ -16,4 +16,24 @@ describe("Customer Repo Tests", () => {
     console.log(result);
     expect(result.length).to.equals(1);
   });
+  it("check customer availabe",
+  async () => {
+    let result:any;
+    await obj.get_customer_details(1).then(
+      (accepted) => result=accepted,
+      (rejected) => console.log("Erron" + rejected));
+      console.log(result);
+      expect(result.name).to.equals("Abdullatif khalid");
+  });
+  it("check customer not found availabe",
+  async () => {
+    let result:any;
+    await obj.get_customer_details(10).then(
+      (accepted) => result=accepted,
+      (rejected) => result= rejected);
+      console.log(result);
+      expect(result.state).to.equals("not found this customer");
+  });
+ 
+
 });

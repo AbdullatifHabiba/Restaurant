@@ -1,12 +1,14 @@
 import React from "react";
 import './Profile.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
+import { environment } from "../environment";
+
 
 function Profile() {
   const location = useLocation();
-  let [data, setdata] = React.useState({});
-  React.useEffect(() => {
-    async function getdata() {
+  let [info,setinfo] = React.useState({});
+  React.useEffect(()=>{
+    async function getdata(){
       let result = await fetch(`${environment.env}/customer_data`, {
         method: "POST",
         headers: {
@@ -14,19 +16,17 @@ function Profile() {
         },
         body: JSON.stringify(
           {
-            id: location.state[location.state.length - 1].Count
+            id:location.state.id
+
           }
         )
       });
       let res = await result.json();
-      setdata(res);
-    }
+      setinfo(res);
+    } 
     getdata();
 
-  }, []);
-  //const data ={name:"ayman mohamed",email:"ayman2001@gmail.com", phone:"01145481793",city:"alex", address:"alexandria egypt"};
-  let [info]
-    = React.useState({ name: data.name, email: data.email, phone: data.phone, city: data.city, address: data.address });
+  },[]);
 
   return (
     <div className="profile_class">
