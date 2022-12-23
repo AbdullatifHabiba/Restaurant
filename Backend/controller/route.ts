@@ -24,6 +24,7 @@ app.use(
     origin: "*",
   })
 );
+
 app.use(
   fileupload({
     createParentPath: true,
@@ -39,10 +40,6 @@ const customer_service: ICustomerService = new CustomerServices();
 async () => {
   await db.sequelize.sync({ force: false });
 };
-
-
-//You're other codes
-
 
 // POST method route
 app.post("/signup", (req, res) => {
@@ -66,12 +63,14 @@ app.get("/homemenu", (req, res) => {
     res.status(404).send({ state: "failed to connect database" })
   );
 });
+
 app.get("/menu", (req, res) => {
   let r = menu_service.getAll();
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
     res.status(404).send({ state: "failed to connect database" })
   );
 });
+
 app.post("/additem", async (req: any, res) => {
   if (!req.files) {
     res.send({
@@ -92,19 +91,20 @@ app.post("/additem", async (req: any, res) => {
   }
 });
 
-
 app.post("/addAdmin", (req, res) => {
   let r = sign_upservice.Add_Admin(req.body);
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
     res.status(404).send({ state: "failed to connect database" })
   );
 });
+
 app.post("/addDelivery", (req, res) => {
   let r = sign_upservice.Add_Delivery(req.body);
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
     res.status(404).send({ state:rejected+ "failed to connect database" })
   );
 });
+
 app.post("/customer_data", (req, res) => {
   let r = customer_service.get_customer_details(req.body);
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => {
@@ -112,9 +112,11 @@ app.post("/customer_data", (req, res) => {
     res.status(404).send({ state: "failed to connect database" });
   });
 });
+
 app.post("/cash", (req, res) => {
   customer_service.cash_payment(req, res);
 });
+
 app.post("/paypal", (req, res) => {
   customer_service.paypal_payment(req, res);
 });
@@ -122,13 +124,12 @@ app.post("/paypal", (req, res) => {
 app.get("/cancel", (req, res) => {
   res.send("cancel");
 });
+
 app.get("/success", (req, res) => {
   paypal
     .execute_payment(req.query.paymentId, req.query.PayerID)
     .then((accepted: any) => {
-
       console.log(accepted.transactions);
-    
       res.status(200).send(accepted.state);
     })
     .catch((rejected) => {
@@ -136,4 +137,5 @@ app.get("/success", (req, res) => {
       res.send(rejected);
     });
 });
+
 app.listen(5000);

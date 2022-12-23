@@ -25,7 +25,7 @@ export class SignUp implements ISignUpRepo {
       return response;
     }
   }
-  async AddNewAdmin(Name: String,Email: string, password: String,phone: String) {
+  async AddNewAdmin(Name: String, Email: string, password: String, phone: String) {
     if (Email != undefined && password != undefined) {
       let item = await db['Admin'].findAll({
         where: {
@@ -38,7 +38,7 @@ export class SignUp implements ISignUpRepo {
         return response;
       }
       else {
-        await db['Admin'].create({ name:Name,email: Email, HPassword: password,phone:phone });
+        await db['Admin'].create({ name: Name, email: Email, HPassword: password, phone: phone });
         const response = { state: "accepted" };
         return response;
       }
@@ -48,7 +48,7 @@ export class SignUp implements ISignUpRepo {
       return response;
     }
   }
-  async AddNewDelivery(Name: String,Email: string, password: String,phone: String) {
+  async AddNewDelivery(Name: String, Email: string, password: String, phone: String) {
     if (Email != undefined && password != undefined) {
       let item = await db['Deliveryman'].findAll({
         where: {

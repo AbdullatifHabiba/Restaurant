@@ -4,16 +4,16 @@ import './CustomerMenu.css';
 import FoodCard from './Components/FoodCard';
 import { environment } from '../environment';
 import { IoFastFoodOutline } from 'react-icons/io5';
-import { BsFillCartCheckFill} from 'react-icons/bs';
-import {useNavigate,useLocation} from 'react-router-dom';
-let Order=[];
+import { BsFillCartCheckFill } from 'react-icons/bs';
+import { useNavigate, useLocation } from 'react-router-dom';
+let Order = [];
 
 export default function CustomerMenu() {
-    let [Food,setFood] = React.useState([]);
+    let [Food, setFood] = React.useState([]);
 
     const location = useLocation();
 
-     React.useEffect(() => {
+    React.useEffect(() => {
         async function getFood() {
             let result = await fetch(`${environment.env}/menu`, {
                 method: "get",
@@ -25,42 +25,42 @@ export default function CustomerMenu() {
             setFood(res);
         }
         getFood();
-    },[]);
+    }, []);
 
-    
-    React.useEffect(()=>{
+
+    React.useEffect(() => {
         console.log(Food);
-        for(let i=0;i<Food.length;i++){
-            Order[i]={Name:Food[i].name,CNT:0};
+        for (let i = 0; i < Food.length; i++) {
+            Order[i] = { Name: Food[i].name, CNT: 0 };
         }
-    },[Food]);
-    
-    function GetIndex(NN){
-        for(let i=0;i<Food.length;i++){
-            if(Order[i].Name===NN){
+    }, [Food]);
+
+    function GetIndex(NN) {
+        for (let i = 0; i < Food.length; i++) {
+            if (Order[i].Name === NN) {
                 return i;
             }
         }
     }
     console.log(Order)
 
-    let GetData=(Count)=>{
+    let GetData = (Count) => {
         console.log(Count.Name);
         console.log(Count.count);
-        Order[ GetIndex(Count.Name) ]={Name:Count.Name,CNT:Count.count};
+        Order[GetIndex(Count.Name)] = { Name: Count.Name, CNT: Count.count };
         //Calculate New Order and Price
-        setCount((old)=>{return 0;});
-        setPrice((old)=>{return 0;});
+        setCount((old) => { return 0; });
+        setPrice((old) => { return 0; });
 
-        for(let ord=0;ord<Order.length;ord++){
-                
-                    setCount((old)=>{
-                        return old+ Order[ord].CNT;
-                    })
-                    setPrice((old)=>{
-                        return old+ (Order[ord].CNT * Food[ord].price);
-                    })
-                
+        for (let ord = 0; ord < Order.length; ord++) {
+
+            setCount((old) => {
+                return old + Order[ord].CNT;
+            })
+            setPrice((old) => {
+                return old + (Order[ord].CNT * Food[ord].price);
+            })
+
         }
     }
     // img="../Images/sand.png"
@@ -70,7 +70,7 @@ export default function CustomerMenu() {
                 img={item.image_location}
                 name={item.name}
                 price={item.price}
-                describe={item.description }
+                describe={item.description}
                 available={item.available_amount}
                 getData={GetData}
             />
@@ -78,16 +78,16 @@ export default function CustomerMenu() {
     })
     //Use Navigate
     const NAV = useNavigate();
-    function ORDER(){
-        let NewOrder=[];
-        for(let ord=0;ord<Order.length;ord++){
-            if(Order[ord].CNT>0){
-                NewOrder.push({Name:Order[ord].Name,Count:Order[ord].CNT})
+    function ORDER() {
+        let NewOrder = [];
+        for (let ord = 0; ord < Order.length; ord++) {
+            if (Order[ord].CNT > 0) {
+                NewOrder.push({ Name: Order[ord].Name, Count: Order[ord].CNT })
             }
         }
-        NewOrder.push({Name:"Price",Count:Price});
-        NewOrder.push({Name:location.state.name,Count:location.state.id});
-        NAV('/CustomerMenu/Payment',{state:NewOrder});
+        NewOrder.push({ Name: "Price", Count: Price });
+        NewOrder.push({ Name: location.state.name, Count: location.state.id });
+        NAV('/CustomerMenu/Payment', { state: NewOrder });
     }
     function Profile(){
         NAV('/CustomerMenu/Profile',{state:location.state.id});
@@ -102,7 +102,7 @@ export default function CustomerMenu() {
             </div>
                 <div className="Title">
                     <h2>Choose Your Order</h2>
-                    <p>This is our available food now, Just add the amount of items you need, verify your order, and enjoy <IoFastFoodOutline/> </p>
+                    <p>This is our available food now, Just add the amount of items you need, verify your order, and enjoy <IoFastFoodOutline /> </p>
                 </div>
                 <div className="container2">
                     {FoodHTML}
@@ -121,7 +121,7 @@ export default function CustomerMenu() {
                     </div>
                 </div>
             </div>
-            <div className='Cart' onClick={()=>{document.getElementById("OrderNow").scrollIntoView({ behavior: 'smooth'})}}><BsFillCartCheckFill/></div>
+            <div className='Cart' onClick={() => { document.getElementById("OrderNow").scrollIntoView({ behavior: 'smooth' }) }}><BsFillCartCheckFill /></div>
 
         </div>
     );

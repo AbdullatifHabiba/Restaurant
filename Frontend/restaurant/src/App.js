@@ -3,7 +3,7 @@ import HomePage from './HomePage/HomePage';
 
 import Signin from './signinpage/Signin';
 import SignUp from './signupPage/SignUp';
-import CustomerMenu from'./CustomerMenu/CustomerMenu'
+import CustomerMenu from './CustomerMenu/CustomerMenu'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Admin from './AdminPage/Admin';

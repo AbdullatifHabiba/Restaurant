@@ -14,9 +14,9 @@ paypal.configure({
   'client_id': client_id!,
   'client_secret': client_secret!
 });
-export function create_payment(items:any,order_id:any ,total:any) {
-  let item_list:any = [];
-  items.forEach((item:any) => {
+export function create_payment(items: any, order_id: any, total: any) {
+  let item_list: any = [];
+  items.forEach((item: any) => {
     item_list.push({
       "name": item.name,
       "sku": item.id,
@@ -43,7 +43,7 @@ export function create_payment(items:any,order_id:any ,total:any) {
           "currency": currency,
           "total": total
         },
-        "order_id":order_id,
+        "order_id": order_id,
         "description": "This is the payment description."
       }]
     };
@@ -58,8 +58,8 @@ export function create_payment(items:any,order_id:any ,total:any) {
   })
 }
 
-export function execute_payment(payment_id:any, payer_id:any) {
-  let transactions=payment_id.transactions;
+export function execute_payment(payment_id: any, payer_id: any) {
+  let transactions = payment_id.transactions;
 
   return new Promise((resolve, reject) => {
     const execute_payment_json = {
