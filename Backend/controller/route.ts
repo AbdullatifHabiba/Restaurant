@@ -118,7 +118,7 @@ app.post("/cash", (req, res) => {
 });
 
 app.post("/paypal", (req, res) => {
-  customer_service.paypal_payment(req, res);
+ customer_service.paypal_payment(req, res);
 });
 
 app.get("/cancel", (req, res) => {
@@ -126,6 +126,7 @@ app.get("/cancel", (req, res) => {
 });
 
 app.get("/success", (req, res) => {
+  console.log("to success "+req);
   paypal
     .execute_payment(req.query.paymentId, req.query.PayerID)
     .then((accepted: any) => {
