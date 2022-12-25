@@ -91,7 +91,7 @@ export class OrderRepo {
       return response;
     }
   }
-  async create_order_to_delivery(order_id: Number, delivery_id: Number){
+  async add_order_to_delivery(order_id: Number, delivery_id: Number){
    
       await db['DeliveryOrder'].create({ order_id: order_id, delivery_id: delivery_id ,delivered:false});
       const response = {

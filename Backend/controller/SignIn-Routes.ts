@@ -19,11 +19,7 @@ router_signin.use(
     })
   );
 
-router_signin.use(
-    fileupload({
-      createParentPath: true,
-    })
-  );
+
 
 const sign_inservice: ISignInService = new signinservice();
 
