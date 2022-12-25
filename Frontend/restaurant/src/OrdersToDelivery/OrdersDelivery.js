@@ -7,7 +7,7 @@ export default function OrdersDelivery() {
   const location = useLocation();
   let [Orders, setOrders] = React.useState([]);
   React.useEffect(() => {
-    async function getFood() {
+    async function getOrders() {
       let result = await fetch(`${environment.env}/OrdersDelivery`, {
         method: "get",
         headers: {

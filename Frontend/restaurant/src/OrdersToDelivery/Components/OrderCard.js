@@ -5,13 +5,12 @@ export default function OrderCard(props) {
   //Use Navigate
   const NAV = useNavigate();
   function Deliver() {
-    let NewOrder = [];
-    NewOrder.push({
+    let NewOrder = {
       Name: props.deliver,
       Id: props.deliverID,
       OrderID: props.OrderID,
-    });
-    NAV("/CustomerMenu/Payment", { state: NewOrder });
+    };
+    NAV("/orders", { state: NewOrder });
   }
 
   return (
