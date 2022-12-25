@@ -5,43 +5,43 @@ export default function FoodCard(props) {
     const [count, setCount] = React.useState(0);
     const [Error, setError] = React.useState(null);
 
-    function increase(){
-        if(count===props.available-1){
+    function increase() {
+        if (count === props.available - 1) {
             //NO stock
-            setCount( old =>{
-                return old+1;
+            setCount(old => {
+                return old + 1;
             });
-            props.getData({count:count+1, Name:props.name});
-            setError(()=>{
+            props.getData({ count: count + 1, Name: props.name });
+            setError(() => {
                 return (<div className="Error">
                     No more items in stock !!
                 </div>);
-            } );
-        }
-        else if(count<props.available){
-            setCount( old =>{
-                return old+1;
             });
-            props.getData({count:count+1, Name:props.name});
         }
-        else{
-            setError(()=>{
+        else if (count < props.available) {
+            setCount(old => {
+                return old + 1;
+            });
+            props.getData({ count: count + 1, Name: props.name });
+        }
+        else {
+            setError(() => {
                 return (<div className="Error">
                     No more items in stock !!
                 </div>);
-            } );   
-            props.getData({count:count, Name:props.name});
+            });
+            props.getData({ count: count, Name: props.name });
         }
 
     };
-    function decrease(){
-        setCount( old =>{
-            return old>0?old-1:0;
+    function decrease() {
+        setCount(old => {
+            return old > 0 ? old - 1 : 0;
         })
-        setError(()=>{
+        setError(() => {
             return null;
-        } );
-        props.getData({count:count===0?count:count-1, Name:props.name});
+        });
+        props.getData({ count: count === 0 ? count : count - 1, Name: props.name });
     };
     //() => this.setState(old=>{ return old+1; })
     return (
@@ -59,7 +59,7 @@ export default function FoodCard(props) {
                         <p>{count}</p>
                         <button id="dec" onClick={decrease}>-</button>
                     </div>
-                    
+
                 </div>
                 {Error}
             </div>

@@ -5,7 +5,7 @@ import { environment } from "../../environment";
 
 import { FaChevronCircleRight } from "react-icons/fa"
 export default function Explore() {
-    let [Food,setFood] = React.useState([]);
+    let [Food, setFood] = React.useState([]);
 
     React.useEffect(() => {
         async function getFood() {
@@ -19,17 +19,17 @@ export default function Explore() {
             setFood(res);
         }
         getFood();
-    },[]);
+    }, []);
 
 
     // img="../Images/sand.png"
     let FoodHTML = Food.map((item) => {
         return (
             <FoodCard
-            img={item.image_location}
-            name={item.name}
-            price={item.price}
-            describe={item.description}
+                img={item.image_location}
+                name={item.name}
+                price={item.price}
+                describe={item.description}
             />
         );
     })

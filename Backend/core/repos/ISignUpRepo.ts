@@ -7,12 +7,14 @@ export interface ISignUpRepo {
     Password: String,
     Phone: String
   ): Promise<any>;
+  
   AddNewAdmin(
     Name: String,
     Email: string,
     password: String,
     phone: String
   ): Promise<any>;
+  
   AddNewDelivery(
     Name: String,
     Email: string,

@@ -96,10 +96,10 @@ function SignUp() {
     if (message.state === "accepted") {
       nav("/signin");
     } else {
-      setError(()=>{return true;});
+      setError(() => { return true; });
     }
   };
-  
+
   return (
     <div className="sign-up">
       <div className="form-container">
@@ -200,12 +200,12 @@ function SignUp() {
         <img className="hamburger" src={Burger} alt="burger" />
         <img className="pizza" src={pizza} alt="pizza maker" />
       </div>
-      {Error &&<div className='ErrorPOP'>
+      {Error && <div className='ErrorPOP'>
         <div className='PopUP'>
           <p>This Email Is in use !!</p>
-          <button onClick={()=>{setError(()=>{return false;})}}>OK</button>
+          <button onClick={() => { setError(() => { return false; }) }}>OK</button>
         </div>
-      </div> }
+      </div>}
     </div>
   );
 }

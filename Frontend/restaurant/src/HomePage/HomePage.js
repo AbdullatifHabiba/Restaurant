@@ -9,10 +9,10 @@ import './HomePage.css';
 export default function HomePage() {
   return (
     <div className="Main">
-      <LandingPage/>
-      <Branches/>
-      <Services/>
-      <Explore/>
+      <LandingPage />
+      <Branches />
+      <Services />
+      <Explore />
     </div>
   );
 }
