@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: Poppins;
+}
+
+:root {
+    --back-color: #FFF5EC;
+    --main-color: #FE043C;
+    --second-color: #2E266F;
+    --second-paragraph: #707070;
+}
+
+
+.OrdersDelivery .Container p {
+    margin-top: -10px;
+    text-transform: capitalize;
+}
+
+.OrdersDelivery .Container .info {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    color: #2E266F;
+}
+
+.OrdersDelivery .Container button:hover {
+    background-color: white;
+    color: var(--main-color);
+    border: 1px solid #FE043C;
+    letter-spacing: 2px;
+}
+
+.OrdersDelivery .Container button {
+    width: 70%;
+    height: 50px;
+    font-size: 27px;
+    font-weight: 800;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+.OrdersDelivery .Container h1 {
+    color: var(--main-color);
+
+}
+
+.OrdersDelivery .Container {
+    border-radius: 50px;
+    display: flex;
+    margin: 50px auto;
+    width: 70%;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}

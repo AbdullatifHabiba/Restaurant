@@ -11,6 +11,7 @@ import AdminItems from './AdminPage/AdminItems';
 import AddItem from './AdminPage/AddItem';
 import Payment from './PaymentPage/Payment';
 import Profile from './ProfilePage/Profile';
+import OrdersDelivery from './OrdersToDelivery/OrdersDelivery';
 function App() {
   return (
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/orders" element={<OrdersDelivery/>} />
 
         <Route path="/CustomerMenu" element={<CustomerMenu />} />
         <Route path="/CustomerMenu/Payment" element={<Payment />} />
