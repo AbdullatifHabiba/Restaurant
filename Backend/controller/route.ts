@@ -68,7 +68,7 @@ app.get("/homemenu", (req, res) => {
 });
 app.get("/menu", (req, res) => {
   let r = menu_service.getAll();
-  r.then((accepted) => console.log(accepted)).catch((rejected) =>
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
     res.status(404).send({ state: "failed to connect database" })
   );
 });

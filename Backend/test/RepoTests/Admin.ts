@@ -13,7 +13,7 @@ describe("Admin Repo Tests", () => {
     await obj.getALL().then(
       (accepted) => result=accepted,
       (rejected) => console.log("Erron" + rejected));
-      console.log(result);
+      console.log(result.length);
       expect(result.length).to.equals(1);
     
   });
