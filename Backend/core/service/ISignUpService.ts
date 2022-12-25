@@ -4,5 +4,5 @@ export interface ISignUpService {
 
     Add_Admin(req: any): Promise<any>;
 
-    Add_Delivery(req: any): Promise<any>;
+   
 }
