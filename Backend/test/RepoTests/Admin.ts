@@ -9,14 +9,12 @@ describe("Admin Repo Tests", () => {
   });
 
   it("check length of item returned", async () => {
-    let result:any;
+    let result: any;
     await obj.getALL().then(
-      (accepted) => result=accepted,
+      (accepted) => result = accepted,
       (rejected) => console.log("Erron" + rejected));
-      console.log(result.length);
-      expect(result.length).to.equals(1);
-    
-  });
- 
+    console.log(result);
+    expect(result.length).to.equals(1);
 
+  });
 });

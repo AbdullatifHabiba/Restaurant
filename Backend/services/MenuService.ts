@@ -13,5 +13,5 @@ export class menuserice implements IMenueService {
     get6() {
         return this.menuRepo.get6();
     }
-    
+
 }

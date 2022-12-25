@@ -3,7 +3,7 @@ import { IMenueRepo } from '../core/repos/IMenueRepo';
 
 export class MenueRepo implements IMenueRepo {
 
-  async AddItem(name: string, available: Number, location: String, description: String, price: String) {
+  async AddItem(name: string, available: Number, location: String, description: String, price: String): Promise<any> {
 
     let item = await db['MenuItems'].findAll({
       where: {
@@ -13,9 +13,9 @@ export class MenueRepo implements IMenueRepo {
 
     if (JSON.stringify(item).length < 3) {
       await db['MenuItems'].create({ name: name, available_amount: available, image_location: location, description: description, price: price });
-      return "item added correctly";
+      return { state: "success" };
     } else {
-      return "item already exist";
+      return { state: "item already exist" };
     }
   }
 
@@ -64,7 +64,7 @@ export class MenueRepo implements IMenueRepo {
     });
     return item;
   }
-  
+
 }
 
 

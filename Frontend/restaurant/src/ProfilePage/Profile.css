@@ -1,74 +1,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 .profile_class {
+  display: grid;
+  min-height: 100vh;
+  padding: 0 100px;
+  grid-template-columns: 20% 60% 20%;
+  font-family: "poppins";
+  background-color: #FFF5EC;
+}
+
+.profile_class .container {
+  padding-top: 70px;
+}
+
+.profile_class.logo {
+  color: red;
+  /* font-weight: bold; */
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.profile_class .vertify_header {
+  text-align: center;
+  text-align: center;
+  color: #2e266f;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 45px;
+}
+
+.profile_class form {
+  display: grid;
+  grid-template-columns: 34.5% 66.5%;
+  flex-direction: column;
+  width: 100%;
+  margin-right: auto;
+}
+
+.profile_class p {
+  background-color: transparent;
+  color: #2B2176;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+
+}
+
+.profile_class .data {
+  color: black;
+}
+
+.profile_class.paym_but_container {
+  align-items: center;
+}
+
+.profile_class .paym_but_container input {
+  width: 100%;
+  border: none;
+  background-color: #FE043C;
+  color: #FFFFFF;
+  border-radius: 30px;
+  font-family: "Poppins";
+  font-size: 30px;
+  opacity: 1;
+  cursor: pointer;
+  transition: .5s;
+  border: none;
+  margin-top: 20px;
+}
+
+@media (max-width: 800px) {
+  .profile_class {
     display: grid;
     min-height: 100vh;
     padding: 0 100px;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 10% 80% 10%;
     font-family: "poppins";
-    background-color: #FFF5EC;
-  }
-  .profile_class .container{
-    padding-top: 70px;
-  }
-  .profile_class.logo{
-    color: red;
-    /* font-weight: bold; */
-    font-size: 50px;
-    cursor: pointer;
-  }
-  .profile_class .vertify_header{
-    text-align: center;
-    text-align: center;
-    color: #2e266f;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 45px;
-  }
-  .profile_class form {
-    display: grid;
-    grid-template-columns: 34.5% 66.5%;
-    flex-direction: column;
-    width: 100%;
-    margin-right: auto;
-  }
-  .profile_class  p {
-    background-color: transparent;
-    color: #2B2176;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-  
-  }
-  .profile_class .data{
-    color: black;
   }
 
-  .profile_class.paym_but_container{
-  align-items: center;
- }
- .profile_class .paym_but_container input{
-    width: 100%;
-    border: none;
-    background-color: #FE043C;
-    color: #FFFFFF;
-    border-radius: 30px;
-    font-family: "Poppins";
-    font-size: 30px;
-    opacity: 1;
-    cursor: pointer;
-    transition: .5s;
-    border: none;
-    margin-top: 20px;
-  }
-  @media (max-width: 800px) {
-    .profile_class {
-      display: grid;
-      min-height: 100vh;
-      padding: 0 100px;
-      grid-template-columns: 10% 80% 10%;
-      font-family: "poppins";
-    }
-
-  }
+}

@@ -10,10 +10,10 @@ module.exports = (sequelize: any, Sequelize: any) => {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    totol_price: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    }
+    // totol_price: {
+    //   type: Sequelize.INTEGER,
+    //   allowNull: false,
+    // }
   });
   const customer = require(`./../models/Customer`)(sequelize, Sequelize);
   Order.belongsTo(customer, {

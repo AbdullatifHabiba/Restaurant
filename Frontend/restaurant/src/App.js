@@ -3,13 +3,14 @@ import HomePage from './HomePage/HomePage';
 
 import Signin from './signinpage/Signin';
 import SignUp from './signupPage/SignUp';
-import CustomerMenu from'./CustomerMenu/CustomerMenu'
+import CustomerMenu from './CustomerMenu/CustomerMenu'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Admin from './AdminPage/Admin';
 import AdminItems from './AdminPage/AdminItems';
 import AddItem from './AdminPage/AddItem';
-import Payment from './PaymentPage/Payment'
+import Payment from './PaymentPage/Payment';
+import Profile from './ProfilePage/Profile';
 function App() {
   return (
 
@@ -21,6 +22,7 @@ function App() {
 
         <Route path="/CustomerMenu" element={<CustomerMenu />} />
         <Route path="/CustomerMenu/Payment" element={<Payment />} />
+        <Route path="/CustomerMenu/Profile" element={<Profile />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/menu-items" element={<AdminItems />} />
         <Route path="/admin/menu-items/add-new-item" element={<AddItem />} />
