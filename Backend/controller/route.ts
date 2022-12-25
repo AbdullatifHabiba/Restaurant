@@ -138,5 +138,3 @@ app.get("/success", (req, res) => {
       res.send(rejected);
     });
 });
-
-app.listen(5000);
