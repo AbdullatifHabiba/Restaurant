@@ -4,7 +4,6 @@ import { ISignUpService } from "../core/service/ISignUpService";
 import { signupservice } from "../services/SignUpService";
 
 import cors from "cors";
-import fileupload from "express-fileupload";
 
 //const app = express();
 const router_signup =Router();
@@ -17,11 +16,7 @@ router_signup.use(
     })
   );
 
-router_signup.use(
-    fileupload({
-      createParentPath: true,
-    })
-  );
+
 
 const sign_upservice: ISignUpService = new signupservice();
 

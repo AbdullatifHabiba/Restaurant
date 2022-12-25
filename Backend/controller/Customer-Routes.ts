@@ -1,3 +1,4 @@
+import { OrderService } from './../services/OrderService';
 import express from "express";
 import { CustomerServices } from "../services/CustomerService";
 import { ICustomerService } from "../core/service/ICustomerService";
@@ -5,7 +6,6 @@ import { Router } from "express";
 
 import * as paypal from "../services/paypal";
 import cors from "cors";
-import fileupload from "express-fileupload";
 
 const router_Customer =Router();
 router_Customer.use(express.json());
@@ -17,13 +17,10 @@ router_Customer.use(
     })
   );
 
-  router_Customer.use(
-    fileupload({
-      createParentPath: true,
-    })
-  );
+  
 
 const customer_service: ICustomerService = new CustomerServices();
+const orderService=new OrderService();
 
 router_Customer.post("/customer_data", (req, res) => {
     let r = customer_service.get_customer_details(req.body);
@@ -47,16 +44,14 @@ router_Customer.post("/customer_data", (req, res) => {
   });
   
   router_Customer.get("/success", (req, res) => {
-    paypal
-      .execute_payment(req.query.paymentId, req.query.PayerID)
-      .then((accepted: any) => {
-        console.log(accepted.transactions);
-        res.status(200).send(accepted.state);
-      })
-      .catch((rejected) => {
-        console.log(rejected);
-        res.send(rejected);
-      });
+    orderService.Set_paypal_order(req,res);
+    
+  });
+  router_Customer.post("/assignOrder", (req, res) => {
+    orderService.order_to_deliveryman(req,res);
+  });
+  router_Customer.post("/orderStatus", (req, res) => {
+    orderService.Set_status_of_order(req,res);
   });
   
 export{router_Customer}

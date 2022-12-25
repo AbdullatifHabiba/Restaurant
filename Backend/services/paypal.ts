@@ -29,7 +29,8 @@ export function create_payment(items: any, order_id: any, total: any) {
     const create_payment_json = {
       "intent": 'sale',
       "payer": {
-        "payment_method": payment_method
+        "payment_method": payment_method,
+        
       },
       "redirect_urls": {
         "return_url": return_url,
