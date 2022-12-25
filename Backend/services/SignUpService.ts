@@ -13,7 +13,5 @@ export class signupservice implements ISignUpService {
   Add_Admin(req: any) {
     return this.signup.AddNewAdmin(req.name, req.email, req.password, req.phone);
   }
-  Add_Delivery(req: any) {
-    return this.signup.AddNewDelivery(req.name, req.email, req.password, req.phone);
-  }
+
 }
