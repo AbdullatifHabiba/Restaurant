@@ -14,6 +14,7 @@ paypal.configure({
   'client_id': client_id!,
   'client_secret': client_secret!
 });
+
 export function create_payment(items: any, order_id: any, total: any) {
   let item_list: any = [];
   items.forEach((item: any) => {
@@ -30,7 +31,6 @@ export function create_payment(items: any, order_id: any, total: any) {
       "intent": 'sale',
       "payer": {
         "payment_method": payment_method,
-        
       },
       "redirect_urls": {
         "return_url": return_url,
@@ -48,7 +48,6 @@ export function create_payment(items: any, order_id: any, total: any) {
         "description": "This is the payment description."
       }]
     };
-
     paypal.payment.create(create_payment_json, function (error, payment) {
       if (error) {
         reject(error);
@@ -61,13 +60,11 @@ export function create_payment(items: any, order_id: any, total: any) {
 
 export function execute_payment(payment_id: any, payer_id: any) {
   let transactions = payment_id.transactions;
-
   return new Promise((resolve, reject) => {
     const execute_payment_json = {
       "payer_id": payer_id,
       "transactions": transactions
     };
-
     paypal.payment.execute(payment_id, execute_payment_json, function (error, payment) {
       if (error) {
         reject(error);
@@ -77,6 +74,7 @@ export function execute_payment(payment_id: any, payer_id: any) {
     });
   })
 }
+
 export function get_payment(paymentId: any) {
   return new Promise((resolve, reject) => {
     paypal.payment.get(paymentId, function (error, payment) {
