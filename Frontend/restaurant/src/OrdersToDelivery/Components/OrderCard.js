@@ -10,7 +10,7 @@ export default function OrderCard(props) {
       Id: props.deliverID,
       OrderID: props.OrderID,
     };
-    NAV("/orders", { state: NewOrder });
+    NAV("/orders", { state: NewOrder }); //orders --> ayman page
   }
 
   return (
