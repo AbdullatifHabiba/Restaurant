@@ -90,6 +90,7 @@ export default function CustomerMenu() {
         NAV('/CustomerMenu/Payment', { state: NewOrder });
     }
     function Profile(){
+        //console.log(location.state.id)
         NAV('/CustomerMenu/Profile',{state:location.state.id});
     }
     const [count, setCount] = React.useState(0);
