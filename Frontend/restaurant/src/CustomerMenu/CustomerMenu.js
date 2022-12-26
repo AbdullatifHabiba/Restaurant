@@ -55,6 +55,13 @@ export default function CustomerMenu() {
       return 0;
     });
 
+    for (let ord = 0; ord < Order.length; ord++) {
+      setCount((old) => {
+        return old + Order[ord].CNT;
+      });
+      setPrice((old) => {
+        return old + Order[ord].CNT * Food[ord].price;
+      });
     }
   };
   // img="../Images/sand.png"

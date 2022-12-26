@@ -6,8 +6,6 @@ import { environment } from "../environment";
 
 function Profile() {
   const location = useLocation();
-  //console.log(location.state.id)
-  console.log(location.state)
   let [info,setinfo] = React.useState({});
   React.useEffect(()=>{
     async function getdata(){
@@ -18,7 +16,7 @@ function Profile() {
         },
         body: JSON.stringify(
           {
-            id:location.state
+            id:location.state.id
 
           }
         )
@@ -29,12 +27,11 @@ function Profile() {
     getdata();
 
   },[]);
-  console.log(info)
 
   return (
     <div className="profile_class">
       <div>
-        <h1 className="logo_profile_page">Eat Nine</h1>
+        <h1 className="logo">Eat Nine</h1>
       </div>
       <div className="container">
         <h1 className='vertify_header'>Profile Page</h1>
@@ -54,6 +51,9 @@ function Profile() {
             <p className="data" id="address" type="address" name="address" >{info.address}</p>
           </div>
         </form>
+        <div className="paym_but_container">
+          <input className='btn-submit' title='button' type="submit" value="Edit Profile Data" name="Edit Profile Data" />
+        </div>
       </div>
     </div>
 
