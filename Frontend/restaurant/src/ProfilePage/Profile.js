@@ -16,7 +16,7 @@ function Profile() {
         },
         body: JSON.stringify(
           {
-            id:location.state.id
+            id:location.state
 
           }
         )
