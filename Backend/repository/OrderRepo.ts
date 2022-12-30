@@ -145,7 +145,7 @@ export class OrderRepo {
     }
   }
 
-  async set_order_status(order_id: Number, delivery_id: Number, status: boolean) {
+  async set_order_status(order_id: Number, delivery_id: Number, status: string) {
     let item = await db['DeliveryOrder'].findAll({
       where: {
         order_id: [order_id],
@@ -159,7 +159,7 @@ export class OrderRepo {
         }
       });
       const response = {
-        state: "order status set"
+        state: "accepted"
       };
       return response;
     } else {
@@ -211,17 +211,20 @@ export class OrderRepo {
   }
 
   async get_All_orders_not_in_deliveryorder() {
-    let item = await db['Order'].findAll(
-      {
-        include: [{
-          model: db['DeliveryOrder'],
-          where: { delivery_id: null },
-          required: false
-        }]
-      }
-    );
+    // let item = await db['Order'].findAll(
+    //   {
+    //     include: [{
+    //       model: db['DeliveryOrder'],
+    //       where: { delivery_id: null },
+    //       required: false
+    //     }]
+    //   }
+    // );
     const response = {
-      orders: item
+      payment:"a",
+      price:15,
+      address:"123516",
+      order_id:1
     };
     return response;
   }

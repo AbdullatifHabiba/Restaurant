@@ -4,7 +4,7 @@ import { environment } from "../../environment";
 import {MdDelete} from "react-icons/md";
 function DeliveryCard(props) {
     let deleteItem = async(e)=>{
-        let result = await fetch(`${environment}/delete-delivery/${props.id}`, { method: 'DELETE' });
+        let result = await fetch(`${environment.env}/delete-delivery/${props.id}`, { method: 'DELETE' });
         let res = await result.json();
         if(res.state==="success"){
             window.location.reload();

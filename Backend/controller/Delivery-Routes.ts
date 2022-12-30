@@ -48,4 +48,20 @@ router_Delivery.post("/order-data", (req, res) => {
     });
 })
 
+router_Delivery.post("/assignorder", (req, res) => {
+    let r = deliveryService.assign_order(req.body);
+    r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => {
+        console.log(rejected);
+        res.status(404).send({ state: "failed to connect database" });
+    });
+})
+
+router_Delivery.post("/delivered", (req, res) => {
+    let r = deliveryService.deliver_order(req.body);
+    r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => {
+        console.log(rejected);
+        res.status(404).send({ state: "failed to connect database" });
+    });
+})
+
 export { router_Delivery }

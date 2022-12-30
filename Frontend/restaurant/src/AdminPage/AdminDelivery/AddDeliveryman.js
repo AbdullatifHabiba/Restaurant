@@ -19,11 +19,14 @@ function AddDeliveryman() {
       e.preventDefault();
       let result = await fetch(`${environment.env}/addDelivery`, {
         method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
         body: JSON.stringify({...data,password:bcrypt.hashSync(data.password, "$2a$10$CwTycUXWue0Thq9StjUM0u")}),
       });
       let message = await result.json();
       console.log(message);
-      if (message.state === "success") {
+      if (message.state === "accepted") {
         setSucc(true);
       } else {
         setError(true);
@@ -86,8 +89,8 @@ function AddDeliveryman() {
               type="text"
               name="branch"
               placeholder="Branch"
-              value={data.branch}
-              onChange={(e) => setdata({ ...data, branch: e.target.value })}
+              value={data.Branch_id}
+              onChange={(e) => setdata({ ...data, Branch_id: e.target.value })}
             />
             <input
               className="btn-submit"
