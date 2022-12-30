@@ -200,17 +200,9 @@ export class OrderRepo {
         }]
       }
     );
-    if (JSON.stringify(item).length >= 3) {
-      const response = {
-        orders: item,
-        state: "accepted"
-      };
-      return response;
-    } else {
-      const response = {
-        state: "can't get not assigned orders"
-      };
-      return response;
-    }
+    const response = {
+      orders: item
+    };
+    return response;
   }
 }
