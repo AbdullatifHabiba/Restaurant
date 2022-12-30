@@ -4,7 +4,6 @@ import { CustomerServices } from "../services/CustomerService";
 import { ICustomerService } from "../core/service/ICustomerService";
 import { Router } from "express";
 
-import * as paypal from "../services/paypal";
 import cors from "cors";
 
 const router_Customer = Router();
