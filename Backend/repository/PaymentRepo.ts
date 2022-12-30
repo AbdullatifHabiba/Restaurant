@@ -1,13 +1,14 @@
 import db from './sequalize';
 export class PaymentRepo {
-    async create_payment(customer_id: Number, payment_id: String,order_id:Number): Promise<any> {
+    
+    async create_payment(customer_id: Number, payment_id: String, order_id: Number): Promise<any> {
         let item = await db['Payment'].findAll({
             where: {
                 customer_id: [customer_id],
             }
         });
         let response: any;
-        await db['Payment'].create({ customer_id: customer_id, payment_id: payment_id,order_id:order_id }).then(async (ress: any) => {
+        await db['Payment'].create({ customer_id: customer_id, payment_id: payment_id, order_id: order_id }).then(async (ress: any) => {
             item = JSON.parse(JSON.stringify(ress));
             response = {
                 id: item.payment_id,
@@ -19,6 +20,7 @@ export class PaymentRepo {
         console.log(response);
         return response;
     }
+    
     async get_payment(payment_id: Number) {
         let item = await db['Payment'].findAll({
             where: {
@@ -38,8 +40,8 @@ export class PaymentRepo {
             };
             return response;
         }
-
     }
+    
     async delete_payment(payment_id: Number) {
         let item = await db['Payment'].findAll({
             where: {
@@ -62,7 +64,5 @@ export class PaymentRepo {
             };
             return response;
         }
-
     }
-
 }

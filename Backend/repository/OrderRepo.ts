@@ -1,19 +1,15 @@
-
 import db from './sequalize';
 
 export class OrderRepo {
 
-
-  async create_order(customer_id: Number, address: String,payment:String): Promise<any> {
+  async create_order(customer_id: Number, address: String, payment: String): Promise<any> {
     let item = await db['Order'].findAll({
       where: {
         customer_id: [customer_id],
-
       }
     });
-
     let response: any;
-    await db['Order'].create({ customer_id: customer_id ,address:address,payment:payment}).then(async (ress: any) => {
+    await db['Order'].create({ customer_id: customer_id, address: address, payment: payment }).then(async (ress: any) => {
       item = JSON.parse(JSON.stringify(ress));
       response = {
         id: item.order_id,
@@ -24,7 +20,6 @@ export class OrderRepo {
     });
     console.log(response);
     return response;
-   
   }
 
   async get_order(order_id: Number) {
@@ -68,6 +63,7 @@ export class OrderRepo {
       return response;
     }
   }
+
   async delete_order(order_id: Number) {
     let item = await db['Order'].findAll({
       where: {
@@ -91,17 +87,15 @@ export class OrderRepo {
       return response;
     }
   }
-  async add_order_to_delivery(order_id: Number, delivery_id: Number){
-   
-      await db['DeliveryOrder'].create({ order_id: order_id, delivery_id: delivery_id ,delivered:false});
-      const response = {
-        state: "accepted order to delivery"
-      };
-      return response;
-    
-    
-    
+
+  async add_order_to_delivery(order_id: Number, delivery_id: Number) {
+    await db['DeliveryOrder'].create({ order_id: order_id, delivery_id: delivery_id, delivered: false });
+    const response = {
+      state: "accepted order to delivery"
+    };
+    return response;
   }
+
   async assign_order_to_delivery(order_id: Number, delivery_id: Number) {
     let item = await db['DeliveryOrder'].findAll({
       where: {
@@ -130,7 +124,8 @@ export class OrderRepo {
       return response;
     }
   }
-  async set_order_status(order_id: Number, delivery_id:Number,status: boolean) {
+
+  async set_order_status(order_id: Number, delivery_id: Number, status: boolean) {
     let item = await db['DeliveryOrder'].findAll({
       where: {
         order_id: [order_id],
@@ -154,6 +149,7 @@ export class OrderRepo {
       return response;
     }
   }
+
   async get_order_by_delivery(delivery_id: Number) {
     let item = await db['DeliveryOrder'].findAll({
       where: {
@@ -173,6 +169,7 @@ export class OrderRepo {
       return response;
     }
   }
+
   async get_delievry_by_order(order_id: Number) {
     let item = await db['DeliveryOrder'].findAll({
       where: {
@@ -192,16 +189,17 @@ export class OrderRepo {
       return response;
     }
   }
-  async get_All_orders_not_in_deliveryorder(){
+
+  async get_All_orders_not_in_deliveryorder() {
     let item = await db['Order'].findAll(
-         {
-          include:[{
-            model:db['DeliveryOrder'],
-            where:{delivery_id:null},
-            required:false
-          }]
-        }
-      );
+      {
+        include: [{
+          model: db['DeliveryOrder'],
+          where: { delivery_id: null },
+          required: false
+        }]
+      }
+    );
     if (JSON.stringify(item).length >= 3) {
       const response = {
         orders: item,
@@ -215,6 +213,4 @@ export class OrderRepo {
       return response;
     }
   }
-
-  
 }

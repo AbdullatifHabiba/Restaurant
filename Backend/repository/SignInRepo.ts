@@ -2,6 +2,7 @@ import db from './sequalize';
 import { ISignInRepo } from '../core/repos/ISignInRepo';
 
 export class SignIn implements ISignInRepo {
+  
   async checkCorrectAdmin(Email: String, PassWord: String) {
     if (Email != undefined && PassWord != undefined) {
       let item = await db['Admin'].findAll({
@@ -68,7 +69,6 @@ export class SignIn implements ISignInRepo {
           name: item[0].name,
           state: "accepted"
         };
-
         return response;
       }
       else {

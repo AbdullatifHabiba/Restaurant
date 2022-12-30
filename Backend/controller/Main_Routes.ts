@@ -2,9 +2,9 @@ import express from "express";
 import { IMenueService } from "../core/service/IMenuService";
 import { menuserice } from "../services/MenuService";
 import { router_signin } from "./SignIn-Routes";
-import {router_signup} from "./SignUp-Routes";
-import {router_Admin} from "./Admin-Routes";
-import {router_Customer} from "./Customer-Routes";
+import { router_signup } from "./SignUp-Routes";
+import { router_Admin } from "./Admin-Routes";
+import { router_Customer } from "./Customer-Routes";
 
 import db from "../repository/sequalize";
 import cors from "cors";
@@ -26,14 +26,12 @@ app.use(
   })
 );
 
-
 app.use(router_signin);
 app.use(router_signup);
 app.use(router_Admin);
 app.use(router_Customer);
 
 const menu_service: IMenueService = new menuserice();
-
 
 async () => {
   await db.sequelize.sync({ force: false });

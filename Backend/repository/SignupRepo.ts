@@ -25,6 +25,7 @@ export class SignUp implements ISignUpRepo {
       return response;
     }
   }
+
   async AddNewAdmin(Name: String, Email: string, password: String, phone: String) {
     if (Email != undefined && password != undefined) {
       let item = await db['Admin'].findAll({
@@ -42,11 +43,9 @@ export class SignUp implements ISignUpRepo {
         const response = { state: "accepted" };
         return response;
       }
-
     } else {
       const response = { state: "data entered in request not completed" };
       return response;
     }
   }
-
 }
