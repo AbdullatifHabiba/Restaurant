@@ -11,13 +11,13 @@ function AddDeliveryman() {
       email: "",
       password: "",
       phone: "",
-      branch:""
+      Branch_id:""
     });
     let [error, setError] = React.useState(false);
     let [succ, setSucc] = React.useState(false);
     let handleSubmit = async (e) => {
       e.preventDefault();
-      let result = await fetch(`${environment.env}/add-delivery`, {
+      let result = await fetch(`${environment.env}/addDelivery`, {
         method: "POST",
         body: JSON.stringify({...data,password:bcrypt.hashSync(data.password, "$2a$10$CwTycUXWue0Thq9StjUM0u")}),
       });
