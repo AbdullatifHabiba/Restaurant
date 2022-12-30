@@ -1,16 +1,16 @@
 import React from "react";
 import "../admin.css";
+import "./admindelivery.css";
 import { environment } from "../../environment";
 import { useNavigate, useLocation } from "react-router-dom";
 import DeliveryCard from "./DeliveryCard";
-import { BsPlusCircleFill } from "react-icons/bs";
 function AdminDeliveryMen() {
   let nav = useNavigate();
   const location = useLocation();
   let [delivery, setDelivery] = React.useState([]);
   React.useEffect(() => {
     async function getFood() {
-      let result = await fetch(`${environment.env}/menu`, {
+      let result = await fetch(`${environment.env}/getAllDelivery`, {
         method: "get",
         headers: {
           "Content-type": "application/json",
@@ -20,6 +20,7 @@ function AdminDeliveryMen() {
       setDelivery(res);
     }
     getFood();
+    console.log("in effect")
   }, []);
   let Delivery = delivery.map((item) => {
     return (
@@ -57,10 +58,9 @@ function AdminDeliveryMen() {
       </div>
       <div className="admin-main">
         <div className="add-new">
-          <div
+          <div className="font"
             onClick={() => nav("./add-new-delivery", { state: location.state })}
-          >
-            <BsPlusCircleFill /> Add New Delivery
+          > Add New Delivery
           </div>
         </div>
         <div className="del-container">{Delivery}</div>
