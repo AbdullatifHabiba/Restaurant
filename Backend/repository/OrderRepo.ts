@@ -1,6 +1,9 @@
+import { customerRepo } from './CustomerRepo';
 import db from './sequalize';
 
 export class OrderRepo {
+
+  customer_repo = new customerRepo();
 
   async create_order(customer_id: Number, address: String, payment: String): Promise<any> {
     let item = await db['Order'].findAll({
@@ -55,6 +58,23 @@ export class OrderRepo {
         state: "accepted"
       };
       return response;
+    }
+    else {
+      const response = {
+        state: "can't get order by customer"
+      };
+      return response;
+    }
+  }
+
+  async get_customer_by_order(order_id: Number) {
+    let item = await db['Order'].findAll({
+      where: {
+        order_id: [order_id],
+      }
+    });
+    if (JSON.stringify(item).length >= 3) {
+      return this.customer_repo.get_customer_details(item[0].customer_id);
     }
     else {
       const response = {
