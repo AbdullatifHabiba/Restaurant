@@ -6,38 +6,76 @@ import { environment } from "../environment";
 function DeliveryOrder() {
   let nav = useNavigate();
   const location = useLocation();
-
+  let [Food, setFood] = React.useState([]);
   let [info,setinfo] = React.useState({});
   let [Order,setorder]=React.useState([]);
-
+  let [ord,setord]=React.useState([{name:"", count:"", price:""}]);
   React.useEffect(()=>{
-    async function getdata(){
-      let result = await fetch(`${environment.env}/DeliveryOrder`, {
+
+    async function getFood() {
+      let result = await fetch(`${environment.env}/menu`, {
+          method: "get",
+          headers: {
+              'Content-type': 'application/json'
+          }
+      });
+      let res = await result.json();
+      setFood(res.order);
+  }
+  getFood();
+
+    async function getorderdata(){
+      let result = await fetch(`${environment.env}/order-data`, {
         method: "POST",
         headers: {
           'Content-type': 'application/json'
         },
         body: JSON.stringify(
           {
-            deliveryid:location.state.Id,
             orderid:location.state.OrderID
           }
         )
       });
       let res = await result.json();
-      setinfo(res.customerinfo);
-      setorder(res.orderinfo);
+      setorder(res);
     } 
-    getdata();
+    getorderdata();
+
+    async function getcustomerdata(){
+      let result = await fetch(`${environment.env}/customerData`, {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(
+          {
+            orderid:location.state.OrderID
+          }
+        )
+      });
+      let res = await result.json();
+      setinfo(res);
+    } 
+    getcustomerdata();
 
   },[]);
-      
-  let OrderHTML = Order.map((item) => {
+
+
+     ord = Order.map((item)=>{
+      for(let i = 1; i<Food.length; i++){
+        if(Food[i].id == ord.id){
+            ord.name=Food[i].name;
+            ord.count=item.amount_required;
+            ord.price=Fodd[i].price;
+        }
+      }
+  })
+  let OrderHTML = ord.map((item) => {
     return (
         <div className="order_container">
           <h2 className="item">{item.name}</h2>
           <h2 className="item"> </h2>
-          <h2 className="item">{item.amount}</h2>
+          <h2 className="item">{item.count}</h2>
           <h2 className="item">{item.price}</h2>
         </div>
     );
@@ -105,7 +143,8 @@ let on_click = async () => {
             </div>
       </div>
       <div className="paym_but_container">
-          <input className='btn-submit' title='button' type="submit" value="Order deliverd"onClick={on_click} name="Edit Profile Data" />
+          <input className='btn-submit' title='button' type="submit"
+           value="Order deliverd"onClick={on_click} name="Edit Profile Data" />
         </div>
       </div>
     </div>
