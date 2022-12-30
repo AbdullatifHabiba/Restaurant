@@ -9,7 +9,9 @@ function DeliveryOrder() {
   let [Food, setFood] = React.useState([]);
   let [info,setinfo] = React.useState({});
   let [Order,setorder]=React.useState([]);
-  let [ord,setord]=React.useState([{name:"", count:"", price:""}]);
+  let ordobj = {name:"", amount:"", price:""};
+  let [ord,setord]=React.useState([]);
+  let[assigned, setassigned] =React.useState([]);
   React.useEffect(()=>{
 
     async function getFood() {
@@ -49,7 +51,7 @@ function DeliveryOrder() {
         },
         body: JSON.stringify(
           {
-            orderid:location.state.OrderID
+            order_id:location.state.OrderID
           }
         )
       });
@@ -58,18 +60,42 @@ function DeliveryOrder() {
     } 
     getcustomerdata();
 
+    async function assignorder(){
+      let result = await fetch(`${environment.env}/assignorder`, {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(
+          {
+            order_id:location.state.OrderID,
+            delivery_id:location.state.Id
+
+          }
+        )
+      });
+      let res = await result.json();
+      setassigned(res);
+    } 
+    assignorder();
+
   },[]);
 
 
-     ord = Order.map((item)=>{
-      for(let i = 1; i<Food.length; i++){
-        if(Food[i].id == ord.id){
-            ord.name=Food[i].name;
-            ord.count=item.amount_required;
-            ord.price=Fodd[i].price;
-        }
-      }
-  })
+  let total_price = 0 ;
+  let total_amount = 0 ;
+        for(let j = 1; j< Order.length; j++){
+            for(let i = 1; i<Food.length; i++){
+              if(Food[i].id === Order[j].id){
+                console.log("here", i)
+                ordobj={name:Food[i].name,amount:Order[j].amount_required,price:Food[i].price};
+                ord.push(ordobj);
+                total_price = total_price + Food[i].price
+                total_amount = total_amount + Order[j].amount_required 
+              }
+            }}
+
+
   let OrderHTML = ord.map((item) => {
     return (
         <div className="order_container">
@@ -83,7 +109,7 @@ function DeliveryOrder() {
 
 
 let on_click = async () => {
-  let result = await fetch(`${environment.env}/Delivered`, {
+  let result = await fetch(`${environment.env}/delivered`, {
     method: "POST",
     headers: {
       'Content-type': 'application/json'
@@ -91,7 +117,7 @@ let on_click = async () => {
     body: JSON.stringify(
       {
         deliveryid:location.state.Id,
-        orderid:location.state.OrderID
+        order_id:location.state.OrderID
       }
     )
   });
