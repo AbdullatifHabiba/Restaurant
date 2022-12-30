@@ -86,9 +86,10 @@ function Payment() {
 
       let message = await result.json();
       //console.log(message[1].href);
-      let res = window.open(message[1].href, '_blank');
-      console.log(res);
-      res.onclose = () => {
+       window.open(message[1].href, '_blank');
+               let res= await window.closed;   
+      if (res)
+      {
         nav("/CustomerMenu", { state: UserState });
 
       }

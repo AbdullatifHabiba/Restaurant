@@ -15,10 +15,5 @@ export interface ISignUpRepo {
     phone: String
   ): Promise<any>;
   
-  AddNewDelivery(
-    Name: String,
-    Email: string,
-    password: String,
-    phone: String
-  ): Promise<any>;
+
 }
