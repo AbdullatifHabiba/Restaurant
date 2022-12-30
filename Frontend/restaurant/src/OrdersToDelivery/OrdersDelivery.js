@@ -26,6 +26,7 @@ export default function OrdersDelivery() {
       let res = await result.json();
       setOrders(res);
     }
+    getOrders();
   }, []);
 
   let OrdersHTML = Orders.map((O) => {
