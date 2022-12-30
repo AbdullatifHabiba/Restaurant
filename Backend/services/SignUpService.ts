@@ -6,12 +6,10 @@ export class signupservice implements ISignUpService {
   signup: ISignUpRepo = new SignUp();
 
   sign_up(req: any) {
-
     return this.signup.AddNewEmailCustomer(req.name, req.address, req.city, req.mail, req.password, req.phone);
-
   }
+  
   Add_Admin(req: any) {
     return this.signup.AddNewAdmin(req.name, req.email, req.password, req.phone);
   }
-
 }

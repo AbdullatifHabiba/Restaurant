@@ -19,7 +19,6 @@ export class OrderItem {
     }
   }
 
-
   async create_orderitems(req: any) {
     let item = await db['OrderItems'].findAll({
       where: {
@@ -35,7 +34,4 @@ export class OrderItem {
       return "item already exist";
     }
   }
-
 }
-
-
