@@ -23,8 +23,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/orders" element={<OrdersDelivery/>} />
-        <Route path="/orders/DelivertOrder" element={<DelivertOrder/>} />
+        <Route path="/orders" element={<OrdersDelivery />} />
+        <Route path="/orders/DelivertOrder" element={<DelivertOrder />} />
         <Route path="/CustomerMenu" element={<CustomerMenu />} />
         <Route path="/CustomerMenu/Payment" element={<Payment />} />
         <Route path="/CustomerMenu/Profile" element={<Profile />} />
@@ -33,13 +33,9 @@ function App() {
         <Route path="/admin/menu-items/add-new-item" element={<AddItem />} />
         <Route path="/admin/delivery-men" element={<AdminDeliveryMen />} />
         <Route path="/admin/delivery-men/add-new-delivery" element={<AddDeliveryman />} />
-
       </Routes>
     </Router>
   );
-
 }
-
-
 
 export default App;

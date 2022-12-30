@@ -114,6 +114,4 @@ let on_click = async () => {
 
 }
 
-
-
 export default DeliveryOrder;

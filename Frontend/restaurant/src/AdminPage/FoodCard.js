@@ -4,7 +4,7 @@ import {MdDelete} from "react-icons/md";
 
 export default function FoodCard(props) {
     let deleteItem = async(e)=>{
-        let result = await fetch(`${environment}/delete-item/${props.name}`, { method: 'DELETE' });
+        let result = await fetch(`${environment.env}/delete-item/${props.name}`, { method: 'DELETE' });
         let res = await result.json();
         if(res.state==="success"){
             window.location.reload();

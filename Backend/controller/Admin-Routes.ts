@@ -67,7 +67,8 @@ router_Admin.delete("/delete-delivery/:id", (req, res) => {
 });
 
 router_Admin.delete("/delete-item/:name", (req, res) => {
-  let r = admin_service.Remove_Delivery(req.params.name);
+  console.log(req.params.name);
+  let r = admin_service.removeItem(req.params.name);
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
     res.status(404).send({ state: rejected + "failed to connect database" })
   );

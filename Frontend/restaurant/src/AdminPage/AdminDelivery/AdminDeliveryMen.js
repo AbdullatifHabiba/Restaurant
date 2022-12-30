@@ -28,8 +28,8 @@ function AdminDeliveryMen() {
         name={item.name}
         email={item.email}
         phone={item.phone}
-        branch={item.branch}
-        id={item.id}
+        branch={item.Branch_id}
+        id={item.deliveryman_id}
       />
     );
   });

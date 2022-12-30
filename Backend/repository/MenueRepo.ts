@@ -20,11 +20,22 @@ export class MenueRepo implements IMenueRepo {
   }
 
   async RemoveItemByName(name: string) {
-    await db['MenuItems'].destroy({
+    let item =  await db['MenuItems'].findAll({
       where: {
         name: [name]
       }
     });
+    if (JSON.stringify(item).length < 3) {
+      const response = { state: "name doesn't exist" };
+      return response;
+    };
+    await db['MenuItems'].destroy({
+      where: {
+        item_id: [item[0].item_id]
+      }
+    });
+    const response = { state: "success" };
+    return response;
   }
 
   async UpdateItemByName(name: string, available: Number, location: String, description: String, price: String) {

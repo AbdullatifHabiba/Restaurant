@@ -9,4 +9,6 @@ export interface IAdminService {
     Remove_Delivery(req: any): Promise<any>;
     
     getAllDelivery(): Promise<any>;
+
+    removeItem(req: string): Promise<any>;
 }
