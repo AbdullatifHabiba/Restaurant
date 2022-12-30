@@ -22,7 +22,8 @@ export class customerRepo implements ICustomerRepo {
                 name: customer[0].name,
                 phone: customer[0].phone,
                 city: customer[0].city,
-                address: customer[0].address
+                address: customer[0].address,
+                email: customer[0].email
             };
             return response;
         }
