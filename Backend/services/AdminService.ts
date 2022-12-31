@@ -21,6 +21,7 @@ export class adminsrevice implements IAdminService {
     }).catch((rejected) => {
       console.log("rejected");
     });
+    
     return this.menuo_repo.AddItem(body.name, body.available, location, body.describe, body.price);
   }
 
