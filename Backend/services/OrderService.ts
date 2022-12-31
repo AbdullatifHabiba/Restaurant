@@ -52,6 +52,8 @@ export class OrderService {
   }
 
   get_order_details(req: any) {
+    
+    console.log(req.orderid);
     return this.item_repo.get_items(req.orderid);
   }
 }

@@ -211,21 +211,16 @@ export class OrderRepo {
   }
 
   async get_All_orders_not_in_deliveryorder() {
-    // let item = await db['Order'].findAll(
-    //   {
-    //     include: [{
-    //       model: db['DeliveryOrder'],
-    //       where: { delivery_id: null },
-    //       required: false
-    //     }]
-    //   }
-    // );
-    const response = {
-      payment:"a",
-      price:15,
-      address:"123516",
-      order_id:1
-    };
-    return response;
+    let item = await db['Order'].findAll(
+      { }
+    );
+
+    // const response =[ {
+    //   payment:"a",
+    //   price:15,
+    //   address:"123516",
+    //   order_id:1
+    // }];
+    return item;
   }
 }

@@ -41,7 +41,7 @@ router_Delivery.post("/customerData", (req, res) => {
 });
 
 router_Delivery.post("/order-data", (req, res) => {
-    let r = orderService.get_order_details(req);
+    let r = orderService.get_order_details(req.body);
     r.then((accepted) => res.status(200).send(accepted)).catch((rejected) => {
         console.log(rejected);
         res.status(404).send({ state: "failed to connect database" });

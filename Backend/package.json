@@ -4,7 +4,7 @@
   "description": "\"webserver for restaurant\"",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only  ./controller/Main_Routes.ts" ,
+    "start": "ts-node-dev --respawn --transpile-only  ./controller/Main_Routes.ts",
     "tsc": "tsc",
     "test": "NODE_ENV=test mocha --check-leaks -r ts-node/register -r tsconfig-paths/register \"test/**/*.ts\"",
     "build": "tsc -p ."
@@ -14,6 +14,7 @@
   "dependencies": {
     "@types/bluebird": "^3.5.26",
     "aws-sdk": "^2.1272.0",
+    "bcrypt": "^5.1.0",
     "bluebird": "^3.5.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -32,6 +33,7 @@
     "tsc": "^2.0.4"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/chai": "^4.3.4",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
