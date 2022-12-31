@@ -81,18 +81,6 @@ export class CustomerServices implements ICustomerService {
         );
     }
     
-    edit_order(req: any) {
-        return new Promise<void>((resolve, reject) => {
-            null
-        });
-    }
-
-    delete_order(req: any) {
-        return new Promise<void>((resolve, reject) => {
-            null
-        });
-    }
-    
     async get_customer_details(req: any) {
         return this.customerRepo.get_customer_details(req.id);
     }

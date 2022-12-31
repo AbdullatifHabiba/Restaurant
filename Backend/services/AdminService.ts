@@ -35,11 +35,15 @@ export class adminsrevice implements IAdminService {
     return this.adminR_Obj.AddNewDelivery(req.name, req.email, req.password, req.phone, req.Branch_id);
   }
 
-  Remove_Delivery(req: any) {
-    return this.adminR_Obj.RemoveDeliveryById(req.id);
+  Remove_Delivery(req: string) {
+    return this.adminR_Obj.RemoveDeliveryById(req);
   }
 
   getAllDelivery() {
     return this.adminR_Obj.GetAllDelivery();
+  }
+
+  removeItem(req: string) {
+    return this.menuo_repo.RemoveItemByName(req);
   }
 }

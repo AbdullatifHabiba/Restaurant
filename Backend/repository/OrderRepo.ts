@@ -1,6 +1,9 @@
+import { customerRepo } from './CustomerRepo';
 import db from './sequalize';
 
 export class OrderRepo {
+
+  customer_repo = new customerRepo();
 
   async create_order(customer_id: Number, address: String, payment: String): Promise<any> {
     let item = await db['Order'].findAll({
@@ -55,6 +58,23 @@ export class OrderRepo {
         state: "accepted"
       };
       return response;
+    }
+    else {
+      const response = {
+        state: "can't get order by customer"
+      };
+      return response;
+    }
+  }
+
+  async get_customer_by_order(order_id: Number) {
+    let item = await db['Order'].findAll({
+      where: {
+        order_id: [order_id],
+      }
+    });
+    if (JSON.stringify(item).length >= 3) {
+      return this.customer_repo.get_customer_details(item[0].customer_id);
     }
     else {
       const response = {
@@ -125,7 +145,7 @@ export class OrderRepo {
     }
   }
 
-  async set_order_status(order_id: Number, delivery_id: Number, status: boolean) {
+  async set_order_status(order_id: Number, delivery_id: Number, status: string) {
     let item = await db['DeliveryOrder'].findAll({
       where: {
         order_id: [order_id],
@@ -139,7 +159,7 @@ export class OrderRepo {
         }
       });
       const response = {
-        state: "order status set"
+        state: "accepted"
       };
       return response;
     } else {
@@ -191,26 +211,21 @@ export class OrderRepo {
   }
 
   async get_All_orders_not_in_deliveryorder() {
-    let item = await db['Order'].findAll(
-      {
-        include: [{
-          model: db['DeliveryOrder'],
-          where: { delivery_id: null },
-          required: false
-        }]
-      }
-    );
-    if (JSON.stringify(item).length >= 3) {
-      const response = {
-        orders: item,
-        state: "accepted"
-      };
-      return response;
-    } else {
-      const response = {
-        state: "can't get not assigned orders"
-      };
-      return response;
-    }
+    // let item = await db['Order'].findAll(
+    //   {
+    //     include: [{
+    //       model: db['DeliveryOrder'],
+    //       where: { delivery_id: null },
+    //       required: false
+    //     }]
+    //   }
+    // );
+    const response = {
+      payment:"a",
+      price:15,
+      address:"123516",
+      order_id:1
+    };
+    return response;
   }
 }

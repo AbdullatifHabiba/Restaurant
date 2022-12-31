@@ -1,3 +1,4 @@
+import { integer } from 'aws-sdk/clients/cloudfront';
 import db from './sequalize';
 
 export class OrderItem {
@@ -32,6 +33,19 @@ export class OrderItem {
       return "item added correctly";
     } else {
       return "item already exist";
+    }
+  }
+
+  async get_items(order_id: integer) {
+    let item = await db['OrderItems'].findAll({
+      where: {
+        order_id: [order_id]
+      }
+    });
+    if (JSON.stringify(item).length < 3) {
+      return "order id doesn't exist";
+    } else {
+      return item;
     }
   }
 }

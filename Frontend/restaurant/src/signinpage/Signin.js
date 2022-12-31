@@ -55,6 +55,9 @@ function Signin() {
       else if (User === "admin") {
         nav("/admin", { state: UserState });
       }
+      else if (User === "deliveryman") {
+        nav("/orders", { state: UserState });
+      }
     } else {
       setError(() => { return true; })
     }

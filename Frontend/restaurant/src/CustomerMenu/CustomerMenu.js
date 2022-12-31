@@ -27,7 +27,6 @@ export default function CustomerMenu() {
         getFood();
     }, []);
 
-
     React.useEffect(() => {
         console.log(Food);
         for (let i = 0; i < Food.length; i++) {

@@ -14,7 +14,7 @@ module.exports = (sequelize: any, Sequelize: any) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    payment:{
+    payment: {
       type: Sequelize.STRING,
       allowNull: false,
     }

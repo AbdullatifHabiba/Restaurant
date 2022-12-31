@@ -9,6 +9,7 @@ import { router_Customer } from "./Customer-Routes";
 import db from "../repository/sequalize";
 import cors from "cors";
 import fileupload from "express-fileupload";
+import { router_Delivery } from "./Delivery-Routes";
 
 const app = express();
 app.use(express.json());
@@ -29,6 +30,7 @@ app.use(
 app.use(router_signin);
 app.use(router_signup);
 app.use(router_Admin);
+app.use(router_Delivery);
 app.use(router_Customer);
 
 const menu_service: IMenueService = new menuserice();

@@ -4,11 +4,18 @@ import { environment } from "../environment";
 function AddItem() {
   let nav = useNavigate();
   const location = useLocation();
-  let [data, setdata] = React.useState({ name: "", describe: "", price: "", available: "" });
+  let [data, setdata] = React.useState({
+    name: "",
+    describe: "",
+    price: "",
+    available: "",
+  });
   let [error, setError] = React.useState(false);
   let [succ, setSucc] = React.useState(false);
   const [selectedFile, setSelectedFile] = React.useState(null);
-  let func = () => { console.log(selectedFile) }
+  let func = () => {
+    console.log(selectedFile);
+  };
   let handleSubmit = async (e) => {
     e.preventDefault();
     let form = new FormData();
@@ -25,20 +32,30 @@ function AddItem() {
     console.log(message);
     if (message.state === "success") {
       setSucc(true);
-    }
-    else {
+    } else {
       setError(true);
     }
-  }
+  };
   return (
     <div className="admin-container">
       <h1 className="Logo2">Eat Nine</h1>
       <div className="side-bar">
-        <div className="side-bar-link" onClick={() => nav("/admin", { state: location.state })}>Dash Board</div>
-        <div className="side-bar-link active" onClick={() => nav("/admin/menu-items", { state: location.state })}>
+        <div
+          className="side-bar-link"
+          onClick={() => nav("/admin", { state: location.state })}
+        >
+          Dash Board
+        </div>
+        <div
+          className="side-bar-link active"
+          onClick={() => nav("/admin/menu-items", { state: location.state })}
+        >
           Menu Items
         </div>
-        <div className="side-bar-link">
+        <div
+          className="side-bar-link"
+          onClick={() => nav("/admin/delivery-men", { state: location.state })}
+        >
           Delivery men
         </div>
       </div>
@@ -78,20 +95,46 @@ function AddItem() {
             name="file"
             onChange={(e) => setSelectedFile(e.target.files[0])}
           />
-          <input className="btn-submit" type="submit" value="submit" onClick={func} />
+          <input
+            className="btn-submit"
+            type="submit"
+            value="submit"
+            onClick={func}
+          />
         </form>
-        {succ && <div className='ErrorPOP Success'>
-          <div className='PopUP'>
-            <p className="green">Item added successfully</p>
-            <button className="back-green" onClick={() => { setSucc(() => { return false; }) }}>OK</button>
+        {succ && (
+          <div className="ErrorPOP Success">
+            <div className="PopUP">
+              <p className="green">Item added successfully</p>
+              <button
+                className="back-green"
+                onClick={() => {
+                  setSucc(() => {
+                    return false;
+                  });
+                }}
+              >
+                OK
+              </button>
+            </div>
           </div>
-        </div>}
-        {error && <div className='ErrorPOP'>
-          <div className='PopUP'>
-            <p>There was an error, the item wasn't added!!</p>
-            <button onClick={() => { setError(() => { return false; }) }}>OK</button>
+        )}
+        {error && (
+          <div className="ErrorPOP">
+            <div className="PopUP">
+              <p>There was an error, the item wasn't added!!</p>
+              <button
+                onClick={() => {
+                  setError(() => {
+                    return false;
+                  });
+                }}
+              >
+                OK
+              </button>
+            </div>
           </div>
-        </div>}
+        )}
       </div>
     </div>
   );

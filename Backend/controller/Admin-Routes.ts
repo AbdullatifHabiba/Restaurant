@@ -59,8 +59,16 @@ router_Admin.get("/getAllDelivery", (req, res) => {
   );
 });
 
-router_Admin.post("/delete-delivery", (req, res) => {
-  let r = admin_service.Remove_Delivery(req.body);
+router_Admin.delete("/delete-delivery/:id", (req, res) => {
+  let r = admin_service.Remove_Delivery(req.params.id);
+  r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
+    res.status(404).send({ state: rejected + "failed to connect database" })
+  );
+});
+
+router_Admin.delete("/delete-item/:name", (req, res) => {
+  console.log(req.params.name);
+  let r = admin_service.removeItem(req.params.name);
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>
     res.status(404).send({ state: rejected + "failed to connect database" })
   );
