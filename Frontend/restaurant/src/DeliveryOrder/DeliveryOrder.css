@@ -1,26 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-.profile_class {
+.Order_delivery {
   display: grid;
   min-height: 100vh;
   padding: 0 100px;
+  padding-bottom: 20px;
   grid-template-columns: 20% 60% 20%;
   font-family: "poppins";
   background-color: #FFF5EC;
 }
+.item{
+  text-align: center;
+}
+.item_1{
+  text-align: center;
+  color: #2e266f;
+  font-size: 30px;
 
-.profile_class .container {
-  padding-top: 70px;
+}
+.order_container{
+  display: grid;
+  grid-template-columns: 40% 20% 20% 20%;
+  flex-direction: column;
+  background-color:antiquewhite;
+}
+.H_order_container{
+  display: grid;
+  grid-template-columns: 40% 20% 20% 20%;
+  flex-direction: column;
+  background-color:bisque;
+}
+.Order_delivery .container {
+  padding-top: 20px;
 }
 
-.logo_profile_page {
+.logo_text_container {
   color: red;
   /* font-weight: bold; */
   font-size: 50px;
   cursor: pointer;
 }
 
-.profile_class .vertify_header {
+.Order_delivery 
+.vertify_header {
+  cursor:context-menu;
   text-align: center;
   text-align: center;
   color: #2e266f;
@@ -30,7 +53,8 @@
   font-size: 45px;
 }
 
-.profile_class form {
+.Order_delivery form {
+  
   display: grid;
   grid-template-columns: 34.5% 66.5%;
   flex-direction: column;
@@ -38,7 +62,7 @@
   margin-right: auto;
 }
 
-.profile_class p {
+.Order_delivery p {
   background-color: transparent;
   color: #2B2176;
   font-family: "Poppins";
@@ -48,16 +72,17 @@
 
 }
 
-.profile_class .data {
+.Order_delivery .data {
   color: black;
 }
 
-.profile_class.paym_but_container {
+.Order_delivery.paym_but_container {
   align-items: center;
 }
 
-.profile_class .paym_but_container input {
+.Order_delivery .paym_but_container input {
   width: 100%;
+  height: 60px;
   border: none;
   background-color: #FE043C;
   color: #FFFFFF;

@@ -1,10 +1,11 @@
 import { MenueRepo } from "../repository/MenueRepo";
 import { ICustomerRepo } from '../core/repos/ICustomerRepo';
 import db from "./sequalize";
+import { IMenueRepo } from "../core/repos/IMenueRepo";
 
 export class customerRepo implements ICustomerRepo {
 
-    menuRepo = new MenueRepo();
+    menuRepo: IMenueRepo = new MenueRepo();
 
     async get_Available_Items() {
         return this.menuRepo.GetAllItems();
@@ -21,7 +22,8 @@ export class customerRepo implements ICustomerRepo {
                 name: customer[0].name,
                 phone: customer[0].phone,
                 city: customer[0].city,
-                address: customer[0].address
+                address: customer[0].address,
+                email: customer[0].email
             };
             return response;
         }

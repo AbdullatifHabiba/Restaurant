@@ -28,7 +28,7 @@ describe("Admin Service layer Tests", () => {
       "description": "look fine"
     }
     let result: any;
-    await obj.AddItem_toDB_and_s3(fileStream, o).then(
+    await obj.AddItem_toDB_and_s3(fileStream, o,"image/jpej").then(
       (accepted) => result = accepted,
       (rejected) => console.log("Erron" + rejected));
     console.log(result);
@@ -45,7 +45,7 @@ describe("Admin Service layer Tests", () => {
       "description": "delicios"
     }
     let result: any;
-    await obj.AddItem_toDB_and_s3(fileStream, o).then(
+    await obj.AddItem_toDB_and_s3(fileStream, o,"image/jpej").then(
       (accepted) => result = accepted,
       (rejected) => console.log("Erron" + rejected));
     console.log(result);
