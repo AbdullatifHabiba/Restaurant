@@ -47,6 +47,7 @@ app.get("/homemenu", (req, res) => {
   );
 });
 
+
 app.get("/menu", (req, res) => {
   let r = menu_service.getAll();
   r.then((accepted) => res.status(200).send(accepted)).catch((rejected) =>

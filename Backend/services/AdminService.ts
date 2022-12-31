@@ -32,6 +32,7 @@ export class adminsrevice implements IAdminService {
   }
 
   Add_Delivery(req: any) {
+    
     return this.adminR_Obj.AddNewDelivery(req.name, req.email, req.password, req.phone, req.Branch_id);
   }
 

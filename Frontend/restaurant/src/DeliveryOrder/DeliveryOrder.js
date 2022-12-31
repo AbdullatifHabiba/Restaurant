@@ -10,8 +10,9 @@ function DeliveryOrder() {
   let [info,setinfo] = React.useState({});
   let [Order,setorder]=React.useState([]);
   let ordobj = {name:"", amount:"", price:""};
-  let [ord,setord]=React.useState([]);
-  let[assigned, setassigned] =React.useState([]);
+  //let [ord,setord]=React.useState([]);
+  let ord=[];
+  let[assigned, setassigned] =React.useState({});
   React.useEffect(()=>{
 
     async function getFood() {
@@ -22,9 +23,8 @@ function DeliveryOrder() {
           }
       });
       let res = await result.json();
-      setFood(res.order);
+      setFood(res);
   }
-  getFood();
 
     async function getorderdata(){
       let result = await fetch(`${environment.env}/order-data`, {
@@ -51,7 +51,7 @@ function DeliveryOrder() {
         },
         body: JSON.stringify(
           {
-            order_id:location.state.OrderID
+            orderid:location.state.OrderID
           }
         )
       });
@@ -78,19 +78,23 @@ function DeliveryOrder() {
       setassigned(res);
     } 
     assignorder();
+    getFood();
 
   },[]);
 
 
   let total_price = 0 ;
   let total_amount = 0 ;
-        for(let j = 1; j< Order.length; j++){
-            for(let i = 1; i<Food.length; i++){
-              if(Food[i].id === Order[j].id){
+  console.log(Order);
+  console.log(Food);
+        for(let j = 0; j< Order.length; j++){
+            for(let i = 0; i<Food.length; i++){
+              if(Food[i].item_id === Order[j].item_id){
                 console.log("here", i)
                 ordobj={name:Food[i].name,amount:Order[j].amount_required,price:Food[i].price};
                 ord.push(ordobj);
-                total_price = total_price + Food[i].price
+                console.log(total_price);/////////////////////////
+                total_price = total_price + Food[i].price*Order[j].amount_required 
                 total_amount = total_amount + Order[j].amount_required 
               }
             }}
@@ -101,7 +105,7 @@ function DeliveryOrder() {
         <div className="order_container">
           <h2 className="item">{item.name}</h2>
           <h2 className="item"> </h2>
-          <h2 className="item">{item.count}</h2>
+          <h2 className="item">{item.amount}</h2>
           <h2 className="item">{item.price}</h2>
         </div>
     );
@@ -164,8 +168,8 @@ let on_click = async () => {
             <div className="H_order_container">
               <h2 className="item_1">Total</h2>
               <h2 className="item"> </h2>
-              <h2 className="item">20</h2>
-              <h2 className="item">20</h2>
+              <h2 className="item">{total_amount}</h2>
+              <h2 className="item">{total_price}</h2>
             </div>
       </div>
       <div className="paym_but_container">
